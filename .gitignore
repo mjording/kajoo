@@ -1,0 +1,12 @@
+.DS_Store
+log/*.log
+tmp/**/*
+config/database.yml
+db/*.sqlite3
+vendor/rails
+#vim swap file
+**.swp
+**.swo
+**.swn
+**.*~
+
