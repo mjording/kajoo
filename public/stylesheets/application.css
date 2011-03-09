@@ -100,10 +100,18 @@ a {
 #header h1 img{
   float:left;
 }
+#header h1 a{
+  text-decoration: none;
+  color: #FCFC7C;
+}
 #feature{
 	border-bottom: 6px solid #EA3D1B;
 }
-
+.flipsummary{
+  float: left;
+  width: 470px;
+  border-right: 5px solid #EA3D1B;
+}
 .main_column {
 	float: lef;
 }
