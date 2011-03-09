@@ -1,4 +1,6 @@
 FixIt::Application.routes.draw do
+  resources :reports
+
   get "welcome/index"
 
   devise_for :users
