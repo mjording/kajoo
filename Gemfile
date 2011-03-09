@@ -14,13 +14,10 @@ gem 'unicorn'
 gem 'heroku'
 gem 'annotate'
 gem 'open311'
-<<<<<<< HEAD
 gem 'geocoder'
-=======
 gem 'meta_search'
 gem "will_paginate"
 gem 'cancan'
->>>>>>> 74f6b2c19c66e47c07a047addb3d1922b07453a0
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
