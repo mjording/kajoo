@@ -2,7 +2,7 @@
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
 gem 'pg'
-gem 'devise'
+gem 'devise', '1.2.rc'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'rails3-generators'
 gem 'rack-cache', :require => 'rack/cache'
