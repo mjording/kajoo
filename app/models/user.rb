@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :reports 
+  has_many :solutions
+  has_many :votes
+  has_many :issue_votes, :class_name => 'IssueVote'
+  has_many :solution_votes, :class_name => 'SolutionVote'
+  
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :twiter_id, :avatar_url
   
@@ -34,9 +41,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_many :reports 
+  #does the user have any remaining votes for today?
+  def has_votes(vote_number)
+    limit = SITE['daily_vote_limit']
+    votes_today = self.votes.where('created_at > :one_day_ago', {:one_day_ago => Time.now - 1.day}).count
+    return (votes_today < limit)
+  end
 
 end
+
 
 # == Schema Information
 #
@@ -55,5 +68,8 @@ end
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
+#  avatar_url           :string(255)
+#  twitter_id           :integer
+#  name                 :string(255)
 #
 

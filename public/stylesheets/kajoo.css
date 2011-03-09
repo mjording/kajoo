@@ -1,0 +1,12 @@
+#filter a.active {
+  background-color: #79593C;
+  border: 1px solid #79593C;
+}
+
+#filter a {
+  border: 1px solid #9CC;
+}
+
+#filter a:hover {
+  border: 1px solid #79593C;
+}
