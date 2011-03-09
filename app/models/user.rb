@@ -41,7 +41,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  
+  #does the user have any remaining votes for today?
+  def has_votes(vote_number)
+    limit = SITE['daily_vote_limit']
+    votes_today = self.votes.where('created_at > :one_day_ago', {:one_day_ago => Time.now - 1.day}).count
+    return (votes_today < limit)
+  end
 
 end
 

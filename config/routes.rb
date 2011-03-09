@@ -1,11 +1,11 @@
 FixIt::Application.routes.draw do
   resources :solutions
 
-  resources :votes
-
-  resources :issue_votes
-
+  match 'solutions/:id/vote' => 'solutions#vote', :as => 'vote_for_solution'
+  
   resources :issues
+
+  match 'issues/:id/vote' => 'issues#vote', :as => 'vote_for_issue'
 
   resources :reports
 

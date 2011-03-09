@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>Kajoo <%= region_name %> : <%= site_name %> : Improve Your City</title>
-  <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application' %>
+  <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application', 'kajoo' %>
   <%= javascript_include_tag :all %>
 	<%= yield(:head) %>
   <%= csrf_meta_tag %>
@@ -18,9 +18,8 @@
 </div><!--closes header--><div class="clear"></div>
 <div id="main"><!--Content starts-->
 
-
-
-
+<% if notice %><p class="notice grid_24"><%= notice %></p><% end %>
+<% if alert %><p class="alert grid_24"><%= alert %></p><% end %>
 <div id="feature" class="grid_24"><!--Feature Content-->
 
   <%= yield(:feature) %>		

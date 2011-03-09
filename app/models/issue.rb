@@ -1,6 +1,24 @@
 class Issue < ActiveRecord::Base
   has_many :reports
-
+  has_many :votes, :class_name => 'IssueVote'
+  has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true
+  
+  def location_name
+    return 'Downtown Austin'
+  end
+  
+  def add_vote_for_user(user)
+  
+    unless(user.has_votes(1))
+      throw Exception.new('Not enough votes')
+    end
+  
+    @vote = votes.create({:user => user})
+    
+    user.add_points(5)
+    
+  end
+  
 end
 
 # == Schema Information

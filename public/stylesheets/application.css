@@ -64,17 +64,17 @@ li {
 #main_content{
 	margin: 30px 30px 0 25px;
 }
-#report_actions ul{
+.report_actions ul{
 	margin:7px 0 10px 0;
 }
-#report_actions li{
+.report_actions li{
 	margin: 0px;
 	padding-bottom: 20px;
 }
-#report_actions{
+.report_actions{
 	margin: 0 0 25px 0;
 }
-#report_actions a{
+.report_actions a{
 	color: #898989;
 	background-color: #E0E0E0;
 	-webkit-border-radius: 10px;
@@ -82,7 +82,7 @@ li {
 	font-size: 11px;
 	text-decoration: none;
 }
-#report_actions a:hover{
+.report_actions a:hover{
 	color: #2D2D2D;
 	background-color: #A0A0A0;
 }

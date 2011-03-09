@@ -14,6 +14,9 @@ gem 'unicorn'
 gem 'heroku'
 gem 'annotate'
 gem 'open311'
+gem 'meta_search'
+gem "will_paginate"
+gem 'cancan'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'

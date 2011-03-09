@@ -35,6 +35,7 @@ GEM
     arel (2.0.9)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    cancan (1.5.1)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -111,6 +112,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_search (1.0.1)
+      actionpack (~> 3.0.2)
+      activerecord (~> 3.0.2)
+      activesupport (~> 3.0.2)
+      arel (~> 2.0.2)
     mime-types (1.16)
     multi_json (0.0.5)
     multi_xml (0.2.1)
@@ -211,6 +217,7 @@ GEM
       rack
     warden (1.0.3)
       rack (>= 1.0.0)
+    will_paginate (2.3.15)
     xpath (0.1.3)
       nokogiri (~> 1.3)
 
@@ -219,6 +226,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  cancan
   capybara
   cucumber
   cucumber-rails
@@ -229,6 +237,7 @@ DEPENDENCIES
   fabrication
   gollum
   heroku
+  meta_search
   oa-oauth
   open311
   rack-cache
@@ -239,3 +248,4 @@ DEPENDENCIES
   sqlite3-ruby
   testify
   unicorn
+  will_paginate

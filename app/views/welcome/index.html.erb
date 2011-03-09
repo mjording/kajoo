@@ -9,10 +9,9 @@
 <!-- main content -->
 <div id="filter">
 		<ul>
-		<li><a href="#">Most Recent</a></li>		
-		<li><a href="#">Most Voted</a></li>		
-		<li><a href="#">Recently Resolved</a></li>				
-		
+  		<li><%= link_to 'Most Recent', {:order => 'latest'}, :class => (@order == 'latest') ? 'active' : '' %></li>		
+  		<li><%= link_to 'Most Voted', {:order => 'votes'}, :class => (@order == 'votes') ? 'active' : '' %></li>		
+  		<li><%= link_to 'Recently Resolved', {:order => 'resolved'}, :class => (@order == 'resolved') ? 'active' : '' %></li>				
 		</ul>
 
 		</div><!--Closes filter navigation-->
@@ -22,52 +21,32 @@
 
 		<div id="report_sum"><!--STARTS: report summaries-->
 
-		<h5>Location March 8, 2011</h5>
-		<img src="#" width="50px" height="50px"/>		
-
-		<p>Lorizzle ipsizzle dolor the bizzle amizzle, ma nizzle adipiscing elit. Nullam sapien velit, gangsta volutpizzle, pot black, gravida vizzle, . Pellentesque rizzle tortizzle. Sizzle erizzle. Ma nizzle at dolor dapibus suscipit. Mah nizzle black velit sizzle mammasay mammasa mamma oo sa.</p>
-		
-			<div id="report_actions">
-			<ul>
-			<li><a href="#">Vote</a></li>
-			<li><a href="#">Comment</a></li>
-			<li><a href="#">Propose Solution</a></li>
-			<li><a href="#">Mark Resolved</a></li>			
-			<li><a href="#">User Name</a></li>
-			<li><a href="#">Edit</a></li>
-			</ul>
-			
-				<ul>
-				<li><a href="#">Tag</a></li>
-				<li><a href="#">Categorize</a></li>
-				</ul>
-						
+    <% @issues.each do |issue| %>
+      <h5><%= issue.location_name %> <%= summary_date(issue.created_at) %></h5>
+  		<img src="#" width="50px" height="50px"/>		
+  
+      
+  
+  		<p><%= issue.description %></p>
+  		<div class="report_stats">
+  		  <p class="stat"><%= issue.votes.count %></p>
+  		</div>
+			<div class="report_actions">
+  			<ul>
+    			<li><%= link_to 'Vote', vote_for_issue_path(issue.id) %></li>
+    			<li><a href="#">Comment</a></li>
+    			<li><a href="#">Propose Solution</a></li>
+    			<li><a href="#">Mark Resolved</a></li>			
+    			<li><a href="#">User Name</a></li>
+    			<li><a href="#">Edit</a></li>
+  			</ul>
+  			
+  		  <ul>
+  				<li><a href="#">Tag</a></li>
+  				<li><a href="#">Categorize</a></li>
+  		  </ul>  						
 			</div><!--Closes report_actions-->
-		</div><!--Closes report summaries-->
-		<div id="report_sum"><!--STARTS: report summaries-->
-
-		<h5>Location March 8, 2011</h5>
-		<img src="#" width="50px" height="50px"/>		
-
-		<p>Lorizzle ipsizzle dolor the bizzle amizzle, ma nizzle adipiscing elit. Nullam sapien velit, gangsta volutpizzle, pot black, gravida vizzle, . Pellentesque rizzle tortizzle. Sizzle erizzle. Ma nizzle at dolor dapibus suscipit. Mah nizzle black velit sizzle mammasay mammasa mamma oo sa.</p>
-		
-			<div id="report_actions">
-			<ul>
-			<li><a href="#">Vote</a></li>
-			<li><a href="#">Comment</a></li>
-			<li><a href="#">Propose Solution</a></li>
-			<li><a href="#">Mark Resolved</a></li>			
-			<li><a href="#">User Name</a></li>
-			<li><a href="#">Edit</a></li>
-			</ul>
-			
-				<ul>
-				<li><a href="#">Tag</a></li>
-				<li><a href="#">Categorize</a></li>
-				</ul>
-						
-			</div><!--Closes report_actions-->
-		</div><!--Closes report summaries-->
-
+    <% end %>
+    </div><!--Closes report summaries-->
 
 </div><!--Closes Main Content-->
