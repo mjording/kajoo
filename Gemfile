@@ -13,6 +13,7 @@ gem 'dynamic_form'
 gem 'unicorn'
 gem 'heroku'
 gem 'annotate'
+gem 'open311'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
