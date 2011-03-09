@@ -1,5 +1,5 @@
 body {
-  #background-color: #4B7399;
+  background: #FCFC7C;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -89,6 +89,15 @@ a {
 #header{
 	float: left;
 	border-bottom: 6px solid #EA3D1B;
+}
+#header h1{
+  background: #EA3D1B;
+  color: white;
+  padding: 10px;
+  font-size: 28px;
+}
+#header h1 img{
+  float:left;
 }
 #feature{
 	border-bottom: 6px solid #EA3D1B;
