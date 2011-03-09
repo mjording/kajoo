@@ -104,6 +104,16 @@ a {
   text-decoration: none;
   color: #FCFC7C;
 }
+#footer{
+  background: #EA3D1B;
+  color: #FCFC7C;
+  padding: 3px 50px 10px 25px;
+
+}
+#footer a{
+  text-decoration: none;
+  color: #FCFC7C;
+}
 #feature{
 	border-bottom: 6px solid #EA3D1B;
 }
