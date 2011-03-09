@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  has_many :reports 
+
 end
 
 # == Schema Information

@@ -1,4 +1,7 @@
 class Report < ActiveRecord::Base
+  
+  belongs_to :user
+  has_one :issue
 end
 
 # == Schema Information

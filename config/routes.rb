@@ -1,4 +1,6 @@
 FixIt::Application.routes.draw do
+  resources :issues
+
   resources :reports
 
   get "welcome/index"
