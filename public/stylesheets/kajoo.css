@@ -15,3 +15,8 @@
   background: none;
   color: #9CC;
 }
+
+#header img#twitter_avatar {
+  margin: none;
+  padding: none;
+}
