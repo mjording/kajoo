@@ -1,0 +1,29 @@
+<div class="flipsummary"><!--feature left starts-->	
+  <h1>Remove the Monster Gator threat</h1>
+  <p>
+   <%= image_tag "http://media.kvue.com/images/600*805/1gator030811.jpg", :style => 'height: 100px; float: left; padding: 4px;' %>
+ 
+   Lorizzle ipsizzle dolor the bizzle amizzle, ma nizzle adipiscing elit. Nullam sapien velit, gangsta volutpizzle, pot black, gravida vizzle, . Pellentesque rizzle tortizzle. Sizzle erizzle. Ma nizzle at dolor dapibus tempizzle pimpin'. 
+   Mauris pellentesque nibh shiz mah nizzle. Crackalackin gangster tortizzle. Pellentesque shizzlin dizzle yippiyo nisi. In ma nizzle own yo' platea dictumst. 
+  </p>
+  <% if(current_user) %>
+    <%= link_to "Submit A Report", new_report_path %>
+  <% else %>
+     <%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
+  <% end %>
+</div><!--Closes feature left content-->
+<div class="flipsummary"><!--feature left starts-->	
+  <h1>Moon attacks! What can be done? </h1>
+  <p>
+   <%= image_tag "http://cache.gawker.com/assets/images/gawker/2009/07/ww.jpg
+", :style => 'height: 100px; float: left; padding: 4px;' %>
+ 
+   Lorizzle ipsizzle dolor the bizzle amizzle, ma nizzle adipiscing elit. Nullam sapien velit, gangsta volutpizzle, pot black, gravida vizzle, . Pellentesque rizzle tortizzle. Sizzle erizzle. Ma nizzle at dolor dapibus tempizzle pimpin'. 
+   Mauris pellentesque nibh shiz mah nizzle. Crackalackin gangster tortizzle. Pellentesque shizzlin dizzle yippiyo nisi. In ma nizzle own yo' platea dictumst. 
+  </p>
+  <% if(current_user) %>
+    <%= link_to "Submit A Report", new_report_path %>
+  <% else %>
+     <%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
+  <% end %>
+</div><!--Closes feature left content-->
