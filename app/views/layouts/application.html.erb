@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
 <html>
 <head>
-  <title>HackDraft</title>
+<title>Kajoo: Improve Your City</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
 
@@ -9,13 +10,45 @@
 
   <%= csrf_meta_tag %>
 </head>
+
 <body>
-  <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
-  <div id='container'>
-    <%= yield %>
-  </div>
+
+
+<div id="header"><!--Header starts-->
+<h1>Kajoo</h1>
+	<div id="navigation">
+		<ul>
+			<li><a href="../submit.html">Submit</a></li>
+			<li><a href="#">View Reports</a></li>
+		</ul>
+		<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), :id => 'login' %>
+	</div><!--Closes navigation-->
+</div><!--closes header-->
+
+<div id="sidebar">
+
+<a href="#">Sign up</a>
+or 
+<a href="#">Submit A Report</a>
+
+</div>
+
+
+<div id="main"><!--Content starts-->
+
+<%= yield %>
+
+</div><!--Closes main-->
+
+
+<div id="footer"><!--Footer starts-->
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Submit</a></li>
+			<li><a href="#">View Reports</a></li>
+		</ul>
+</div><!--Closes Footer-->
 
 </body>
 </html>
-
-
