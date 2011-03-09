@@ -79,3 +79,30 @@ a {
   font-size: 12px;
   list-style: disc;
 }
+
+.container_24{
+	background-color: #FCFC7C;
+}
+.clear {
+	clear: both;
+}
+#header{
+	float: left;
+	border-bottom: 6px solid #EA3D1B;
+}
+#feature{
+	border-bottom: 6px solid #EA3D1B;
+}
+
+.main_column {
+	float: lef;
+}
+ul {
+	list-style: none;
+
+}
+li {
+	display: inline;
+	margin: 10px 10px 10px 0px;
+}
+

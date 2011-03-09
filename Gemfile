@@ -1,7 +1,7 @@
 
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
-gem 'pg'
+#gem 'pg'
 gem 'devise', '1.2.rc'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'rails3-generators'
@@ -11,6 +11,7 @@ gem 'gollum'
 gem 'dynamic_form'
 gem 'unicorn'
 gem 'heroku'
+gem 'annotate'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'

@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>Kajoo: Improve Your City</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application' %>
   <%= javascript_include_tag :all %>
 
 	<%= yield(:head) %>
@@ -13,17 +13,21 @@
 
 <body>
 
+<div id="wrapper" class="container_24">
 
-<div id="header"><!--Header starts-->
-<h1>Kajoo</h1>
+<div id="header" class="container_24"><!--Header starts-->
+	<h1>Kajoo</h1>
+
 	<div id="navigation">
 		<ul>
-			<li><a href="../submit.html">Submit</a></li>
-			<li><a href="#">View Reports</a></li>
+
+			<li><a href="#">Votes Remaining</a></li>
+			<li><a href="#">View Issues</a></li>
+			<%= link_to "Login", user_omniauth_authorize_path(:twitter), :id => 'login' %>
 		</ul>
-		<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), :id => 'login' %>
+
 	</div><!--Closes navigation-->
-</div><!--closes header-->
+</div><!--closes header--><div class="clear"></div>
 
 <div id="sidebar">
 
@@ -36,19 +40,45 @@ or
 
 <div id="main"><!--Content starts-->
 
-<%= yield %>
+
 
 </div><!--Closes main-->
 
+<div id="feature" class="grid_24"><!--Feature Content-->
 
+  <%= yield(:feature) %>		
+
+</div><!--Closes Feature Content--><div class="clear"></div>
+
+
+
+<div id="main_content" class="grid_18"><!--Starts Main Content -->
+
+  <%= yield %>
+
+		
+
+		<div class="grid_6"><!--starts sidebar-->
+		
+				<%= yield(:sidebar) %>		
+		
+		</div>	<!--Closes sidebar-->
+
+
+
+<div class="clear"></div>
 <div id="footer"><!--Footer starts-->
 		<ul>
 			<li><a href="#">Home</a></li>
 			<li><a href="#">About</a></li>
-			<li><a href="#">Submit</a></li>
-			<li><a href="#">View Reports</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">Votes Remaining</a></li>
+			<li><a href="#">View Issues</a></li>
+			<li><a id="login" href="#">Login</a></li>
 		</ul>
 </div><!--Closes Footer-->
+
+</div><!--Closes wrapper-->
 
 <script type="text/javascript">
 
