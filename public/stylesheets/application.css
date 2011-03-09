@@ -92,9 +92,10 @@ a {
 }
 #header h1{
   background: #EA3D1B;
-  color: white;
-  padding: 10px;
-  font-size: 28px;
+  color: #FCFC7C;
+  padding: 3px 50px 10px 25px;
+  font-size: 70px;
+  text-align: right;
 }
 #header h1 img{
   float:left;
