@@ -78,6 +78,7 @@ GEM
       faraday (~> 0.5.4)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    geocoder (0.9.10)
     gherkin (2.3.3)
       json (~> 1.4.6)
     github-markup (0.5.3)
@@ -227,6 +228,7 @@ DEPENDENCIES
   dragonfly (~> 0.8.1)
   dynamic_form
   fabrication
+  geocoder
   gollum
   heroku
   oa-oauth

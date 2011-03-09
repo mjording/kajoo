@@ -3,8 +3,8 @@ class CreateIssues < ActiveRecord::Migration
     create_table :issues do |t|
       t.string :title
       t.text :description
-      t.float :lat
-      t.float :lon
+      t.float :latitude
+      t.float :longitude
       t.integer :radius
 
       t.timestamps

@@ -2,10 +2,7 @@ class Report < ActiveRecord::Base
   
   belongs_to :user
   has_one :issue
-  def self.find_similar(report)
-    
-  end
-end
+ end
 
 # == Schema Information
 #

@@ -14,6 +14,7 @@ gem 'unicorn'
 gem 'heroku'
 gem 'annotate'
 gem 'open311'
+gem 'geocoder'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
