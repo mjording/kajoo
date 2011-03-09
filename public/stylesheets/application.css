@@ -10,10 +10,6 @@
 h1{
 	color: #79593C;
 }
-#header h1 a {
-	color: #79593C;
-	background-color: transparent;
-}
 #header{
 	float: left;
 }
@@ -41,23 +37,66 @@ li {
 	display: inline;
 	margin: 10px 10px 10px 0px;
 }
-#header a, #filter a{
+#navigation a, #filter a{
 	text-decoration: none;
 	color: #ffffff;
 	background-color: #99CCcc;
 	padding: 5px;
 	background: display;
-	}
-	
 }
-#filter ul a:hover{
-	background-color: #000000;
+#navigation a:hover, #filter ul a:hover{
+	background-color: #79593c;
 }
-#report_sum, #sidebar_section{
+
+/***********
+Submit Form
+**********/
+#submit_form{
+	color: #898989;
+	padding: 0 0 5px 0;
+}
+#title, #description, #tags, #location{
+	width: 300px;
+}
+#title, #description, #tags, #location, #change{
+	width: 400px;
+ 	background-color: #ffffff;
+ 	border:  1px solid #E0E0E0;
+ 	padding: 2px 2px 2px 6px;
+ 	margin: 0 0 10px 0px
+}
+#description{
+	height: 50px;
+}
+#location, #change{
+	width: 300px;
+}
+.button{
+	margin: 20px 0 0 0;	
+}
+.button a {
+	background-color: #FF8939;
+	padding: 10px 25px;
+	-webkit-border-radius: 5px;
+	color: #ffffff;
+	text-decoration: none;
+	border: 1px solid #F47119;
+}
+.button a:hover{
+	background-color: #DD691B;
+	border: 1px solid #F47119;
+
+}
+
+
+/***********
+Browse Submitted Issues
+**********/
+.report_sum, .sidebar_section{
 	border-top: 1px solid #E0E0E0;
 	padding: 15px 0 0 0;
 }
-#report_sum img{
+.report_sum img{
 	float:  left;
 	margin: 0 15px 0 0;
 }
@@ -87,7 +126,7 @@ li {
 	background-color: #A0A0A0;
 }
 #sidebar{
-	margin:  126px 0 0 0;
+	margin:  116px 0 0 0;
 	
 }
 #footer {
@@ -102,4 +141,10 @@ li {
 	padding: 0px;
 	background-color: #79593C;
 	color: #A0A0A0;
+	text-decoration: none;
+}
+#footer a:hover{
+	padding: 0px;
+	background-color: #79593C;
+	color: #E0E0E0;
 }

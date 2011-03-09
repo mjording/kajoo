@@ -10,3 +10,8 @@
 #filter a:hover {
   border: 1px solid #79593C;
 }
+
+#navigation a#logout-link {
+  background: none;
+  color: #9CC;
+}

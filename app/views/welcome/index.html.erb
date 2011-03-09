@@ -24,9 +24,6 @@
     <% @issues.each do |issue| %>
       <h5><%= issue.location_name %> <%= summary_date(issue.created_at) %></h5>
   		<img src="#" width="50px" height="50px"/>		
-  
-      
-  
   		<p><%= issue.description %></p>
   		<div class="report_stats">
   		  <p class="stat"><%= issue.votes.count %></p>

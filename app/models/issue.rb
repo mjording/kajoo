@@ -9,7 +9,7 @@ class Issue < ActiveRecord::Base
   
   def add_vote_for_user(user)
   
-    unless(user.has_votes(1))
+    unless(user.votes_remaining > 0)
       throw Exception.new('Not enough votes')
     end
   

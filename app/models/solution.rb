@@ -3,7 +3,7 @@ class Solution < ActiveRecord::Base
   has_many :votes, :class_name => 'SolutionVote'
   
   def add_vote_for_user(user)
-    unless(user.has_votes(1))
+    unless(user.votes_remaining > 0)
       throw Exception.new('Not enough votes')
     end
     
