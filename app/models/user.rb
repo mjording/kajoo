@@ -5,13 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :twiter_id, :avatar_url
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
-    if user = User.find_by_email("#{data['nickname']}@twitter.com")
+    puts "** data: #{data.inspect}"
+    if user = User.find_by_email("#{data['screen_name']}@twitter.com")
       user
     else # Create an user with a stub password. 
-      User.create!(:email => "#{data['nickname']}@twitter.com", :password => Devise.friendly_token[0,20]) 
+      User.create!(:email => "#{data['screen_name']}@twitter.com", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id']) 
     end
   end 
 
