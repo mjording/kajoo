@@ -1,0 +1,12 @@
+development: &default
+  region_name: 'Austin'
+  site_name: 'SXSW Civic Hackathon'
+
+test: &test
+  <<: *default
+
+production: 
+  <<: *default
+  
+cucumber:
+  <<: *test
