@@ -1,7 +1,7 @@
 
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
-#gem 'pg'
+gem 'pg'
 gem 'devise', '1.2.rc'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'rails3-generators'
@@ -15,11 +15,11 @@ gem 'annotate'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
-#  gem 'ruby-debug19'
+  gem 'ruby-debug19'
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'rspec-rails'
-#  gem 'pickler'
+  gem 'pickler'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'fabrication'

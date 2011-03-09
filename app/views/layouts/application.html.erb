@@ -16,14 +16,12 @@
 <div id="wrapper" class="container_24">
 
 <div id="header" class="container_24"><!--Header starts-->
-	<h1>Kajoo</h1>
-
+  <h1><%= link_to( image_tag('kajoo.png'), root_path) %> <%= link_to 'KAJOO', root_path %></h1>
 	<div id="navigation">
 		<ul>
-
-			<li><a href="#">Votes Remaining</a></li>
 			<li><a href="#">View Issues</a></li>
-			<% if(current_user) %>
+      <% if(current_user) %>
+        <li><a href="#">Votes Remaining</a></li>
 		    <img src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>"> <%= current_user.name %> (<%= link_to 'Logout', destroy_user_session_path %>)
 			<% else %>
   		  <%= link_to "Login", user_omniauth_authorize_path(:twitter), :id => 'login' %>
@@ -32,21 +30,10 @@
 
 	</div><!--Closes navigation-->
 </div><!--closes header--><div class="clear"></div>
-
-<div id="sidebar">
-
-<a href="#">Sign up</a>
-or 
-<a href="#">Submit A Report</a>
-
-</div>
-
-
 <div id="main"><!--Content starts-->
 
 
 
-</div><!--Closes main-->
 
 <div id="feature" class="grid_24"><!--Feature Content-->
 
@@ -59,28 +46,36 @@ or
 <div id="main_content" class="grid_18"><!--Starts Main Content -->
 
   <%= yield %>
-
+  	<div id="sidebar" class="grid_6"><!--starts sidebar-->
+	    <% if(current_user) %>
+        <a href="#">Submit A Report</a>
+      <% else %>
+         <%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
+      <% end %>
+			<%= yield(:sidebar) %>		
 		
-
-		<div class="grid_6"><!--starts sidebar-->
-		
-				<%= yield(:sidebar) %>		
-		
-		</div>	<!--Closes sidebar-->
+	</div>	<!--Closes sidebar-->
 
 
+</div>		
 
-<div class="clear"></div>
-<div id="footer"><!--Footer starts-->
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
-			<li><a href="#">Votes Remaining</a></li>
-			<li><a href="#">View Issues</a></li>
-			<li><a id="login" href="#">Login</a></li>
-		</ul>
-</div><!--Closes Footer-->
+	
+
+  <div class="clear"></div>
+  <div id="footer"><!--Footer starts-->
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Votes Remaining</a></li>
+        <li><a href="#">View Issues</a></li>
+        <li><a id="login" href="#">Login</a></li>
+      </ul>
+  </div><!--Closes Footer-->
+
+</div><!--Closes main-->
+
+
 
 </div><!--Closes wrapper-->
 
