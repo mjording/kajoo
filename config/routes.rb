@@ -1,4 +1,10 @@
 FixIt::Application.routes.draw do
+  resources :solutions
+
+  resources :votes
+
+  resources :issue_votes
+
   resources :issues
 
   resources :reports

@@ -8,15 +8,29 @@
 #
 tpop = User.create({
   :email => "tpop@twitter.com", 
-  :password => Devise.friendly_token[0,20], 
+  :password => Devise.friendly_token[0,20],
   :avatar_url => 'http://a1.twimg.com/profile_images/1188388501/Photo_on_2010-12-10_at_15.09__4.jpg', 
   :name => 'mjording', 
   :twitter_id => '@twitter' 
 })
 
-tpop.reports.build({
-  :title => "Remove the Monster Gator threat", 
-  :description => "orizzle ipsizzle dolor the bizzle amizzle, ma nizzl..."  
+report = tpop.reports.create({
+  :title => "Remove the Monster Gator threat",
+  :description => "orizzle ipsizzle dolor the bizzle amizzle, ma nizzl..."
 })
 
+#XXX TODO  remove once we have automatic issue creation done
+#report.issue = Issue.create({
+#  :title => "Remove the Monster Gator threat",
+#  :description => "orizzle ipsizzle dolor the bizzle amizzle, ma nizzl..."
+#})
+
+#report.save
+
+#issue = report.issue
+
+#tpop.solutions.create({
+#  :title => 'Shoot it in the face with a goddamn blunderbus',
+#  :issue => issue
+#})
 

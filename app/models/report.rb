@@ -1,7 +1,6 @@
-class Report < ActiveRecord::Base
-  
+class Report < ActiveRecord::Base  
   belongs_to :user
-  has_one :issue
+  belongs_to :issue
 end
 
 # == Schema Information

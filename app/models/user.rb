@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :reports 
+  has_many :solutions
+  has_many :votes
+  has_many :issue_votes, :class_name => 'IssueVote'
+  has_many :solution_votes, :class_name => 'SolutionVote'
+  
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :twiter_id, :avatar_url
   
@@ -34,9 +41,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_many :reports 
+  
 
 end
+
 
 # == Schema Information
 #
@@ -55,5 +63,8 @@ end
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
+#  avatar_url           :string(255)
+#  twitter_id           :integer
+#  name                 :string(255)
 #
 

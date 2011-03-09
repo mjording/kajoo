@@ -1,21 +1,19 @@
 require 'spec_helper'
 
-describe Issue do
+describe Vote do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
 # == Schema Information
 #
-# Table name: issues
+# Table name: votes
 #
 #  id          :integer         not null, primary key
-#  title       :string(255)
-#  description :text
-#  lat         :float
-#  lon         :float
-#  radius      :integer
+#  user_id     :integer
+#  issue_id    :integer
+#  solution_id :integer
+#  type        :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
-#  report_id   :integer
 #
 
