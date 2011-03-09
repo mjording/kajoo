@@ -1,7 +1,8 @@
 
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
-gem 'pg'
+#gem 'pg'
+gem 'open311'
 gem 'devise', '1.2.rc'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'rails3-generators'
@@ -19,7 +20,7 @@ group :development, :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'rspec-rails'
-  gem 'pickler'
+#  gem 'pickler'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'fabrication'
