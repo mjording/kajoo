@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -71,8 +72,9 @@ end
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
-#  avatar_url           :string(255)
+#  ava  tar_url           :string(255)
 #  twitter_id           :integer
 #  name                 :string(255)
+#  points               :integer         default(0)
 #
 

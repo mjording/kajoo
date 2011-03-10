@@ -1,0 +1,18 @@
+  <% if(!version.initial?) %>
+    <li>
+      <% issue = Issue.find(version.versioned_id) %>
+      <b><%= link_to version.title, domain %> version <%= version.number %> </b>
+      <p>Date: <%= version.created_at %></p>
+      <% if(!version.user_id.nil?) %>
+        <% user = User.find(version.user_id) %>
+        <p>User: <%= link_to user.name, [:admin, user] %> </p>
+      <% end %>
+      <p>Changes: 
+        <table class="changes">
+          <% version.modifications.each do |field, change| %>
+            <tr><th><%= field %></th><td><%= change[1] %></td></tr>
+          <% end %>
+        </table>
+      </p>
+    </li>
+  <% end %>

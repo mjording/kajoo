@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/laserlemon/vestal_versions.git
+  revision: 3574a0b4e98ef187931376d1e38a01e109474c71
+  specs:
+    vestal_versions (1.2.2)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -217,8 +225,6 @@ GEM
     unicorn (3.4.0)
       kgio (~> 2.2)
       rack
-    vestal_versions (1.0.2)
-      activerecord (>= 2.1.0)
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (2.3.15)
@@ -254,5 +260,5 @@ DEPENDENCIES
   sqlite3-ruby
   testify
   unicorn
-  vestal_versions
+  vestal_versions!
   will_paginate

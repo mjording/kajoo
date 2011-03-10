@@ -1,0 +1,6 @@
+<h1>Latest Changes</h1>
+<ul id="versions">
+<% @versions.each do |version| %>
+  <%= render :partial => 'shared/version', :locals => {:version => version} %>
+<% end %>
+</ul>
