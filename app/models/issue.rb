@@ -3,7 +3,9 @@ class Issue < ActiveRecord::Base
   has_many :comments
   
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  
   reverse_geocoded_by :lat, :lon
+  
   def self.find_similar(report)
     similar = self.near([report.lat, report.lon], 3)
   end

@@ -6,39 +6,4 @@
   <% render :partial => 'shared/sidebar' %>
 <% end %>
 
-<!-- main content -->
-<div id="filter">
-		<ul>
-  		<li><%= link_to 'Most Recent', {:order => 'latest'}, :class => (@order == 'latest') ? 'active' : '' %></li>		
-  		<li><%= link_to 'Most Voted', {:order => 'votes'}, :class => (@order == 'votes') ? 'active' : '' %></li>		
-  		<li><%= link_to 'Recently Resolved', {:order => 'resolved'}, :class => (@order == 'resolved') ? 'active' : '' %></li>				
-		</ul>
-
-		</div><!--Closes filter navigation-->
-
-
-		<h1>Browse Submitted Issues</h1>
-
-		<div id="report_sum"><!--STARTS: report summaries-->
-
-    <% @issues.each do |issue| %>
-      <h5><%= issue.location_name %> <%= summary_date(issue.created_at) %></h5>
-  		<img src="#" width="50px" height="50px"/>		
-  		<p><%= issue.description %></p>
-  		<div class="report_stats">
-  		  <p class="stat"><%= issue.votes.count %></p>
-  		</div>
-			<div class="report_actions">
-  			<ul>
-    			<li><%= link_to 'Support this', vote_for_issue_path(issue.id) %></li>
-    			<li><a href="#">Support with Details</a></li>
-    			<li><a href="#">Propose Solution</a></li>
-    			<% if !issue.resolved %>
-      			<li><a href="#">Mark Resolved</a></li>			
-    			<% end %>
-  			</ul>
-			</div><!--Closes report_actions-->
-    <% end %>
-    </div><!--Closes report summaries-->
-
-</div><!--Closes Main Content-->
+<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>

@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  SHOW_LIMIT = 10
+
   #the issues list from the front page and several other pages 
   def fetch_issues  
     @order = ['latest', 'votes', 'resolved'].include?(params[:order]) ?  params[:order] : 'latest'
@@ -13,5 +15,7 @@ class ApplicationController < ActionController::Base
     elsif(@order == 'resolved')
       @issues = Issue.all.limit(SHOW_LIMIT)
     end
+    
+    @issues
   end
 end

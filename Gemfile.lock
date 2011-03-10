@@ -203,6 +203,7 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
+    simple_form (1.3.1)
     sinatra (1.2.0)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
@@ -253,6 +254,7 @@ DEPENDENCIES
   rails3-generators
   rspec-rails
   ruby-debug19
+  simple_form
   sqlite3-ruby
   testify
   unicorn

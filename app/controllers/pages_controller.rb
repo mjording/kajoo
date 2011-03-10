@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
-  SHOW_LIMIT = 10
 
-  def welcome
-    fetch_issues
+  def index
+    @issues = fetch_issues
   end
 
   def dashboard
