@@ -1,5 +1,7 @@
 development: &default
-  region_name: 'Austin'
+  city_name: 'Austin'
+  state_name: 'Texas'
+  country_name: 'United States'
   site_name: 'SXSW Civic Hackathon'
   daily_vote_limit: 5
 

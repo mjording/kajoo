@@ -2,9 +2,9 @@
 
 <html>
 <head>
-<title>Kajoo <%= region_name %> : <%= site_name %> : Improve Your City</title>
+<title>Kajoo <%= city_name %> : <%= site_name %> : Improve Your City</title>
   <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application', 'kajoo' %>
-  <%= javascript_include_tag 'jquery', 'rails', 'application' %>
+  <%= javascript_include_tag 'jquery', 'rails', 'jquery.clearinginput.js', 'application' %>
 	<%= yield(:head) %>
   <%= csrf_meta_tag %>
 </head>

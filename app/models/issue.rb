@@ -2,7 +2,7 @@ class Issue < ActiveRecord::Base
   has_many :reports
   has_many :comments
   
-  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  geocoded_by :address_with_city_and_state, :latitude  => :lat, :longitude => :lon
   
   reverse_geocoded_by :lat, :lon
   
@@ -15,6 +15,10 @@ class Issue < ActiveRecord::Base
   after_validation :reverse_geocode
   has_many :votes, :class_name => 'IssueVote'
   has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true
+  
+  def address_with_city_and_state
+    return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
+  end
   
   def location_name
     return 'Downtown Austin'

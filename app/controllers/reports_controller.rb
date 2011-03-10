@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
   # GET /reports/new.xml
   def new
     @report = Report.new
+    @issues = fetch_issues
 
     respond_to do |format|
       format.html # new.html.erb

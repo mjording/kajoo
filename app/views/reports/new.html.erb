@@ -1,0 +1,9 @@
+<% content_for(:feature) do %>
+	<% render :partial => 'form' %>
+<% end %>
+
+<% content_for(:sidebar) do %>
+  <% render :partial => 'shared/sidebar' %>
+<% end %>
+
+<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>

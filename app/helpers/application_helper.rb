@@ -3,8 +3,8 @@ module ApplicationHelper
     SITE['site_name']
   end
   
-  def region_name
-    SITE['region_name']
+  def city_name
+    SITE['city_name']
   end
   
   def summary_date(date)
