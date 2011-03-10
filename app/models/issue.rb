@@ -9,7 +9,7 @@ class Issue < ActiveRecord::Base
   
   #validates_presence_of :reports
   
-  after_validation :reverse_geocode
+#  after_validation :reverse_geocode
   before_save :set_resolved_at
   
   def self.find_similar(report)
@@ -24,7 +24,7 @@ class Issue < ActiveRecord::Base
     
     @vote = votes.create({:user => user})
     
-    vote_count += 1
+    self.vote_count += 1
     
     user.add_points(5)
   end

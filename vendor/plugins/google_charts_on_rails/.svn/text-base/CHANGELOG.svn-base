@@ -1,0 +1,14 @@
+== Change Log
+
+=== In trunk for next release ReyaCharm
+* Changed size as <width in pixels>x<height in pixels>, it used to be <height in pixels>x<width in pixels>, fixes the issue 3 [ trappist]
+* Added chart title attribute, fixes the issue 4 [ trappist]
+* Typos and other fix on the simple encoding, fixes the issue 6 [frayjusto]
+* Title to recognise line break and escape for URI, fixes the issue 7 [braghavan]
+
+=== 0.2.0 ReyaOptima (December 27,  2007)
+* Optimised few methods and constants
+* Protection from stack level too deep enabled
+
+=== 0.1.0 Reya (December 13, 2008)
+* First release.

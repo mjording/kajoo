@@ -9,6 +9,6 @@ module ApplicationHelper
   
   def summary_date(date)
     #March 8, 2011
-    date.strftime('%M %d, %Y')
+    date.strftime('%B %d, %Y')
   end 
 end

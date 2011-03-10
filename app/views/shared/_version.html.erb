@@ -1,11 +1,11 @@
   <% if(!version.initial?) %>
     <li>
       <% issue = Issue.find(version.versioned_id) %>
-      <b><%= link_to version.title, domain %> version <%= version.number %> </b>
+      <b><%= link_to version.title, issue %> version <%= version.number %> </b>
       <p>Date: <%= version.created_at %></p>
       <% if(!version.user_id.nil?) %>
         <% user = User.find(version.user_id) %>
-        <p>User: <%= link_to user.name, [:admin, user] %> </p>
+        <p>User: <%= link_to user.name, user %> </p>
       <% end %>
       <p>Changes: 
         <table class="changes">

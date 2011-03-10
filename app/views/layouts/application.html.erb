@@ -32,8 +32,8 @@
 
   <%= yield %>
   	<div id="sidebar" class="grid_6"><!--starts sidebar-->
-	    <% if(current_user) %>
-        <a href="#">Submit A Report</a>
+      <% if(current_user) %>
+        <%= link_to "Submit A Report", new_report_path, :id => 'create-report-link' %>
       <% else %>
          <%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
       <% end %>
@@ -50,13 +50,14 @@
   <div id="footer"><!--Footer starts-->
       <ul>
         <li>
-          <%= link_to "Home", root_path %>
+          <%#= link_to "Home", root_path %>
+          <%= link_to "Home", home_path %>
         </li>
         <li>
-          <%= link_to "About", pages_about_path %>
+          <%= link_to "About", about_path %>
         </li>
         <li>
-          <%= link_to "Contact", pages_contact_path %> 
+          <%= link_to "Contact", contact_path %> 
         </li>
         <li>
           <%= link_to "View Issues", issues_path %>

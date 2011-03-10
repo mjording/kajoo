@@ -11,15 +11,14 @@ FixIt::Application.routes.draw do
 
   resources :reports
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
- 
-  get "pages/index"
-  get "pages/dashboard"
-  get "pages/home"
-  get "pages/contact"
-  get "pages/about"
-  get "users/dashboard"
-  
+  match 'index' => "pages#index", :as => 'index'
+  match 'dashboard' => 'pages#dashboard', :as => 'dashboard'
+  match 'home' => 'pages#home', :as => 'home'
+  match 'contact' => 'pages#contact', :as => 'contact'
+  match 'about' => 'pages#about', :as => 'about'
+
   resources :users
+  get "users/dashboard"
    # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "pages#index"

@@ -10,6 +10,9 @@
 h1{
 	color: #79593C;
 }
+h5{
+	margin: 0 0 5px 0;	
+}
 #header{
 	float: left;
 }
@@ -98,6 +101,38 @@ Similar Reports
 }
 
 /***********
+City Dashboard
+**********/
+#map{
+	margin: 0 30px 0 0;
+}
+.label{
+	color: grey;
+	font-size: 12px;
+}
+#city_reports p{
+	font-size: 36px;
+	line-height: 36px;
+	margin: 0 0 10px 0;
+}
+#city_reports a{
+	text-decoration: none;
+	font-weight: 800;
+}
+#city_reports a:hover{
+	text-decoration: none;
+}
+.stat_number{
+	background-color: orange;
+	padding: 5px;
+	margin: 0 5px 5px 0;	
+}
+.stat_number li{
+	margin: 0px 0px 0px 0;
+}
+
+
+/***********
 Browse Submitted Issues
 **********/
 .report_sum, .sidebar_section{
@@ -119,7 +154,7 @@ Browse Submitted Issues
 	padding-bottom: 20px;
 }
 .report_actions{
-	margin: 0 0 25px 0;
+	margin: 0 0 40px 0;
 }
 .report_actions a{
 	color: #898989;
@@ -133,10 +168,18 @@ Browse Submitted Issues
 	color: #2D2D2D;
 	background-color: #A0A0A0;
 }
+.supported a {
+	background-color: green;
+	color: #ffffff;
+}
 #sidebar{
 	margin:  116px 0 0 0;
 	
 }
+
+/***********
+Footer
+**********/
 #footer {
 	background-color: #79593C;
 	border-top: 3px solid #5B412C;
