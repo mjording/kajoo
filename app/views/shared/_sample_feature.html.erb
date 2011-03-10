@@ -7,7 +7,7 @@
     <% if(current_user) %>
       <%= link_to "Submit A Report", new_report_path %>
     <% else %>
-       <%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
+      <%= link_to "Sign Up", user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
     <% end %>
 
 </div><!--Closes feature left content-->

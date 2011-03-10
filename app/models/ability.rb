@@ -28,6 +28,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.persisted?
         can :create, Vote
+        can :create, Comment
         can :manage, Report
         can :manage, Solution
     end

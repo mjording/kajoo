@@ -11,12 +11,23 @@
   border: 1px solid #79593C;
 }
 
-#navigation a#logout-link {
+#navigation a#logout_link {
   background: none;
   color: #9CC;
 }
 
+#navigation a#logo, #navigation a#account_link {
+  background-color: transparent;
+  color: #9CC;
+}
+
+#navigation a#logout_link:hover, #navigation a#account_link:hover {
+  color: #79593C;
+}
+
 #header img#twitter_avatar {
-  margin: none;
-  padding: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  height: 20px;
 }

@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     votes_today = self.votes.where('created_at > :one_day_ago', {:one_day_ago => Time.now - 1.day}).count
     return limit - votes_today
   end
+  
+  def add_points(newpoints)
+    self.points += newpoints
+  end
 
 end
 

@@ -30,18 +30,13 @@
   		</div>
 			<div class="report_actions">
   			<ul>
-    			<li><%= link_to 'Vote', vote_for_issue_path(issue.id) %></li>
-    			<li><a href="#">Comment</a></li>
+    			<li><%= link_to 'Support this', vote_for_issue_path(issue.id) %></li>
+    			<li><a href="#">Support with Details</a></li>
     			<li><a href="#">Propose Solution</a></li>
-    			<li><a href="#">Mark Resolved</a></li>			
-    			<li><a href="#">User Name</a></li>
-    			<li><a href="#">Edit</a></li>
+    			<% if !issue.resolved %>
+      			<li><a href="#">Mark Resolved</a></li>			
+    			<% end %>
   			</ul>
-  			
-  		  <ul>
-  				<li><a href="#">Tag</a></li>
-  				<li><a href="#">Categorize</a></li>
-  		  </ul>  						
 			</div><!--Closes report_actions-->
     <% end %>
     </div><!--Closes report summaries-->

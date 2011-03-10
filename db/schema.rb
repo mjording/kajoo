@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110309210727) do
+ActiveRecord::Schema.define(:version => 20110310050857) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "issue_id"
+    t.string   "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "issues", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -19,8 +28,9 @@ ActiveRecord::Schema.define(:version => 20110309210727) do
     t.integer  "radius"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "address"
     t.integer  "report_id"
+    t.string   "address"
+    t.boolean  "resolved"
   end
 
   create_table "reports", :force => true do |t|
@@ -66,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110309210727) do
     t.string   "avatar_url"
     t.integer  "twitter_id"
     t.string   "name"
+    t.integer  "points",                              :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
