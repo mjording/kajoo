@@ -52,9 +52,14 @@
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#">Votes Remaining</a></li>
-        <li><a href="#">View Issues</a></li>
-        <li><a id="login" href="#">Login</a></li>
+        <li>
+          <%= link_to "View Issues", issues_path %>
+        </li>
+      <% if(current_user) %>
+          <li><a href="#">Votes Remaining</a></li>
+      <% else %>
+        <li> <%= link_to "Login",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %></li>
+      <% end %>
       </ul>
   </div><!--Closes Footer-->
 

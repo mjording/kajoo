@@ -14,7 +14,8 @@ class IssuesController < ApplicationController
     if(IssueVote.find_by_issue_id_and_user_id(@issue.id, current_user.id))
       flash[:alert] = 'You cannot vote for the same issue twice'
       logger.warn(flash[:alert])
-      redirect_to :controller => 'welcome', :action => 'index'
+      redirect_to root_path
+      #:controller => 'welcome', :action => 'index'
       return
     end
     
@@ -23,12 +24,14 @@ class IssuesController < ApplicationController
     rescue Exception => e
       flash[:alert] = 'Sorry: '+e.message
       logger.warn(flash[:alert])
-      redirect_to :controller => 'welcome', :action => 'index'  
+      redirect_to root_path
+      #:controller => 'welcome', :action => 'index'  
       return
     end
     
     flash[:notice] = "Thank you - your vote for '#{@issue.title}' has been received"
-    redirect_to :controller => 'welcome', :action => 'index'
+    redirect_to root_path
+    #:controller => 'welcome', :action => 'index'
   end
   
 end

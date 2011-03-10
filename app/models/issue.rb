@@ -6,10 +6,10 @@ class Issue < ActiveRecord::Base
   
   reverse_geocoded_by :lat, :lon
   
-  validates_presence_of :reports
+  #validates_presence_of :reports
   
   def self.find_similar(report)
-    similar = self.near([report.lat, report.lon], 3)
+    similar = self.near([report.lat, report.lon], 1)
   end
 
   after_validation :reverse_geocode

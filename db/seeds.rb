@@ -18,14 +18,17 @@ user = User.create({
 #  :title => "Remove the Monster Gator threat",
 #  :description => "orizzle ipsizzle dolor the bizzle amizzle, ma nizzl..."
 #})
-
-for i in 1..100
-  puts "Creating report #{i}"
-  report = user.reports.create({
-    :title => "Report #{i}",
-    :description => 'the bizzle amizzle, ma nizzl...',
+issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
+issues.each_with_index do|issue,i|
+  puts "creating issue #{i}"
+  original_report = user.reports.create({
+    :title => issue['summary'],
+    :description => issue['description'],
+    :lat => issue["lat"],
+    :lon => issue["lng"]
   })
 end
+#issues = JSON.load(File.new('issues.json'))
 #issue = report.issue
 
 #tpop.solutions.create({
