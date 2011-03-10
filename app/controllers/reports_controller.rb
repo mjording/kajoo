@@ -31,8 +31,8 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.xml
   def create
-    params[:domain][:updated_by] = current_user
-    @report = Report.new(params[:domain])
+    params[:report][:updated_by] = current_user
+    @report = Report.new(params[:report])
 
     respond_to do |format|
       if @report.save
@@ -48,11 +48,11 @@ class ReportsController < ApplicationController
   # PUT /reports/1
   # PUT /reports/1.xml
   def update
-    params[:domain][:updated_by] = current_user
+    params[:report][:updated_by] = current_user
     @report = Report.find(params[:id])
 
     respond_to do |format|
-      if @report.update_attributes(params[:domain])
+      if @report.update_attributes(params[:report])
         format.html { redirect_to(@report, :notice => 'Report was successfully updated.') }
         format.xml  { head :ok }
       else
