@@ -4,18 +4,20 @@ class Report < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
   
-  #validates_presence_of :location
+  validates_presence_of :location
   
-  before_validation :geocode
-  after_validation :reverse_geocode
+  before_validation :geocode, :reverse_geocode
   
-  def geocoded?
-    return !location.nil?
-  end
+  #def geocoded?
+    #return !location.nil?
+  #end
   
-  geocoded_by :address_with_city_and_state, :latitude  => :lat, :longitude => :lon
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  #_with_city_and_state, :latitude  => :lat, :longitude => :lon
   
-  reverse_geocoded_by :lat, :lon, :address => :location do |obj, geo|
+  reverse_geocoded_by :lat, :lon do |obj, geo|
+  
+  #, :address => :location 
     obj.city = geo.city
     obj.zipcode = geo.postal_code
     obj.country_name = geo.country
@@ -25,35 +27,35 @@ class Report < ActiveRecord::Base
     obj.lon = geo.longitude
   end
 
-  def address_with_city_and_state
-    return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
-  end
+  #def address_with_city_and_state
+    #return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
+  #end
 
   #geocode if lat/lon empty and address not empty. Address -geocode-> Lat/Lon -reverse_geocode-> Location (i.e. fully resolved address)
-  def geocode
-    if(address.nil? && !(lat.nil? || lon.nil?))
-      puts "Geocoding for location '#{address}'"
-      begin
-        super
-      rescue Exception => e
-        puts("Couldn't geocode '#{location}': #{e.message}")
-        puts e.backtrace
-      end
-    end
-  end
+  #def geocode
+    #if(address.nil? && !(lat.nil? || lon.nil?))
+      #puts "Geocoding for location '#{address}'"
+      #begin
+        #super
+      #rescue Exception => e
+        #puts("Couldn't geocode '#{location}': #{e.message}")
+        #puts e.backtrace
+      #end
+    #end
+  #end
   
   #reverse geocode if location empty and lat/lon not empty
-  def reverse_geocode
-    if(!(lat.nil? || lon.nil?))
-    puts "Reverse geocoding for location '#{lat}, #{lon}'"
-      begin
-        super
-      rescue Exception => e
-        puts("Couldn't reverse-geocode '#{lat}, #{lon}': #{e.message}")
-        puts e.backtrace
-      end
-    end
-  end
+  #def reverse_geocode
+    #if(!(lat.nil? || lon.nil?))
+    #puts "Reverse geocoding for location '#{lat}, #{lon}'"
+      #begin
+        #super
+      #rescue Exception => e
+        #puts("Couldn't reverse-geocode '#{lat}, #{lon}': #{e.message}")
+        #puts e.backtrace
+      #end
+    #end
+  #end
 
 end
 
