@@ -11,7 +11,7 @@
   		  <li><%= link_to "View Issues", issues_path %></li>
         <li><%= link_to "#{current_user.votes_remaining} Votes Remaining", users_dashboard_path %></li>
     	  <img id="twitter_avatar" src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>"> 
-    	  <%= link_to current_user.name, edit_user_registration_path, :id => 'account_link' %> | <%= link_to 'Logout', destroy_user_session_path, :id => 'logout_link' %>
+    	  <%= link_to current_user.name, user_path(current_user), :id => 'account_link' %> | <%= link_to 'Logout', destroy_user_session_path, :id => 'logout_link' %>
   		<% else %>
     		<li><%= link_to "View Issues", issues_path %></li>
   		  <%= link_to "Login", user_omniauth_authorize_path(:twitter), :id => 'login' %>
