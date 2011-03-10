@@ -40,6 +40,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  #XXX TODO - cache and/or include in issue list query so we're not issuing bajillions of queries
+  def has_voted_for_issue?(issue)
+    return IssueVote.where(:issue_id => issue.id, :user_id => self.id).exists?
+  end
+
   #does the user have any remaining votes for today?
   def votes_remaining
     limit = SITE['daily_vote_limit']

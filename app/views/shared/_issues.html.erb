@@ -23,8 +23,14 @@
   		</div>
 			<div class="report_actions">
   			<ul>
-    			<li><%= link_to 'Support this', vote_for_issue_path(issue.id) %></li>
-    			<li><a href="#">Support with Details</a></li>
+  			  <% if(current_user && current_user.has_voted_for_issue?(issue)) %>
+            <li class="supported"><a href="#">Supported!</a></li>
+            <li><a href="#">Add Details</a></li>
+  			  <% else %>
+      			<li><%= link_to 'Support this', vote_for_issue_path(issue.id), :class => 'issue-vote-link' %></li>
+      			<li><a href="#">Support with Details</a></li>
+    			<% end %>
+    			
     			<li><a href="#">Propose Solution</a></li>
     			<% if !issue.resolved %>
       			<li><a href="#">Mark Resolved</a></li>			

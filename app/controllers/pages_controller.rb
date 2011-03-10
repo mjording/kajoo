@@ -7,6 +7,7 @@ class PagesController < ApplicationController
     @issues = fetch_issues
   end
 
+  #XXX TODO - sleep
   def dashboard
     @issues = fetch_issues
     @submitted_reports = Report.all.count
