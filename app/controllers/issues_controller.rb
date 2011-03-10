@@ -1,5 +1,15 @@
 class IssuesController < ApplicationController
 
+
+  def show 
+    @issue  = Issue.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @issue }
+    end
+    
+  end
   #XXX TODO: ajax
   def vote
   

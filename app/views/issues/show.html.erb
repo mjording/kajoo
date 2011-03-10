@@ -1,0 +1,7 @@
+<%= @issue.title %>
+<ul>
+<% @issue.reports.each do |report| %>
+  <li><%= report.title %></li> 
+
+<% end %>
+</ul>

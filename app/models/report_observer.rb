@@ -17,7 +17,12 @@ class ReportObserver < ActiveRecord::Observer
         #:radius => report.radius
       #})
       issue = Issue.create :title => report.title, :description => report.description, :lat => report.lat, :lon => report.lon, :radius => report.radius, :reports => [report] 
+      begin 
+        issue.add_vote_for_user(report.user)
+      rescue
       
+      end
+
       #else
       #rep_issue = similar_issues.first
       #report.issue_id = issue.id
