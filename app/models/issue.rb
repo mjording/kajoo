@@ -6,6 +6,8 @@ class Issue < ActiveRecord::Base
   
   reverse_geocoded_by :lat, :lon
   
+  validates_presence_of :reports
+  
   def self.find_similar(report)
     similar = self.near([report.lat, report.lon], 3)
   end
