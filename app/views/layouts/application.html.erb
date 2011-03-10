@@ -49,9 +49,15 @@
   <div class="clear"></div>
   <div id="footer"><!--Footer starts-->
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>
+          <%= link_to "Home", pages_home_path %>
+        </li>
+        <li>
+          <%= link_to "About", pages_about_path %>
+        </li>
+        <li>
+          <%= link_to "Contact", pages_contact_path %> 
+        </li>
         <li>
           <%= link_to "View Issues", issues_path %>
         </li>
