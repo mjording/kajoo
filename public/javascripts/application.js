@@ -10,4 +10,9 @@ $(document).ready(function(){
   });
   
   //ajax submit report form
+  
+  //clearinginput on report form elements
+  
+  $('.report input:text').clearingInput();
+  $('.report textarea').clearingInput();
 });

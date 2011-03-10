@@ -6,61 +6,34 @@
 				  <%= f.input :title %>
 				  <%= f.input :description %>
 				  <%= f.input :tags %>
-				  <%= f.input :location %>
-				  <div id="change"><a href="#">Change</a></div>	
+				  
+				  <% if @report.geocoded? %>
+  				  <div id="change"><%= link_to 'Change', :geocoded => false %></a></div>	
+  				<% else %>
+  				  <%= f.input :address %>
+  				<% end %>
+  				
   				<div class="button"><a href="#">Submit</a></div>
 				<% end %>
-				
-				<div id="title">Title</div>		
-				<div id="description">Decription</div>
-				<div id="tags">Tags</div>
-				<div id="location">Location</div>
-				<div id="change"><a href="#">Change</a></div>	
-				<div class="button"><a href="#">Submit</a></div>
 		
 		</div><!--Closes feature left content-->
 		
 		<div id="similar_reports" class="grid_10"><!--similar content starts-->
 		
-				<h5>Similar Reports</h5>
-			
-				<div class="similar_title">Title of another similar issue based on title: and other attributes</div>		
+				<h5>Existing Issues</h5>
+			  <p>There are existing issues that are similar to your report. If they match, click "Add My Report".</p>
+			  <% for i in (1..3) %>
+  				<div class="similar_title">Title <%= i %></div>		
+  				<div class="report_actions">
+  					<ul>
+    					<li><a href="#">Add My Report</a></li>
+  					</ul>
+  				</div>
+				<% end %>
+				<hr />
+				<h5>New Issue</h5>
+			  <p>Click below to create a new issue</p>
 				<div class="report_actions">
-					<ul>
-					<li><a href="#">Vote</a></li>
-					<li><a href="#">Comment</a></li>
-					<li><a href="#">User Name</a></li>
-					<li><a href="#">Edit</a></li>
-					</ul>
-				</div>
-				
-				<div class="title">Title of another similar issue based on title: and other attributes</div>		
-				<div class="report_actions">
-					<ul>
-					<li><a href="#">Vote</a></li>
-					<li><a href="#">Comment</a></li>
-					<li><a href="#">User Name</a></li>
-					<li><a href="#">Edit</a></li>
-					</ul>
-				</div>
-				
-				<div class="title">Title of another similar issue based on title: and other attributes</div>		
-				<div class="report_actions">
-					<ul>
-					<li><a href="#">Vote</a></li>
-					<li><a href="#">Comment</a></li>
-					<li><a href="#">User Name</a></li>
-					<li><a href="#">Edit</a></li>
-					</ul>
-				</div>
-				
-				<div class="title">Title of another similar issue based on title: and other attributes</div>		
-				<div class="report_actions">
-					<ul>
-					<li><a href="#">Vote</a></li>
-					<li><a href="#">Comment</a></li>
-					<li><a href="#">User Name</a></li>
-					<li><a href="#">Edit</a></li>
-					</ul>
+  				<a href="#" class="button">New Issue</a>
 				</div>
 		</div><!--Closes similar posts content-->

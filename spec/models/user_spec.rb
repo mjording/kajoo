@@ -5,6 +5,7 @@ describe User do
 end
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -25,5 +26,6 @@ end
 #  avatar_url           :string(255)
 #  twitter_id           :integer
 #  name                 :string(255)
+#  points               :integer         default(0)
 #
 

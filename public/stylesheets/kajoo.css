@@ -31,3 +31,16 @@
   vertical-align: middle;
   height: 20px;
 }
+
+.simple_form input.blur, .simple_form textarea.blur { color: #898989; }
+
+.simple_form.report input[type='text'], .simple_form.report textarea {
+  border: 1px solid #E0E0E0;
+  padding: 2px 2px 2px 6px;
+  margin: 0 0 10px 0px;
+  width: 400px;
+}
+
+.simple_form.report textarea {
+  height: 50px;
+}
