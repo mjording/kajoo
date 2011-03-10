@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base  
-  versioned
+  #versioned
 
   belongs_to :user
   belongs_to :issue
