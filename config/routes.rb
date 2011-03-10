@@ -12,7 +12,7 @@ FixIt::Application.routes.draw do
   resources :reports
 
   get "pages/index"
-  get "pages/dashboard"
+  match 'dashboard' => 'pages#dashboard'
 
   resource :users
   

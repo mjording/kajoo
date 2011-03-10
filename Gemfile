@@ -21,6 +21,7 @@ gem 'cancan'
 gem 'vestal_versions', :git => 'https://github.com/laserlemon/vestal_versions.git'
 #gem 'globalize3'
 gem 'simple_form'
+#gem 'gc4r'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'

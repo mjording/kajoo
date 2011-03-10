@@ -1,1 +1,33 @@
-<h1>City Dashboard</h1>
+<% content_for(:feature) do %>
+		
+	<div id="map" class="grid_16"><!--feature left starts-->
+	<h5>Issues Around Austin, TX</h5>
+	<img src="<%= raw @submissions_chart_url %>" width="635" height="313" />
+
+	</div><!--Closes feature left content-->
+<div id="city_status" class="grid_6"><!--feature left starts-->
+<h5>How is Austin Doing?</h5>
+
+		<div id="city_reports">
+		
+		<div class="label">Reports Submitted</div>			
+		<p><a href="#"><%= @submitted_reports %></a></p>
+		<div class="label">Reports Resolved</div>			
+		<p><a href="#"><%= @resolved_reports %></a></p>
+		<div class="label">Caring Users</div>			
+		<p><a href="#" alt="Austin,TX Leaderboard"><%= @user_count %></a></p>
+				
+		</div><!--close city_reports-->
+		<div class="label">City Lifeline</div>
+		<div id="city_lifeline">
+		<img src="<%= raw @submissions_chart_url %>" width="250" height="100" />
+		</div>	
+	
+</div><!--Closes feature left content-->	
+<% end %>
+
+<% content_for(:sidebar) do %>
+  <% render :partial => 'dashboard_sidebar' %>
+<% end %>
+
+<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>

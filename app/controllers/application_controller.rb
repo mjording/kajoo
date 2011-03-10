@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     elsif(@order == 'votes')
       @issues = Issue.order('vote_count desc').limit(SHOW_LIMIT)
     elsif(@order == 'resolved')
-      @issues = Issue.where(:resolved => true).order('resolved_at').limit(SHOW_LIMIT)
+      @issues = Issue.where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
     end
     
     @issues

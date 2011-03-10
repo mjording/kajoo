@@ -1,0 +1,7 @@
+author: blj
+summary: a wrapper for the google charts API
+homepage: http://code.google.com/p/google-charts-on-rails/
+plugin: http://google-charts-on-rails.googlecode.com/svn/google_charts_on_rails/
+license: MIT
+version: 0.1.1
+rails_version: 1.0+

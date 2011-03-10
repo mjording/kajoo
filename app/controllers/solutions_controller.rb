@@ -21,6 +21,7 @@ class SolutionsController < ApplicationController
       @solution.add_vote_for_user(current_user)
     rescue Exception => e
       flash[:alert] = 'Sorry: '+e.message
+      puts e.backtrace
       redirect_to :controller => 'welcome', :action => 'index'
       return
     end
