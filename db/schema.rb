@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110310171938) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
+    t.integer  "report_id"
     t.boolean  "resolved"
     t.string   "ip_address"
     t.text     "location"
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20110310171938) do
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
