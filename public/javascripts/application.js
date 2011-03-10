@@ -4,10 +4,10 @@
 $(document).ready(function(){
 
   //bounce down report form
-  $('#create-report-link').bind('click', function() {  
-      alert('Unobtrusive!');  
-      return false;
-  });
+  //$('#create-report-link').bind('click', function() {  
+      //alert('Unobtrusive!');  
+      //return false;
+  //});
   
   //ajax submit report form
   
