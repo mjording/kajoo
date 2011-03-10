@@ -83,6 +83,9 @@ GEM
     gherkin (2.3.3)
       json (~> 1.4.6)
     github-markup (0.5.3)
+    globalize3 (0.0.11)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     gollum (1.1.1)
       albino (~> 1.1.1)
       github-markup (< 1.0.0, >= 0.4.0)
@@ -200,6 +203,7 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
+    simple_form (1.3.1)
     sinatra (1.2.0)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
@@ -216,6 +220,8 @@ GEM
     unicorn (3.4.0)
       kgio (~> 2.2)
       rack
+    vestal_versions (1.0.2)
+      activerecord (>= 2.1.0)
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (2.3.15)
@@ -237,6 +243,7 @@ DEPENDENCIES
   dynamic_form
   fabrication
   geocoder
+  globalize3
   gollum
   heroku
   meta_search
@@ -247,7 +254,9 @@ DEPENDENCIES
   rails3-generators
   rspec-rails
   ruby-debug19
+  simple_form
   sqlite3-ruby
   testify
   unicorn
+  vestal_versions
   will_paginate

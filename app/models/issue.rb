@@ -1,7 +1,11 @@
 class Issue < ActiveRecord::Base
   has_many :reports
+  has_many :comments
+  
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  
   reverse_geocoded_by :lat, :lon
+  
   def self.find_similar(report)
     similar = self.near([report.lat, report.lon], 3)
   end
@@ -9,15 +13,19 @@ class Issue < ActiveRecord::Base
   after_validation :reverse_geocode
   has_many :votes, :class_name => 'IssueVote'
   has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true
+  
   def location_name
     return 'Downtown Austin'
   end
-  def add_vote_for_user(user)
   
+  def add_vote_for_user(user)
+    
     unless(user.votes_remaining > 0)
       throw Exception.new('Not enough votes')
     end
+    
     @vote = votes.create({:user => user})
+    
     user.add_points(5)
   end
   

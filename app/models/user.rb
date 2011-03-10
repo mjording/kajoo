@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   has_many :issue_votes, :class_name => 'IssueVote'
   has_many :solution_votes, :class_name => 'SolutionVote'
   
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :twiter_id, :avatar_url
   
@@ -46,6 +45,10 @@ class User < ActiveRecord::Base
     limit = SITE['daily_vote_limit']
     votes_today = self.votes.where('created_at > :one_day_ago', {:one_day_ago => Time.now - 1.day}).count
     return limit - votes_today
+  end
+  
+  def add_points(newpoints)
+    self.points += newpoints
   end
 
 end

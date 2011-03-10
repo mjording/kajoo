@@ -85,9 +85,17 @@ Submit Form
 .button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
-
 }
 
+/***********
+Similar Reports
+**********/
+#similar_reports{
+		
+}
+.similar_title{
+	border-top: ;
+}
 
 /***********
 Browse Submitted Issues

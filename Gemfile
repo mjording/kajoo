@@ -18,6 +18,9 @@ gem 'geocoder'
 gem 'meta_search'
 gem "will_paginate"
 gem 'cancan'
+gem 'vestal_versions'
+gem 'globalize3'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
