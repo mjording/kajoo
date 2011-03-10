@@ -11,11 +11,11 @@ FixIt::Application.routes.draw do
 
   resources :reports
 
-  match 'index' => "pages#index"
-  match 'dashboard' => 'pages#dashboard'
-  match 'home' => 'pages#home'  
-  match 'contact' => 'pages#contact'
-  match 'about' => 'pages#about'
+  match 'index' => "pages#index", :as => 'index'
+  match 'dashboard' => 'pages#dashboard', :as => 'dashboard'
+  match 'home' => 'pages#home', :as => 'home'
+  match 'contact' => 'pages#contact', :as => 'contact'
+  match 'about' => 'pages#about', :as => 'about'
 
   resources :users
   get "users/dashboard"
