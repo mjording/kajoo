@@ -26,7 +26,7 @@ class Issue < ActiveRecord::Base
     
     self.vote_count += 1
     
-    user.add_points(5)
+    user.add_points_for_action(:vote_on_issue)
     
     user.save!
   end
