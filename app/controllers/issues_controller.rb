@@ -36,10 +36,10 @@ class IssuesController < ApplicationController
       logger.warn(flash[:alert])
 
       respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to :back }
         format.js { 
           render :update do |page| 
-            page.redirect_to(root_path)
+            page.redirect_to(:back)
           end
         }
       end
@@ -55,10 +55,10 @@ class IssuesController < ApplicationController
       logger.warn(flash[:alert])
       
       respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to :back }
         format.js { 
           render :update do |page| 
-            page.redirect_to(root_path)
+            page.redirect_to(:back)
           end
         }
       end

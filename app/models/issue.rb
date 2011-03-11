@@ -4,7 +4,7 @@ class Issue < ActiveRecord::Base
   has_many :reports
   has_many :comments #XXX unused
   has_many :votes, :class_name => 'IssueVote'
-  has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true  
+  has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true, :source => 'user'
   has_one :resolver, :class_name => 'User'
   
   #validates_presence_of :reports

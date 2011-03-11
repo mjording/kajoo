@@ -18,8 +18,8 @@ $(document).ready(function(){
   
   //fade out alerts
   
-  $('p.alert').delay(2000).slideUp(1000);
-  $('p.notice').delay(2000).slideUp(1000);
+  $('#flash_notice').delay(2000).slideUp(1000);
+  $('#flash_alert').delay(2000).slideUp(1000);
   
 });
 
