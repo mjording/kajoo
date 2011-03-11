@@ -4,7 +4,7 @@ class Solution < ActiveRecord::Base
   
   def add_vote_for_user(user)
     unless(user.votes_remaining > 0)
-      throw Exception.new('Not enough votes')
+      throw VoteException.new('Not enough votes')
     end
     
     @vote = votes.create({:user => current_user})
