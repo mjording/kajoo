@@ -53,23 +53,20 @@
   height: 24px;
 }
 
-.alert {
+.flash_message {
   position: fixed;
   top: 0px;
   margin: 0px auto;
   padding: 10px;
   font-size: larger;
   font-weight: bold;
+}
+
+#flash_alert {
   background-color: #FFBBBB;
 }
 
-.notice {
-  position: fixed;
-  top: 0px;
-  margin: 0px auto;
-  padding: 10px;
-  font-size: larger;
-  font-weight: bold;
+#flash_notice {
   background-color: #FFFFAA;
 }
 

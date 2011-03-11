@@ -1,6 +1,124 @@
+/** pasted from kajoo.css */
+
+#filter a.active {
+  background-color: #79593C;
+  border: 1px solid #79593C;
+}
+
+#filter a {
+  border: 1px solid #9CC;
+}
+
+#filter a:hover {
+  border: 1px solid #79593C;
+}
+
+#navigation a#logout_link {
+  background: none;
+  color: #9CC;
+}
+
+#navigation a#logo, #navigation a#account_link {
+  background-color: transparent;
+  color: #9CC;
+}
+
+#navigation a#logout_link:hover, #navigation a#account_link:hover {
+  color: #79593C;
+}
+
+#header img#twitter_avatar {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  height: 20px;
+}
+
+.simple_form input.blur, .simple_form textarea.blur { color: #898989; }
+
+.simple_form.report input[type='text'], .simple_form.report textarea {
+  border: 1px solid #E0E0E0;
+  padding: 2px 2px 2px 6px;
+  margin: 0 0 10px 0px;
+  width: 400px;
+}
+
+.simple_form.report textarea {
+  height: 50px;
+}
+
+#twitter-register-link {
+  text-indent: -4000px;
+  display: block;
+  background-image: url(../images/twitter-sign-in.png);
+  width: 151px;
+  height: 24px;
+}
+
+.flash_message {
+  position: fixed;
+  top: 0px;
+  margin: 0px auto;
+  padding: 10px;
+  font-size: larger;
+  font-weight: bold;
+  z-index: 10;
+}
+
+#flash_alert {
+  background-color: #FFBBBB;
+}
+
+#flash_notice {
+  background-color: #FFFFAA;
+}
+
+#waystohelp li {
+  display: block;
+  list-style: armenian;
+  margin-bottom: 30px;
+}
+
+#waystohelp strong {
+  font-size: larger;
+}
+
+#waystohelp em {
+  font-weight: bold;
+}
+
+.supported a:hover {
+	background-color: #33BB33;
+	color: #ffffff;
+}
+
+#home_pitch ul {
+  list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+#home_pitch ul li {
+  display: block;
+  
+}
+ 
+
+#home_pitch ul li:before {
+	content: "\00BB \0020";
+}
+
+/* new stuff */
+
 #navigation {
   position: fixed;
-  font-size: 70%;
+  font-size: 110%;
   top:0px;
   left:0px;
 }
+
+#main {
+  margin-top:25px;
+}
+

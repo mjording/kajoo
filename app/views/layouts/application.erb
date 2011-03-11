@@ -8,7 +8,7 @@
   
   <% if is_mobile_device? %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <%= stylesheet_link_tag 'style', 'text', 'handheld', 'kajoo', 'kajoo_mobile' %>
+    <%= stylesheet_link_tag 'style', 'text', 'handheld', 'kajoo_mobile' %>
   <% else %>
     <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application', 'kajoo' %>
   <% end %>
@@ -20,8 +20,8 @@
 <body>
 
 <div id="wrapper" class="container_24">
-<% if notice %><div class="grid_24"><div class="notice" id="flash_notice"><%= notice %></div></div><% end %>
-<% if alert %><div class="grid_24"><div class="alert" id="flash_alert"><%= alert %></div></div><% end %>
+<% if notice %><div class="grid_24"><div class="flash_message" id="flash_notice"><%= notice %></div></div><% end %>
+<% if alert %><div class="grid_24"><div class="flash_message" id="flash_alert"><%= alert %></div></div><% end %>
 <div id="header" class="container_24"><!--Header starts-->
   <%= render :partial => 'shared/navigation' %>
 </div><!--closes header--><div class="clear"></div>

@@ -12,12 +12,13 @@
 		<h1>Browse Submitted Issues</h1>
 
     <div id="report_sum"><!--STARTS: report summaries-->
-
     <% issues.each do |issue| %>
+      <div class="report_details">
       <h4><%= link_to issue.title, issue %></h4>
-      <h6><%= issue.street_address %> <%= summary_date(issue.created_at) %></h6>
-      <%#= image_tag :source => '', :style => " width='50px' height='50px'" %>
-  		<p><%= issue.description %></p>
+        <h6><%= issue.street_address %> <%= summary_date(issue.created_at) %></h6>
+        <%#= image_tag :source => '', :style => " width='50px' height='50px'" %>
+    		<p><%= issue.description %></p>
+  		</div>
   		<div class="report_stats">
   		  <p class="stat">Votes: <%= issue.votes.count %></p>
   		</div>
@@ -37,6 +38,7 @@
     			<% end %>
   			</ul>
 			</div><!--Closes report_actions-->
+			<div class="clear"></div>
     <% end %>
     </div><!--Closes report summaries-->
 

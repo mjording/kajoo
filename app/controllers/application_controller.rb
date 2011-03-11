@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   has_mobile_fu
 
+  def is_mobile_device?
+    return true
+  end
+
   protect_from_forgery
 
   rescue_from(Exception) do |e|
