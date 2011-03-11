@@ -1,5 +1,5 @@
 class Issue < ActiveRecord::Base
-  versioned
+  #versioned
 
   has_many :reports
   has_many :comments #XXX unused

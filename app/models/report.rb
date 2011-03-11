@@ -3,10 +3,10 @@ class Report < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :issue
-  
+#  before_validation :geocode, :reverse_geocode
+   
   validates_presence_of :location
   
-  before_validation :geocode, :reverse_geocode
   
   #def geocoded?
     #return !location.nil?
