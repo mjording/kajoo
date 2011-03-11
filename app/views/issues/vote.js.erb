@@ -1,8 +1,8 @@
 $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>").show();
-$("#alert_notice").html("<%= escape_javascript(flash[:alert])%>").show();
+$("#flash_alert").html("<%= escape_javascript(flash[:alert])%>").show();
 
 $('#flash_notice').delay(2000).slideUp(1000);
-$('#alert_notice').delay(2000).slideUp(1000);
+$('#flash_alert').delay(2000).slideUp(1000);
 
 $('#issue-vote-link-<%= @issue.id %>')
   .html('Supported!')

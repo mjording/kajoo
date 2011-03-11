@@ -53,22 +53,20 @@
   height: 24px;
 }
 
-p.alert {
+.alert {
   position: fixed;
   top: 0px;
   margin: 0px auto;
-  width: 960px;
   padding: 10px;
   font-size: larger;
   font-weight: bold;
   background-color: #FFBBBB;
 }
 
-p.notice {
+.notice {
   position: fixed;
   top: 0px;
   margin: 0px auto;
-  width: 960px;
   padding: 10px;
   font-size: larger;
   font-weight: bold;
@@ -92,4 +90,21 @@ p.notice {
 .supported a:hover {
 	background-color: #33BB33;
 	color: #ffffff;
+}
+
+#home_pitch ul {
+  list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+#home_pitch ul li {
+  display: block;
+  
+}
+ 
+
+#home_pitch ul li:before {
+	content: "\00BB \0020";
 }

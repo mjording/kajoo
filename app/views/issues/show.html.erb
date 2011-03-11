@@ -1,10 +1,48 @@
-<% content_for(:feature) do %>
-  <h1><%= @issue.title %></h1>
-  <h3><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></h3>
-  <p><%= @issue.description %></p>
+<% content_for(:feature) do %>  
+  		<div id="single_issue_feature" class="grid_16"><!--feature left starts-->
+		<h3><%= @issue.title %></h3>
+		<h5><%= @issue.street_address %></h5>
+		<p><%= @issue.description %></p>
+		</div><!--Closes feature left content-->
+	<div id="single_issue_sidebar" class="grid_6"><!--feature left starts-->
+	<h5>Current Supporters</h5>
+
+			<div id="city_reports">
+			
+			<div class="votes">
+  			<span><%= @issue.supporters.count %></span><%= link_to 'Support this', vote_for_issue_path(@issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{@issue.id}" %>
+			</div>
+			
+			
+			
+				<div id="issue_stats">
+
+<!--
+				<div class="label">Caring Users</div>			
+				<p><a href="#" alt="Austin,TX Leaderboard">1,203</a></p>
+
+-->
+				<div class="label">Originally Reported</div>			
+				<div class="date"><%= summary_date(@issue.created_at) %></div>
+				
+			</div><!--close city_reports-->
+			
+			<!--
+				<div class="label">Issue Lifeline</div>
+				<div id="city_lifeline">
+				<img src="#" width="250" height="100" />
+				</div>
+			-->
+			</div>	
+			
+
+			
+	</div><!--Closes feature left content-->
+  
 <% end %>
 
 <% content_for(:sidebar) do %>
+<div class="sidebar_section">
   <h5>Most Supported Issues</h5>
 		<p><a	href="#">Testing Links</a> lorizzle ipsizzle dolor the bizzle amizzle, ma nizzle adipiscing elit. Nullam sapien velit, gangsta volutpizzle, pot black, gravida vizzle, . Pellentesque rizzle tortizzle. Sizzle erizzle. Ma nizzle at dolor dapibus suscipit. Mah nizzle black velit sizzle mammasay mammasa mamma oo sa.</p>
 </div>	
@@ -29,7 +67,7 @@
 <ul>
 <% @issue.reports.each do |report| %>
   <li><h4><%= report.title %></h4>
-    <h6><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></h6>
+    <h6><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></h6>  
   </li> 
   
 <% end %>

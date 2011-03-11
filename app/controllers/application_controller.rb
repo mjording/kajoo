@@ -1,5 +1,22 @@
 class ApplicationController < ActionController::Base
+  has_mobile_fu
+
   protect_from_forgery
+
+  rescue_from(Exception) do |e|
+    #TODO: Flash something?
+    flash[:alert] = e.message
+    logger.error "Error: '#{e.message}'"
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { 
+        render :update do |page| 
+          page.redirect_to(:back)
+        end
+      }
+    end
+  end
 
   protected
 

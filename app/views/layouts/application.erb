@@ -20,18 +20,17 @@
 <body>
 
 <div id="wrapper" class="container_24">
-
+<% if notice %><div class="grid_24"><div class="notice" id="flash_notice"><%= notice %></div></div><% end %>
+<% if alert %><div class="grid_24"><div class="alert" id="flash_alert"><%= alert %></div></div><% end %>
 <div id="header" class="container_24"><!--Header starts-->
   <%= render :partial => 'shared/navigation' %>
 </div><!--closes header--><div class="clear"></div>
 <div id="main"><!--Content starts-->
-
-<% if notice %><p id="flash_notice" class="notice grid_24"><%= notice %></p><% end %>
-<% if alert %><p id="alert_notice" class="alert grid_24"><%= alert %></p><% end %>
-<div id="feature" class="grid_24"><!--Feature Content-->
-
-  <%= yield(:feature) %>		
-
+<div class="grid_24"><!--Feature Content-->
+  <div id="feature">
+    <%= yield(:feature) %>		
+    <div class="clear"></div>
+  </div>
 </div><!--Closes Feature Content--><div class="clear"></div>
 
 
