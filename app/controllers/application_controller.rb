@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::Base
-
-  has_mobile_fu
-
   protect_from_forgery
 
   protected
@@ -18,7 +15,6 @@ class ApplicationController < ActionController::Base
     elsif(@order == 'resolved')
       @issues = Issue.where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
     end
-    
-    @issues
-  end  
+    @issues ||= Issue.all
+  end
 end

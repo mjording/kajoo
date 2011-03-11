@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.xml
   def create
-    params[:report][:updated_by] = current_user
+    #params[:report][:updated_by] = current_user
     @report = Report.new(params[:report])
 
     respond_to do |format|
