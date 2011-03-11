@@ -13,108 +13,108 @@
 ActiveRecord::Schema.define(:version => 20110310171938) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "issue_id"
-    t.string   "text"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "issue_id"
+    t.string    "text"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "issues", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.float    "lat"
-    t.float    "lon"
-    t.integer  "radius"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "address"
-    t.boolean  "resolved"
-    t.string   "ip_address"
-    t.text     "location"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country_code"
-    t.string   "country_name"
-    t.string   "street_address"
-    t.string   "zipcode"
-    t.integer  "vote_count",     :default => 0
-    t.datetime "resolved_at"
-    t.integer  "resolver_id"
+    t.string    "title"
+    t.text      "description"
+    t.float     "lat"
+    t.float     "lon"
+    t.integer   "radius"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "address"
+    t.boolean   "resolved"
+    t.string    "ip_address"
+    t.text      "location"
+    t.string    "city"
+    t.string    "state"
+    t.string    "country_code"
+    t.string    "country_name"
+    t.string    "street_address"
+    t.string    "zipcode"
+    t.integer   "vote_count",     :default => 0
+    t.timestamp "resolved_at"
+    t.integer   "resolver_id"
   end
 
   create_table "reports", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "description"
-    t.float    "lat"
-    t.float    "lon"
-    t.integer  "radius"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "issue_id"
-    t.string   "tags"
-    t.text     "address"
-    t.string   "ip_address"
-    t.text     "location"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country_code"
-    t.string   "country_name"
-    t.string   "street_address"
-    t.string   "zipcode"
+    t.integer   "user_id"
+    t.string    "title"
+    t.text      "description"
+    t.float     "lat"
+    t.float     "lon"
+    t.integer   "radius"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "issue_id"
+    t.string    "tags"
+    t.text      "address"
+    t.string    "ip_address"
+    t.text      "location"
+    t.string    "city"
+    t.string    "state"
+    t.string    "country_code"
+    t.string    "country_name"
+    t.string    "street_address"
+    t.string    "zipcode"
   end
 
   create_table "solutions", :force => true do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.integer  "issue_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "title"
+    t.integer   "user_id"
+    t.integer   "issue_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "user_tokens", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "user_id"
+    t.string    "provider"
+    t.string    "uid"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "avatar_url"
-    t.integer  "twitter_id"
-    t.string   "name"
-    t.integer  "points",                              :default => 0
+    t.string    "email",                               :default => "", :null => false
+    t.string    "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string    "reset_password_token"
+    t.string    "remember_token"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",                       :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "avatar_url"
+    t.integer   "twitter_id"
+    t.string    "name"
+    t.integer   "points",                              :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "versions", :force => true do |t|
-    t.integer  "versioned_id"
-    t.string   "versioned_type"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.string   "user_name"
-    t.text     "modifications"
-    t.integer  "number"
-    t.integer  "reverted_from"
-    t.string   "tag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "versioned_id"
+    t.string    "versioned_type"
+    t.integer   "user_id"
+    t.string    "user_type"
+    t.string    "user_name"
+    t.text      "modifications"
+    t.integer   "number"
+    t.integer   "reverted_from"
+    t.string    "tag"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "versions", ["created_at"], :name => "index_versions_on_created_at"
@@ -125,12 +125,12 @@ ActiveRecord::Schema.define(:version => 20110310171938) do
   add_index "versions", ["versioned_id", "versioned_type"], :name => "index_versions_on_versioned_id_and_versioned_type"
 
   create_table "votes", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "issue_id"
-    t.integer  "solution_id"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "user_id"
+    t.integer   "issue_id"
+    t.integer   "solution_id"
+    t.string    "type"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
 end
