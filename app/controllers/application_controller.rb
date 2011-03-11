@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   has_mobile_fu
+  
+  #helper_method :is_mobile_device?
 
   #def is_mobile_device?
   #  return true

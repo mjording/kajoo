@@ -55,9 +55,8 @@ h5{
 	padding: 10px;
 }
 #navigation ul{
-	float: right;
 	margin: 0;
-	display: hide;
+	text-align: center;
 }
 #navigation li{
 	margin: 0px;

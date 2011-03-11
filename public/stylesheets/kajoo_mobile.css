@@ -57,12 +57,13 @@
 
 .flash_message {
   position: fixed;
-  top: 0px;
-  margin: 0px auto;
+  top: 28px;
+  width: 100%;
   padding: 10px;
   font-size: larger;
   font-weight: bold;
   z-index: 10;
+  border-bottom: 1px solid black;
 }
 
 #flash_alert {
@@ -114,8 +115,12 @@
 #navigation {
   position: fixed;
   font-size: 110%;
+  width: 100%;
+  background-color: white;
+  height: 28px;
   top:0px;
   left:0px;
+  border-bottom: 1px solid black;
 }
 
 #main {
