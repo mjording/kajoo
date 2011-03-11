@@ -1,0 +1,7 @@
+$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>").show();
+$("#alert_notice").html("<%= escape_javascript(flash[:alert])%>").show();
+
+$('#flash_notice').delay(2000).slideUp(1000);
+$('#alert_notice').delay(2000).slideUp(1000);
+
+$('#feature').slideUp(1000).html("<%= escape_javascript(render :partial => 'form')%>").slideDown(1000);

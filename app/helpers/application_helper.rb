@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def site_name
     SITE['site_name']
   end
