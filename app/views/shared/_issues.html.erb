@@ -25,10 +25,10 @@
   			<ul>
   			  <% if(current_user && current_user.has_voted_for_issue?(issue)) %>
             <li class="supported"><a href="#">Supported!</a></li>
-            <li><a href="#">Add Details</a></li>
+            <li><%= link_to 'Add Details', new_report_path, :remote => true, :class => 'new-report-link', :id => "new-report-link-#{issue.id}" %></li>
   			  <% else %>
       			<li><%= link_to 'Support this', vote_for_issue_path(issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{issue.id}" %></li>
-      			<li><a href="#">Support with Details</a></li>
+      			<li><%= link_to 'Support with Details', new_report_path, :remote => true, :class => 'new-report-link', :id => "new-report-link-#{issue.id}" %></li>
     			<% end %>
     			
     			<li><a href="#">Propose Solution</a></li>

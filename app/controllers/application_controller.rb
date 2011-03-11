@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  has_mobile_fu
+
   protect_from_forgery
 
   protected
@@ -17,5 +20,5 @@ class ApplicationController < ActionController::Base
     end
     
     @issues
-  end
+  end  
 end

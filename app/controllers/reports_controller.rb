@@ -20,6 +20,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @report }
+      format.js
     end
   end
 

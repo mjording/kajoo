@@ -8,7 +8,7 @@
 	<div id="navigation" class="grid_14 omega">
   	<ul>
   	   <% if(current_user) %>
-  		  <li><%= link_to "View Issues", issues_path %></li>
+  		  <li><%= link_to "View Issues", root_path %></li>
         <li><%= link_to raw("<span id=\"votes-remaining\">#{current_user.votes_remaining}</span> Votes Remaining"), users_dashboard_path %></li>
         <li><%= link_to raw("<span id=\"reputation-points\">#{current_user.points}</span> Reputation Points"), users_dashboard_path %></li>
     	  <img id="twitter_avatar" src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>"> 
