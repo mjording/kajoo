@@ -1,7 +1,8 @@
 
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
-#gem 'pg'
+gem 'pg'
+gem 'mysql'
 gem 'open311'
 gem 'devise', '1.2.rc'
 gem 'oa-oauth', :require => 'omniauth/oauth'
