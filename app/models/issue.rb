@@ -27,6 +27,8 @@ class Issue < ActiveRecord::Base
     self.vote_count += 1
     
     user.add_points(5)
+    
+    user.save!
   end
   
   protected

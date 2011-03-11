@@ -9,3 +9,4 @@ $('#issue-vote-link-<%= @issue.id %>')
   .parent().addClass('supported');
   
 $('#votes-remaining').html('<%= current_user.votes_remaining %>');
+$('#reputation-points').html('<%= current_user.points %>');

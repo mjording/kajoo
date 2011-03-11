@@ -88,3 +88,8 @@ p.notice {
 #waystohelp em {
   font-weight: bold;
 }
+
+.supported a:hover {
+	background-color: #33BB33;
+	color: #ffffff;
+}
