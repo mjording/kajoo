@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   has_mobile_fu
 
-  def is_mobile_device?
-    return true
-  end
+  #def is_mobile_device?
+  #  return true
+  #end
 
   protect_from_forgery
 
