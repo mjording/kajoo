@@ -17,6 +17,8 @@ class ReportsController < ApplicationController
     @report = Report.new
     @issues = fetch_issues
 
+    puts "XHR: #{request.xhr?}"
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @report }

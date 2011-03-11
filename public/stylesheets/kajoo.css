@@ -91,14 +91,14 @@
 
 #home_pitch ul {
   list-style: none;
-	margin-left: 0;
+  margin: 0px;
 	padding-left: 1em;
 	text-indent: -1em;
 }
 
 #home_pitch ul li {
-  display: block;
-  
+  display: block; 
+  margin: 5px 0px;
 }
  
 
