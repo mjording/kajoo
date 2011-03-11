@@ -21,12 +21,16 @@ user = User.create({
 issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
 issues.each_with_index do|issue,i|
   puts "creating issue #{i}"
-  original_report = user.reports.create({
+  issue = Issue.create({
     :title => issue['summary'],
     :description => issue['description'],
+    :location => issue['address'],
     :lat => issue["lat"],
     :lon => issue["lng"]
   })
+  issue.save!
+
+  issue.reports.create({:title => issue.title, :description => issue.description, :lat => issue.lat, :lon => issue.lon, :location => issue.location, :user => user})
 end
 #issues = JSON.load(File.new('issues.json'))
 #issue = report.issue

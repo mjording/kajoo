@@ -44,3 +44,47 @@
 .simple_form.report textarea {
   height: 50px;
 }
+
+#twitter-register-link {
+  text-indent: -4000px;
+  display: block;
+  background-image: url(../images/twitter-sign-in.png);
+  width: 151px;
+  height: 24px;
+}
+
+p.alert {
+  position: fixed;
+  top: 0px;
+  margin: 0px auto;
+  width: 960px;
+  padding: 10px;
+  font-size: larger;
+  font-weight: bold;
+  background-color: #FFBBBB;
+}
+
+p.notice {
+  position: fixed;
+  top: 0px;
+  margin: 0px auto;
+  width: 960px;
+  padding: 10px;
+  font-size: larger;
+  font-weight: bold;
+  background-color: #FFFFAA;
+}
+
+#waystohelp li {
+  display: block;
+  list-style: armenian;
+  margin-bottom: 30px;
+}
+
+#waystohelp strong {
+  font-size: larger;
+}
+
+#waystohelp em {
+  font-weight: bold;
+}

@@ -27,7 +27,7 @@
             <li class="supported"><a href="#">Supported!</a></li>
             <li><a href="#">Add Details</a></li>
   			  <% else %>
-      			<li><%= link_to 'Support this', vote_for_issue_path(issue.id), :class => 'issue-vote-link' %></li>
+      			<li><%= link_to 'Support this', vote_for_issue_path(issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{issue.id}" %></li>
       			<li><a href="#">Support with Details</a></li>
     			<% end %>
     			

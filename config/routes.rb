@@ -16,6 +16,7 @@ FixIt::Application.routes.draw do
   match 'home' => 'pages#home', :as => 'home'
   match 'contact' => 'pages#contact', :as => 'contact'
   match 'about' => 'pages#about', :as => 'about'
+  match 'helpus' => 'pages#helpus', :as => 'helpus'
 
   resources :users
   get "users/dashboard"

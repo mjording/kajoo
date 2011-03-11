@@ -16,7 +16,16 @@ class IssuesController < ApplicationController
     #redirect if not logged in
     unless (current_user && (can? :create, IssueVote))
       flash[:alert] = 'You must be logged in to vote on an issue'
-      redirect_to new_user_session_path
+      
+      respond_to do |format|
+        format.html { redirect_to new_user_session_path }
+        format.js { 
+          render :update do |page| 
+            page.redirect_to(new_user_session_path)
+          end
+        }
+      end
+      
       return
     end
   
@@ -25,22 +34,44 @@ class IssuesController < ApplicationController
     if(IssueVote.find_by_issue_id_and_user_id(@issue.id, current_user.id))
       flash[:alert] = 'You cannot vote for the same issue twice'
       logger.warn(flash[:alert])
-      redirect_to root_path
+
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js { 
+          render :update do |page| 
+            page.redirect_to(root_path)
+          end
+        }
+      end
+
       return
     end
     
     begin
       @issue.add_vote_for_user(current_user)
     rescue Exception => e
-      flash[:alert] = 'Sorry: '+e.message
+      flash[:alert] = e.message
       puts e.backtrace
       logger.warn(flash[:alert])
-      redirect_to root_path
+      
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js { 
+          render :update do |page| 
+            page.redirect_to(root_path)
+          end
+        }
+      end
+      
       return
     end
     
     flash[:notice] = "Thank you - your vote for '#{@issue.title}' has been received"
-    redirect_to root_path
+    
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
   
 end

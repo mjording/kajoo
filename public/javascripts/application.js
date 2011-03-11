@@ -15,4 +15,17 @@ $(document).ready(function(){
   
   $('.report input:text').clearingInput();
   $('.report textarea').clearingInput();
+  
+  //fade out alerts
+  
+  $('p.alert').delay(2000).slideUp(1000);
+  $('p.notice').delay(2000).slideUp(1000);
+  
 });
+
+$.fn.animateHighlight = function(highlightColor, duration) {
+  var highlightBg = highlightColor || "#FFFF9C";
+  var animateMs = duration || 1500;
+  var originalBg = this.css("backgroundColor");
+  this.stop().css("background-color", highlightBg).animate({backgroundColor: originalBg}, animateMs);
+};

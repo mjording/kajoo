@@ -88,8 +88,8 @@ Submit Form
 .button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
-}
-
+}=
+_
 /***********
 Similar Reports
 **********/
@@ -138,17 +138,57 @@ Browse Submitted Issues
 .report_sum, .sidebar_section{
 	border-top: 1px solid #E0E0E0;
 	padding: 15px 0 0 0;
+	clear: left;
 }
 .report_sum img{
 	float:  left;
 	margin: 0 15px 0 0;
 }
+.votes{
+background-color: green;
+color: #ffffff;
+padding: 10px 0px 12px 0px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+font-size: 20px;
+text-align: center;
+width: 80px;
+float: left;
+margin: 0 10px 0 0;
+	
+}
+
+.votes a{
+	color: white;
+	font-size: 12px;
+	margin: 0;
+	padding: 10px;
+	text-decoration: none;
+	
+}
+.votes a:hover{
+	background-color: #6BAA29;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+
+
+}
+.votes {
+	margin: 0 15px 0 0;
+}
+#single_issue_sidebar{
+	margin: 20px 0 0 0;
+}
+
+
+
+
 #main_content{
 	margin: 30px 30px 0 25px;
 }
 .report_actions ul{
-	margin:7px 0 10px 0;
-}
+	margin:7px 0 10px ;
+	}
 .report_actions li{
 	margin: 0px;
 	padding-bottom: 20px;
@@ -172,9 +212,36 @@ Browse Submitted Issues
 	background-color: green;
 	color: #ffffff;
 }
+.support_numbers p {
+	display: inline;
+	margin: 10px 0 10px 0;
+}
+.text_description{
+}
+
 #sidebar{
 	margin:  116px 0 0 0;
 	
+}
+
+/***********
+Browse Submitted Issues
+**********/
+#single_issue_feature{
+	font-size: 18px;
+	margin: 15px;
+	
+}
+#issue_stats{
+	clear: left;
+	margin: 0 0 0 0;
+	padding: 10px 0 0 0;
+}
+.date{
+	font-size: 12px;
+	color: green;
+	margin: 0px;
+
 }
 
 /***********

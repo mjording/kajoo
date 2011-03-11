@@ -4,7 +4,7 @@
 <head>
 <title>Kajoo <%= city_name %> : <%= site_name %> : Improve Your City</title>
   <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application', 'kajoo' %>
-  <%= javascript_include_tag 'jquery', 'rails', 'jquery.clearinginput.js', 'application' %>
+  <%= javascript_include_tag 'jquery', 'rails', 'jquery.clearinginput.js', 'modernizr', 'application' %>
 	<%= yield(:head) %>
   <%= csrf_meta_tag %>
 </head>
@@ -18,8 +18,8 @@
 </div><!--closes header--><div class="clear"></div>
 <div id="main"><!--Content starts-->
 
-<% if notice %><p class="notice grid_24"><%= notice %></p><% end %>
-<% if alert %><p class="alert grid_24"><%= alert %></p><% end %>
+<% if notice %><p id="flash_notice" class="notice grid_24"><%= notice %></p><% end %>
+<% if alert %><p id="alert_notice" class="alert grid_24"><%= alert %></p><% end %>
 <div id="feature" class="grid_24"><!--Feature Content-->
 
   <%= yield(:feature) %>		

@@ -34,5 +34,9 @@ class PagesController < ApplicationController
   def updates
     @versions = VestalVersions::Version.find(:all, :order => 'created_at desc').limit(50)
   end
+  
+  def helpus
+  
+  end
 
 end
