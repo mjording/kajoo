@@ -1,3 +1,12 @@
-<%= current_user.email %>
-
-<%= image_tag current_user.avatar_url %>
+<div id="userprofile" class="grid_7">
+  <h2><%= current_user.name %></h2>
+  <%= image_tag current_user.avatar_url.gsub('_normal',''), :style => 'height:200px;' %>
+   
+</div>
+<div class="grid_6">
+  <ul>
+  <% current_user.reports.each do |report|%>
+    <li><%= report.title %></li>
+  <% end %>
+</ul>
+</div>

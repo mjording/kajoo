@@ -16,7 +16,6 @@ class Report < ActiveRecord::Base
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
   
   reverse_geocoded_by :lat, :lon do |obj, geo|
-  
   #, :address => :location 
     obj.city = geo.city
     obj.zipcode = geo.postal_code
