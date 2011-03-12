@@ -41,7 +41,7 @@
   border: 1px solid #E0E0E0;
   padding: 2px 2px 2px 6px;
   margin: 0 0 10px 0px;
-  width: 400px;
+  width: 100%;
 }
 
 .simple_form.report textarea {
@@ -51,7 +51,7 @@
 #twitter-register-link {
   text-indent: -4000px;
   display: block;
-  background-image: url(../images/twitter-sign-in.png);
+  background: url(../images/twitter-sign-in.png);
   width: 151px;
   height: 24px;
 }
@@ -102,10 +102,8 @@
 }
 
 #home_pitch ul li {
-  display: block;
-  
+  display: block; 
 }
- 
 
 #home_pitch ul li:before {
 	content: "\00BB \0020";
