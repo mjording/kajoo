@@ -10,7 +10,7 @@ class ReportObserver < ActiveRecord::Observer
   def before_create(report)
     puts "Doing after create for report #{report.title}"
     #begin 
-    #  issue = Issue.new :title => report.title, :description => report.description, :lat => report.lat, :lon => report.lon, :radius => report.radius
+    issue = Issue.create(:title => report.title, :description => report.description, :lat => report.lat, :lon => report.lon, :radius => report.radius)
     #  report.issue = issue
     #  issue.add_vote_for_user(report.user)
     #  issue.save!
