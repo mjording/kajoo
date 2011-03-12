@@ -11,9 +11,8 @@
     <%= stylesheet_link_tag 'style', 'text', 'handheld', 'kajoo_mobile' %>
   <% else %>
     <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application', 'kajoo' %>
-  <% end %>
-  
-	<%= yield(:head) %>
+  <% end %>  
+  <%= yield(:head) %>
   <%= csrf_meta_tag %>
 </head>
 
