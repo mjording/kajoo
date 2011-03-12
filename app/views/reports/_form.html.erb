@@ -6,7 +6,8 @@
 		  <%= f.input :title %>
 		  <%= f.input :description %>
 		  <%= f.input :tags %>
-		  
+      <%= f.input :lat, :as => :hidden %> 
+      <%= f.input :lon, :as => :hidden %>  
 		  <% if @report.geocoded? %>
 			  <div id="change"><%= link_to 'Change', :geocoded => false %></a></div>	
 			<% else %>

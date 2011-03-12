@@ -30,15 +30,23 @@ function initialize()
 
 function show_position(p)
 {
-	document.getElementById('current').innerHTML="latitude="+p.coords.latitude.toFixed(2)+" longitude="+p.coords.longitude.toFixed(2);
-	var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
-	map.setCenter(pos);
+	<%#document.getElementById('current').innerHTML="latitude="+p.coords.latitude.toFixed(2)+" longitude="+p.coords.longitude.toFixed(2);%>
+  geocoder = new google.maps.Geocoder();
+  $('#report_lat').val(p.coords.latitude);
+  $('#report_lon').val(p.coords.longitude);
+  var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
+
+  geocoder.geocode({'latLng': pos}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      $('#report_address').val(results[1].formatted_address);
+    }
+  });
+   map.setCenter(pos);
 	map.setZoom(14);
 
 	var infowindow = new google.maps.InfoWindow({
 	    content: "<strong>yes</strong>"
 	});
-
 	var marker = new google.maps.Marker({
 	    position: pos,
 	    map: map,
