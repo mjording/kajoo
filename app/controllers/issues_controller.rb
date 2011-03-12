@@ -1,4 +1,6 @@
 class IssuesController < ApplicationController
+  
+  before_filter :authenticate_user!, :except => [:show]
 
   #custom exception handler puts errors in the pop-down flash area
   rescue_from(VoteException) do |e|
@@ -29,23 +31,7 @@ class IssuesController < ApplicationController
   end
   #XXX TODO: ajax
   def vote
-  
-    #redirect if not logged in
-    unless (current_user && (can? :create, IssueVote))
-      flash[:alert] = 'You must be logged in to vote on an issue'
-      
-      respond_to do |format|
-        format.html { redirect_to new_user_session_path }
-        format.js { 
-          render :update do |page| 
-            page.redirect_to(new_user_session_path)
-          end
-        }
-      end
-      
-      return
-    end
-  
+    
     @issue = Issue.find(params[:id])
       
     if(IssueVote.find_by_issue_id_and_user_id(@issue.id, current_user.id))
