@@ -1,9 +1,12 @@
 <% content_for(:feature) do %>
-	<% render :partial => 'form' %>
+	<%= render :partial => 'form' %>
+	<%= render :partial => 'map' %>
 <% end %>
 
 <% content_for(:sidebar) do %>
-  <% render :partial => 'shared/sidebar' %>
+  <% if !is_mobile_device? %>
+    <%= render :partial => 'shared/sidebar' %>
+  <% end %>
 <% end %>
 
 <%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
