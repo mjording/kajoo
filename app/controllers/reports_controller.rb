@@ -35,14 +35,22 @@ class ReportsController < ApplicationController
   # POST /reports.xml
   def create
     #params[:report][:updated_by] = current_user
+    
     @report = Report.new(params[:report])
+
+    @report.user = current_user
 
     respond_to do |format|
       if @report.save
         format.html { redirect_to(@report.issue, :notice => 'Report was successfully created.') }
         format.xml  { render :xml => @report.issue, :status => :created, :location => @report }
       else
-        format.html { render :action => "new" }
+        format.html { 
+          @issues = fetch_issues
+          puts "Your report could not be saved: #{@report.errors.inspect}"
+          flash[:alert] = "Your report could not be saved: #{@report.errors.inspect}"
+          redirect_to :action => 'new'
+        }
         format.xml  { render :xml => @report.errors, :status => :unprocessable_entity }
       end
     end
