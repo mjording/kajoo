@@ -61,10 +61,16 @@ class IssuesController < ApplicationController
       logger.warn(flash[:alert])
       
       respond_to do |format|
-        format.html { redirect_to :back }
+        format.html { 
+          if(request.env["HTTP_REFERER"])
+            redirect_to :back 
+          end
+        }
         format.js { 
           render :update do |page| 
-            page.redirect_to(:back)
+            if(request.env["HTTP_REFERER"])
+              page.redirect_to(:back)
+            end
           end
         }
       end
