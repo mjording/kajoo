@@ -106,3 +106,7 @@
 #home_pitch ul li:before {
 	content: "\00BB \0020";
 }
+
+#city_map {
+  width: 635px; height: 285px;
+}

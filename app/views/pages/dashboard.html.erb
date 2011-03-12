@@ -19,7 +19,7 @@
   {
   	if(geo_position_js.init())
   	{
-  		$('#current_location').html("Finding location...");
+  		$('#current_location').html("<img src=\"/images/spinner.gif\"/> finding location...");
   		geo_position_js.getCurrentPosition(show_position,function(){$('#current_location').html("Couldn't get location")},{enableHighAccuracy:true});
   	}
   	else
@@ -65,13 +65,13 @@
 <% content_for(:feature) do %>
 		
 	<div id="map" class="grid_16"><!--feature left starts-->
-	<h5>Issues Around Austin, TX</h5>
+	<h5>Issues Around <%= city_name %>, <%= state_name %></h5>
 	<p id="current_location"></p>
-	<div id="city_map" style="width: 635px; height: 313px"></div>
+	<div id="city_map"></div>
 
 	</div><!--Closes feature left content-->
 <div id="city_status" class="grid_6"><!--feature left starts-->
-<h5>How is Austin Doing?</h5>
+<h5>How is <%= city_name %> Doing?</h5>
 
 		<div id="city_reports">
 		

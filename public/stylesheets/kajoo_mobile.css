@@ -126,3 +126,6 @@
   margin-top:25px;
 }
 
+#city_map {
+  width: 300px; height: 150px;
+}
