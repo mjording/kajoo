@@ -1,44 +1,54 @@
+<% content_for(:head) do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var myOptions = {
+  	      zoom: 4,
+  	      mapTypeControl: true,
+  	      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+  	      navigationControl: true,
+  	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+  	      mapTypeId: google.maps.MapTypeId.ROADMAP      
+  	    }	
+    	map = new google.maps.Map(document.getElementById("issue_map"), myOptions);
+    	var pos=new google.maps.LatLng('<%= @issue.lat %>','<%= @issue.lon %>');
+    	map.setCenter(pos);
+    	map.setZoom(14);
+    
+    	var infowindow = new google.maps.InfoWindow({
+    	    content: "<span style='font-size: smaller'><%= escape_javascript(@issue.location) %></span>"
+    	});
+    
+    	var marker = new google.maps.Marker({
+    	    position: pos,
+    	    map: map,
+    	    title:"<%= escape_javascript(@issue.title) %>"
+    	});
+  	});
+  </script>  
+<% end %>
+
 <% content_for(:feature) do %>  
-  		<div id="single_issue_feature" class="grid_16"><!--feature left starts-->
-		<h3><%= @issue.title %></h3>
-		<h5><%= @issue.street_address %></h5>
-		<p><%= @issue.description %></p>
-		</div><!--Closes feature left content-->
-	<div id="single_issue_sidebar" class="grid_6"><!--feature left starts-->
-	<h5>Current Supporters</h5>
-
-			<div id="city_reports">
-			
-			<div class="votes">
-  			<span><%= @issue.supporters.count %></span><%= link_to 'Support this', vote_for_issue_path(@issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{@issue.id}" %>
-			</div>
-			
-			
-			
-				<div id="issue_stats">
-
-<!--
-				<div class="label">Caring Users</div>			
-				<p><a href="#" alt="Austin,TX Leaderboard">1,203</a></p>
-
--->
-				<div class="label">Originally Reported</div>			
-				<div class="date"><%= summary_date(@issue.created_at) %></div>
-				
-			</div><!--close city_reports-->
-			
-			<!--
-				<div class="label">Issue Lifeline</div>
-				<div id="city_lifeline">
-				<img src="#" width="250" height="100" />
-				</div>
-			-->
-			</div>	
-			
-
-			
-	</div><!--Closes feature left content-->
+  <div id="single_issue_feature" class="grid_16"><!--feature left starts-->
+  	<h3><%= @issue.title %></h3>
+  	<h5><%= @issue.street_address %></h5>
+  	<p><%= @issue.description %></p>
+  </div><!--Closes feature left content-->
   
+  <div id="single_issue_sidebar" class="grid_6"><!--feature left starts-->
+  <h5>Current Supporters</h5>
+		<div id="city_reports">
+  		<div class="votes">
+  			<span><%= @issue.supporters.count %></span><%= link_to 'Support this', vote_for_issue_path(@issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{@issue.id}" %>
+  		</div>
+			<div id="issue_stats">
+				<div class="label">Originally Reported</div>			
+				<div class="date"><%= summary_date(@issue.created_at) %></div>				
+			</div><!--close city_reports-->
+			<div id="issue_map" class="grid_6" style="height: 200px;">
+        
+			</div>
+		</div>	
+	</div><!--Closes feature left content-->
 <% end %>
 
 <% content_for(:sidebar) do %>
@@ -63,12 +73,11 @@
 </div><!--Closes sidebar-->
 <% end %>
 
-
 <ul>
 <% @issue.reports.each do |report| %>
-  <li><h4><%= report.title %></h4>
+  <li>
+    <h4><%= report.title %></h4>
     <h6><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></h6>  
-  </li> 
-  
+  </li>
 <% end %>
 </ul>

@@ -1,8 +1,73 @@
+<% content_for(:head) do %>
+
+  <script>
+  $(document).ready(function(){
+    var myOptions = {
+	      zoom: 4,
+	      mapTypeControl: true,
+	      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+	      navigationControl: true,
+	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+	      mapTypeId: google.maps.MapTypeId.ROADMAP      
+	    }	
+  	map = new google.maps.Map(document.getElementById("city_map"), myOptions);
+  	
+  	initialize();
+	});
+	
+  function initialize()
+  {
+  	if(geo_position_js.init())
+  	{
+  		$('#current_location').html("Finding location...");
+  		geo_position_js.getCurrentPosition(show_position,function(){$('#current_location').html("Couldn't get location")},{enableHighAccuracy:true});
+  	}
+  	else
+  	{
+  		$('#current_location').html("Functionality not available");
+  	}
+  }
+  
+  function show_position(p)
+  {
+    geocoder = new google.maps.Geocoder();
+    var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
+    map.setCenter(pos);
+  	map.setZoom(14);
+  	
+  	geocoder.geocode({'latLng': pos}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        $('#current_location').html(results[1].formatted_address);
+      }
+    });
+
+  	var infowindow = new google.maps.InfoWindow({
+  	    content: "<strong>You are here</strong>"
+  	});
+  	var marker = new google.maps.Marker({
+  	    position: pos,
+  	    map: map,
+  	    title:"You are here"
+  	});
+  
+  	google.maps.event.addListener(marker, 'click', function() {
+  	  infowindow.open(map,marker);
+  	});
+  	
+  	marker.click();
+  }
+  
+  	
+  </script>
+
+<% end %>
+
 <% content_for(:feature) do %>
 		
 	<div id="map" class="grid_16"><!--feature left starts-->
 	<h5>Issues Around Austin, TX</h5>
-	<img src="<%= raw @submissions_chart_url %>" width="635" height="313" />
+	<p id="current_location"></p>
+	<div id="city_map" style="width: 635px; height: 313px"></div>
 
 	</div><!--Closes feature left content-->
 <div id="city_status" class="grid_6"><!--feature left starts-->

@@ -18,9 +18,6 @@ class PagesController < ApplicationController
     
     @submissions_chart_url = chart.to_url
     
-    map = GoogleChart.map_635x313()
-    
-    @submissions_map_url = map.to_url
   end
 
   def about
