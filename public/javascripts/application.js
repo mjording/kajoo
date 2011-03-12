@@ -48,4 +48,13 @@ function maybeShowNavBar(evt) {
  showTimer = setTimeout( showNavBar, 175 );
 }
 
-
+/**
+ * extend jquery with "$('elem').scrollToMe();
+ */
+$(function($){
+	$.fn.scrollToMe = function(){
+		$('html,body').animate({
+			scrollTo: this.offset().top
+		}, 'fast');
+	}
+})(jQuery);

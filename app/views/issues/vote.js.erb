@@ -1,8 +1,4 @@
-$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>").show();
-$("#flash_alert").html("<%= escape_javascript(flash[:alert])%>").show();
-
-$('#flash_notice').delay(2000).slideUp(1000);
-$('#flash_alert').delay(2000).slideUp(1000);
+<%= render :partial => 'shared/close_alerts' %>
 
 $('#issue-vote-link-<%= @issue.id %>')
   .html('Supported!')

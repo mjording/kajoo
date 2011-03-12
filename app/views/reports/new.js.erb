@@ -1,6 +1,4 @@
-$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>").show();
-$("#alert_notice").html("<%= escape_javascript(flash[:alert])%>").show();
-$('#notices').show().delay(2000).slideUp(1000);
+<%= render :partial => 'shared/close_alerts' %>
 
 var buildForm = function(){
   var form_html = "<%= escape_javascript(render :partial => 'form')%>"
@@ -11,3 +9,5 @@ var buildForm = function(){
 };
 
 $('#feature_content').slideUp(500, buildForm).slideDown(500);
+
+$('#feature').scrollToMe();
