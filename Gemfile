@@ -1,7 +1,7 @@
 
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
-gem 'pg'
+#gem 'pg'
 gem 'mysql2'
 gem 'open311'
 gem 'devise', '1.2.rc'
