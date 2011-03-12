@@ -5,16 +5,14 @@
 <title>Kajoo <%= city_name %> : <%= site_name %> : Improve Your City</title>
 
   <%= javascript_include_tag 'jquery', 'rails', 'jquery.clearinginput.js', 'modernizr', 'application' %>
-<<<<<<< HEAD
-=======
   
   <% if is_mobile_device? %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= stylesheet_link_tag 'style', 'text', 'handheld', 'kajoo_mobile' %>
   <% else %>
->>>>>>> aa3006af618f0a353fa7ef2884158d6c33eafa94
     <%= stylesheet_link_tag 'style', '960_24_col', 'text', 'application', 'kajoo' %>
-	<%= yield(:head) %>
+  <% end %>  
+  <%= yield(:head) %>
   <%= csrf_meta_tag %>
 </head>
 
