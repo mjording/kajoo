@@ -88,8 +88,18 @@ Submit Form
 .button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
-}=
-_
+}
+
+.sidebar_section .button {
+	margin: 10px 0px;	
+}
+
+.sidebar_section .button a {
+  display: block;
+  text-align: center;
+}
+
+
 /***********
 Similar Reports
 **********/

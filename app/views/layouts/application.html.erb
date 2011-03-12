@@ -32,7 +32,9 @@
 <div id="main"><!--Content starts-->
 <div class="grid_24"><!--Feature Content-->
   <div id="feature">
-    <%= yield(:feature) %>		
+    <div id="feature_content">
+      <%= yield(:feature) %>		
+    </div>
     <div class="clear"></div>
   </div>
 </div><!--Closes Feature Content--><div class="clear"></div>
@@ -46,11 +48,13 @@
 </div>		
 
 <div id="sidebar" class="grid_6"><!--starts sidebar-->
-  <% if(current_user) %>
-    <%= link_to "Submit A Report", new_report_path, :id => 'create-report-link' %>
-  <% else %>
-     <%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
-  <% end %>
+  <div class="sidebar_section" class="grid_6">
+    <% if(current_user) %>
+      <div class="button"><%= link_to "Submit A Report", new_report_path, :id => 'create-report-link' %></div>
+    <% else %>
+      <div class="button"><%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %></div>
+    <% end %>
+  </div>
 	<%= yield(:sidebar) %>		
 </div>	<!--Closes sidebar-->
 
