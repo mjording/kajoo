@@ -17,5 +17,6 @@ class ReportObserver < ActiveRecord::Observer
     #rescue Exception => e
     #  puts "Error saving Issue for Report: '#{e.message}'"
     #end
+    report.issue = issue
   end
 end
