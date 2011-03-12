@@ -10,7 +10,8 @@ FixIt::Application.routes.draw do
   match 'issues/:id/vote' => 'issues#vote', :as => 'vote_for_issue'
 
   resources :reports
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions" }
+  
   match 'index' => "pages#index", :as => 'index'
   match 'dashboard' => 'pages#dashboard', :as => 'dashboard'
   match 'home' => 'pages#home', :as => 'home'

@@ -30,6 +30,10 @@ Devise.setup do |config|
 
   # Set this to true to use Basic Auth for AJAX requests.  True by default.
   # config.http_authenticatable_on_xhr = true
+  
+  config.http_authenticatable = false 
+  config.http_authenticatable_on_xhr = false 
+  config.navigational_formats = [:"*/*",:html] 
 
   # The realm used in Http Basic Authentication
   # config.http_authentication_realm = "Application"

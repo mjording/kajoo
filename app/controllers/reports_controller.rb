@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
   
+  before_filter :authenticate_user!, :except => [:show]
+  
   # GET /reports/1
   # GET /reports/1.xml
   def show
