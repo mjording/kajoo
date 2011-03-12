@@ -152,7 +152,6 @@ GEM
       multi_json (~> 0.0.5)
       multi_xml (~> 0.2.0)
     orm_adapter (0.0.4)
-    pg (0.10.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-cache (1.0)
@@ -254,7 +253,6 @@ DEPENDENCIES
   mysql2
   oa-oauth
   open311
-  pg
   rack-cache
   rails (= 3.0.4)
   rails3-generators

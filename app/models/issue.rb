@@ -22,7 +22,11 @@ class Issue < ActiveRecord::Base
       throw VoteException.new('Not enough votes. Please return in a few hours to vote on more issues.')
     end
     
-    @vote = votes.create({:user => user})
+   if(user.has_voted_for_issue?(self))
+     throw VoteException.new('You cant vote twice for the same issue');
+   end
+ 
+   @vote = votes.create({:user => user})
     
     self.vote_count += 1
     
