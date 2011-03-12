@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   
   #helper_method :is_mobile_device?
 
-  #def is_mobile_device?
-  #  return true
-  #end
+  def is_mobile_device?
+    return true
+  end
 
   protect_from_forgery
 
