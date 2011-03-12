@@ -12,6 +12,7 @@
       <h1>Welcome to Kajoo</h1>
       <p>Kajoo is a civic engagement platform in which citizens collaborate to improve their city. You report problems in your city, vote on the top problems and the community works together to solve them.</p>
 
+      <%= link_to "Get Started", user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
     <% else %>
     
       <div id="home_pitch" class="grid_11">
