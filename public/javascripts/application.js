@@ -18,9 +18,11 @@ $(document).ready(function(){
   
   //fade out alerts
   
-  $('#flash_notice').delay(2000).slideUp(1000);
-  $('#flash_alert').delay(2000).slideUp(1000);
+  $('#notices').delay(2000).slideUp(1000);
+//  $('#flash_alert').delay(2000).slideUp(1000);
   
+  //fixed positioning for iPhone
+  //$(window).bind( "scroll", maybeShowNavBar );
 });
 
 $.fn.animateHighlight = function(highlightColor, duration) {
@@ -29,3 +31,21 @@ $.fn.animateHighlight = function(highlightColor, duration) {
   var originalBg = this.css("backgroundColor");
   this.stop().css("background-color", highlightBg).animate({backgroundColor: originalBg}, animateMs);
 };
+
+function showNavBar() {
+ var win_y = $(window).height();
+ var scroll_y = $(window).scrollTop();
+ $("footer").css({ top: ((win_y - 36) + scroll_y) + "px" });
+ $("header").css({ top: scroll_y + "px" });
+}
+
+var showTimer = false;
+
+function maybeShowNavBar(evt) {
+ if ( showTimer ) {
+   clearTimeout( showTimer );
+ }
+ showTimer = setTimeout( showNavBar, 175 );
+}
+
+

@@ -1,0 +1,3 @@
+class VoteException < KajooException
+
+end

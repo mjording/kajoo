@@ -1,5 +1,22 @@
 class IssuesController < ApplicationController
 
+  #custom exception handler puts errors in the pop-down flash area
+  rescue_from(VoteException) do |e|
+    #TODO: Flash something?
+    
+    flash[:alert] = e.inspect
+    logger.error "Error: '#{e.message}'"
+    e.backtrace
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { 
+        render :update do |page| 
+          page.redirect_to(:back)
+        end
+      }
+    end
+  end
 
   def show 
     @issue  = Issue.find(params[:id])
@@ -47,10 +64,13 @@ class IssuesController < ApplicationController
       return
     end
     
+    #@issue.add_vote_for_user(current_user)
+    
     begin
       @issue.add_vote_for_user(current_user)
     rescue Exception => e
-      flash[:alert] = e.message
+
+      flash[:alert] = e.inspect
       puts e.backtrace
       logger.warn(flash[:alert])
       

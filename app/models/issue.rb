@@ -19,14 +19,14 @@ class Issue < ActiveRecord::Base
   def add_vote_for_user(user)
     
     unless(user.votes_remaining > 0)
-      throw 'Not enough votes. Please return in a few hours to vote on more issues.'
+      throw VoteException.new('Not enough votes. Please return in a few hours to vote on more issues.')
     end
     
     @vote = votes.create({:user => user})
     
     self.vote_count += 1
     
-    user.add_points(5)
+    user.add_points_for_action(:vote_on_issue)
     
     user.save!
   end

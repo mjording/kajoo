@@ -32,6 +32,7 @@
   padding: 0;
   vertical-align: middle;
   height: 20px;
+  width: 20px;
 }
 
 .simple_form input.blur, .simple_form textarea.blur { color: #898989; }

@@ -1,0 +1,3 @@
+class KajooException < Exception
+
+end

@@ -3,7 +3,16 @@ development: &default
   state_name: 'Texas'
   country_name: 'United States'
   site_name: 'SXSW Civic Hackathon'
-  daily_vote_limit: 5
+  daily_vote_limit: 100
+  points: [
+    vote_on_issue: 1,         
+    submit_an_issue: 5,       #XXX TODO
+    tweet_clickthrough: 1,    #XXX TODO
+    report_closed_one_week: 5 #XXX TODO
+  ]
+  awards: [
+    
+  ]
 
 test: &test
   <<: *default

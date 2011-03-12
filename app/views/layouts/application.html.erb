@@ -19,8 +19,10 @@
 <body>
 
 <div id="wrapper" class="container_24">
-<% if notice %><div class="grid_24"><div class="flash_message" id="flash_notice"><%= notice %></div></div><% end %>
-<% if alert %><div class="grid_24"><div class="flash_message" id="flash_alert"><%= alert %></div></div><% end %>
+<div id="notices">
+  <div class="grid_24"><% if notice %><div class="flash_message" id="flash_notice"><%= notice %></div><% end %></div>
+  <div class="grid_24"><% if alert %><div class="flash_message" id="flash_alert"><%= alert %></div><% end %></div>
+</div>
 <div id="header" class="container_24"><!--Header starts-->
   <%= render :partial => 'shared/navigation' %>
 </div><!--closes header--><div class="clear"></div>

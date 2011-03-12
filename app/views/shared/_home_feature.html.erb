@@ -1,7 +1,5 @@
 
 
-<div class="grid_24"><!--feature left starts-->
-
   <% if current_user %>
     <h1>Let's build a great city together!</h1>
     <p>Click "Support This" to vote for the issues you think are the most important. The issues with the most votes will get the most attention. You can place 5 votes per day, so come back daily!</p>
@@ -28,12 +26,10 @@
         <p><strong>Watch our video to hear what folks in Austin, Texas would change about the city they love</strong></p>
         <%= link_to "Get Started", user_omniauth_authorize_path(:twitter), :id => 'sign_up' %>
       </div>
-      <div id="home_video" class="grid_12 omega">
+      <div id="home_video" class="grid_11 omega">
         <iframe src="http://player.vimeo.com/video/20919967" class="grid_12" height="270" frameborder="0"></iframe>
       </div>
     <% end %>
     
   <% end %>
-
-</div><!--Closes feature left content-->
 
