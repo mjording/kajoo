@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
     @report.user = current_user
 
     respond_to do |format|
-      if @report.save
+      if @report.save && !@report.issue.nil?
         format.html { redirect_to(@report.issue, :notice => 'Report was successfully created.') }
         format.xml  { render :xml => @report.issue, :status => :created, :location => @report }
       else
@@ -52,6 +52,7 @@ class ReportsController < ApplicationController
           redirect_to :action => 'new'
         }
         format.xml  { render :xml => @report.errors, :status => :unprocessable_entity }
+        format.json  { flash[:alert] = "Your report could not be saved: #{@report.errors.inspect}" }
       end
     end
   end
