@@ -42,7 +42,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to(@report.issue, :notice => 'Report was successfully created.') }
+        format.html { redirect_to(@report, :notice => 'Report was successfully created.') }
         format.xml  { render :xml => @report.issue, :status => :created, :location => @report }
       else
         format.html { 
