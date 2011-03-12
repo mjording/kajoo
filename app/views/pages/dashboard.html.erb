@@ -34,6 +34,12 @@
     var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
     map.setCenter(pos);
   	map.setZoom(14);
+  	
+  	geocoder.geocode({'latLng': pos}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        $('#current_location').html(results[1].formatted_address);
+      }
+    });
 
   	var infowindow = new google.maps.InfoWindow({
   	    content: "<strong>You are here</strong>"
