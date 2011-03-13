@@ -75,7 +75,8 @@ Submit Form
 	width: 300px;
 }
 .button{
-	margin: 20px 0 0 0;	
+	margin: 20px 0 0 10px;
+  float: left;
 }
 .button a {
 	background-color: #FF8939;
@@ -92,6 +93,7 @@ Submit Form
 
 .sidebar_section .button {
 	margin: 10px 0px;	
+	float: none;
 }
 
 .sidebar_section .button a {

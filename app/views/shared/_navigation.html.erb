@@ -2,7 +2,13 @@
 
 
 <div class="grid_8">
-<a  href="/" id="logo"><img src="/images/kajoo-logo-lockup.png" height="100" width=""></a>
+  <a  href="/" id="logo">
+    <% if is_mobile_device? %>
+      <img src="/images/logo_small.png">
+    <% else %>
+      <img src="/images/logo_med.png">
+    <% end %>
+  </a>
 </div>
 
 <div id="navigation" class="grid_16 omega">

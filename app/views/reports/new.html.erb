@@ -9,4 +9,6 @@
   <% end %>
 <% end %>
 
-<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+<% if !is_mobile_device? %>
+  <%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+<% end %>

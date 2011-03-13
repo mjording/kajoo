@@ -121,11 +121,12 @@ Submit Form
 	width: auto;
 }
 .button{
-	margin: 20px 0 0 0;	
+	margin: 20px 5px 0 0;	
+	float: left;
 }
 .button a {
 	background-color: #FF8939;
-	padding: 10px 25px;
+	padding: 10px 15px;
 	-webkit-border-radius: 5px;
 	color: #ffffff;
 	text-decoration: none;
@@ -134,6 +135,10 @@ Submit Form
 .button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
+}
+
+.clear {
+  clear: both;
 }
 
 
@@ -247,6 +252,7 @@ ul{
 
 #main_content{
 	margin: 5px;/*30px 30px 0 25px;*/
+	clear: both;
 }
 .report_details {
   width: 60%;
@@ -318,6 +324,7 @@ Browse Submitted Issues
 	margin: 0px;
 
 }
+
 
 /***********
 Footer
