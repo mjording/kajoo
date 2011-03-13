@@ -4,7 +4,7 @@
   <% if !is_mobile_device? %>
     <%= render :partial => 'shared/instruction_text' %>
   <% end %>      
-  <div class="button"><%= link_to "Submit A Report", new_report_path, :id => 'create-report-link' %></div>
+  <div class="button"><%= link_to "Submit A Report", new_report_path, :id => 'create-report-link', :remote => !is_mobile_device? %></div>
   <div class="button"><%= link_to "About this Site", help_path, :id => 'help-link' %></div>
 <% else %>
   <!--NOT LOGGED IN-->

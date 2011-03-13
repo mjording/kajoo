@@ -18,6 +18,10 @@
   		<p><%= issue.description %></p>
 		</div>
 		<div class="report_stats">
+		  <p class="user">
+		    Created By
+		    <%= image_tag issue.creator.avatar_url %> @<%= issue.creator.twitter_username %>
+		  </p>
 		  <p class="stat">Votes: <%= issue.votes.count %></p>
 		</div>
 		<div class="report_actions">

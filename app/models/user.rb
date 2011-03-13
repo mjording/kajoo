@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :solution_votes, :class_name => 'SolutionVote'
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :twiter_id, :avatar_url
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar_url, :twitter_username, :twitter_id
   
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     if user = User.find_by_email("#{data['screen_name']}@twitter.com")
       user
     else # Create an user with a stub password. 
-      User.create!(:email => "#{data['screen_name']}@twitter.com", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id']) 
+      User.create!(:email => "#{data['screen_name']}@twitter.com", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
     end
   end 
 
@@ -85,7 +85,7 @@ end
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
-#  ava  tar_url           :string(255)
+#  avatar_url           :string(255)
 #  twitter_id           :integer
 #  name                 :string(255)
 #  points               :integer         default(0)

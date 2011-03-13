@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110312224301) do
+ActiveRecord::Schema.define(:version => 20110313201332) do
 
   create_table "comments", :force => true do |t|
     t.integer  "issue_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110312224301) do
     t.integer  "vote_count",     :default => 0
     t.datetime "resolved_at"
     t.integer  "resolver_id"
+    t.integer  "creator_id"
   end
 
   create_table "reports", :force => true do |t|
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20110312224301) do
     t.integer  "twitter_id"
     t.string   "name"
     t.integer  "points",                              :default => 0
+    t.string   "twitter_username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

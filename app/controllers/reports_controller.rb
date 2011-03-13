@@ -44,7 +44,7 @@ class ReportsController < ApplicationController
     
     @report = Report.new(params[:report])
 
-    if(params[:issue_id])
+    if(!(params[:issue_id].nil? || params[:issue_id] == ''))
       @report.issue = Issue.find(params[:issue_id])
     end
 
