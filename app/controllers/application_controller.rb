@@ -39,13 +39,13 @@ class ApplicationController < ActionController::Base
     def fetch_issues  
       @order = ['latest', 'votes', 'resolved'].include?(params[:order]) ?  params[:order] : 'latest'
       if(@order == 'latest')
-        @issues = Issue.order('created_at desc').limit(SHOW_LIMIT)
+        @issues = Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100).order('created_at desc').limit(SHOW_LIMIT)
       elsif(@order == 'votes')
-        @issues = Issue.order('vote_count desc').limit(SHOW_LIMIT)
+        @issues = Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100).order('vote_count desc').limit(SHOW_LIMIT)
       elsif(@order == 'resolved')
-        @issues = Issue.where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
+        @issues = Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100).where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
       end
-      @issues ||= Issue.all
+      @issues ||= Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100)
     end
   
     #ensure we redirect to authenticate even on AJAX requests
