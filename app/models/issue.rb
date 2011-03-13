@@ -11,6 +11,21 @@ class Issue < ActiveRecord::Base
   has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
   #validates_presence_of :reports
   
+
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  #_with_city_and_state, :latitude  => :lat, :longitude => :lon
+  
+  reverse_geocoded_by :lat, :lon do |obj, geo|
+  #, :address => :location 
+    obj.city = geo.city
+    obj.zipcode = geo.postal_code
+    obj.country_name = geo.country
+    obj.country_code = geo.country_code 
+    obj.street_address = geo.address
+    obj.lat = geo.latitude
+    obj.lon = geo.longitude
+  end
+
 #  after_validation :reverse_geocode
   before_save :set_resolved_at
   
