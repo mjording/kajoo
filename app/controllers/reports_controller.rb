@@ -17,6 +17,10 @@ class ReportsController < ApplicationController
   # GET /reports/new.xml
   def new
     @report = Report.new
+    @issue_id = params[:issue]
+    if(@issue_id)
+      @issue = Issue.find(params[:issue])
+    end
     @issues = fetch_issues
 
     puts "XHR: #{request.xhr?}"
@@ -40,11 +44,21 @@ class ReportsController < ApplicationController
     
     @report = Report.new(params[:report])
 
+    if(params[:issue_id])
+      @report.issue = Issue.find(params[:issue_id])
+    end
+
     @report.user = current_user
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to(@report, :notice => 'Report was successfully created.') }
+        format.html { 
+          if(@report.issue)
+            redirect_to(@report.issue, :notice => 'Report was successfully created.') 
+          else
+            redirect_to(@report, :notice => 'Report was successfully created.') 
+          end
+        }
         format.xml  { render :xml => @report.issue, :status => :created, :location => @report }
       else
         format.html { 

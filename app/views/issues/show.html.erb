@@ -73,11 +73,23 @@
 </div><!--Closes sidebar-->
 <% end %>
 
-<ul>
+<h1>Additional Reports &amp; Suggested Solutions</h1>
+
 <% @issue.reports.each do |report| %>
-  <li>
-    <h4><%= report.title %></h4>
-    <h6><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></h6>  
-  </li>
+<div class="report_sum" class=""><!--STARTS: report summaries-->
+  <h4><%= report.title %></h4>
+	<div class="text_description">		
+  	<p class="date"><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></p>	
+  	<p><%= report.description %></p>
+	</div>
+	<div class="clear"></div>
+<!--	<div class="report_actions">
+		<ul>
+  		<li><a href="#">Support with Details</a></li>
+  		<li><a href="#">Propose Solution</a></li>
+  		<li><a href="#">Mark Resolved</a></li>			
+    </ul>
+  </div>-->
+</div>
 <% end %>
-</ul>
+

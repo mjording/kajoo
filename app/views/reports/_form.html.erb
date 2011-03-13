@@ -1,13 +1,17 @@
 <div id="submit_form" class="grid_12"><!--feature left starts-->
 		
-		<h1>Submit A Report</h1>
-		
+		<% if(@issue) %>
+		  <h1>Add detail to '<%= @issue.title %>'</h1>
+		<% else %>
+  		<h1>Submit A Report</h1>
+    <% end %>	
 		<%= simple_form_for @report do |f| %>
 		  <%= f.input :title %>
 		  <%= f.input :description %>
 		  <%= f.input :tags %>
       <%= f.input :lat, :as => :hidden %> 
-      <%= f.input :lon, :as => :hidden %>  
+      <%= f.input :lon, :as => :hidden %>
+      <input name="issue_id" id="issue_id" type="hidden" value="<%= @issue_id %>"/>  
 		  <% if @report.geocoded? %>
 			  <div id="change"><%= link_to 'Change', :geocoded => false %></a></div>	
 			<% else %>
