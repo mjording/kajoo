@@ -1,7 +1,8 @@
 FixIt::Application.routes.draw do
   
   resources :issues do 
-    resources :solutions
+    resource :solution
+    resources :suggestions
     #disabled for now
     #match 'solutions/:id/vote' => 'solutions#vote', :as => 'vote_for_solution'
     #resources :comments
