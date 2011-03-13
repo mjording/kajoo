@@ -200,7 +200,8 @@ margin: 0 10px 0 0;
 }
 .report_actions ul{
 	margin:7px 0 10px ;
-	}
+	clear: both;
+}
 .report_actions li{
 	margin: 0px;
 	padding-bottom: 20px;
@@ -219,6 +220,18 @@ margin: 0 10px 0 0;
 .report_actions a:hover{
 	color: #2D2D2D;
 	background-color: #A0A0A0;
+}
+.report_stats .user {
+  /*font-size: larger;*/
+}
+.report_stats .user img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.report_stats .stat {
+  font-weight: bold;
+  font-size: larger;
 }
 .supported a {
 	background-color: green;

@@ -11,13 +11,13 @@
 
   <div id="report_sum"><!--STARTS: report summaries-->
   <% issues.each do |issue| %>
-    <div class="report_details">
+    <div class="report_details grid_8">
     <h4><%= link_to issue.title, issue %></h4>
       <h6><%= issue.street_address %> <%= summary_date(issue.created_at) %></h6>
       <%#= image_tag :source => '', :style => " width='50px' height='50px'" %>
   		<p><%= issue.description %></p>
 		</div>
-		<div class="report_stats">
+		<div class="report_stats grid_6">
 		  <p class="user">
 		    Created By
 		    <%= image_tag issue.creator.avatar_url %> @<%= issue.creator.twitter_username %>
