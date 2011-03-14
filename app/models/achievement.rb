@@ -16,13 +16,13 @@ class Achievement
   ACHIEVEMENTS = [
     Achievement.new({:id => 'submit_first_report', 
                      :name => 'Newbie', 
-                     :description => 'User submits their first report',
+                     :description => 'Submitted 1st report',
                      :event => 'report_saved',
                      :condition => lambda {|user| user.reports.size == 1}
                     }),
     Achievement.new({:id => 'submit_fifth_report', 
                      :name => 'Home-town Hero', 
-                     :description => 'User submits their fifth report',
+                     :description => 'Submitted 5th report',
                      :event => 'report_saved',
                      :condition => lambda {|user| user.reports.size == 5}
                     })                    

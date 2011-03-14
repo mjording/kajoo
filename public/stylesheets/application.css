@@ -315,10 +315,19 @@ Achievements
 }
 .achievement .name { 
   width: 150px;
+  font-weight: bold;
 }
 .achievement .description { 
   width: 200px;
 }
 .achievement .has_achieved { 
   width: 50px;
+}
+.achievement .achieved {
+  color: green;
+  font-weight: bold;
+}
+.achievement .not_achieved {
+  color: red;
+  font-weight: bold;
 }
