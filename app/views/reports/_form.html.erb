@@ -17,7 +17,11 @@
 			<% else %>
 			  <%= f.input :address %>
 			<% end %>
-		  <%= f.button :submit %>	
+		  <%= f.button :submit %>
+<!--		  <% content_tag :button, :type => :submit, :class => :positive do %>
+         <%= image_tag '/images/cancel.png' %>
+         Cancel
+      <% end %>-->
+<!--		  <%= button_to 'Cancel', root_path, :remote => !is_mobile_device? %>-->
 		<% end %>
-
 </div><!--Closes feature left content-->

@@ -3,7 +3,7 @@
 var buildForm = function(){
   var form_html = "<%= escape_javascript(render :partial => 'form')%>"
   var map_html = "<%= escape_javascript(render :partial => 'map')%>"
-  $(this).html(map_html+form_html);
+  $(this).html(form_html+map_html);
   $('.report input:text').clearingInput();
   $('.report textarea').clearingInput();
 };

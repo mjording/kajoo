@@ -58,6 +58,9 @@ Submit Form
 	color: #898989;
 	padding: 0 0 5px 0;
 }
+#report_map {
+  height: 280px;
+}
 #title, #description, #tags, #location{
 	width: 300px;
 }
@@ -74,11 +77,11 @@ Submit Form
 #location, #change{
 	width: 300px;
 }
-.button{
+div.button{
 	margin: 20px 0 0 10px;
   float: left;
 }
-.button a {
+div.button a {
 	background-color: #FF8939;
 	padding: 10px 25px;
 	-webkit-border-radius: 5px;
@@ -86,17 +89,17 @@ Submit Form
 	text-decoration: none;
 	border: 1px solid #F47119;
 }
-.button a:hover{
+div.button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
 }
 
-.sidebar_section .button {
+.sidebar_section div.button {
 	margin: 10px 0px;	
 	float: none;
 }
 
-.sidebar_section .button a {
+.sidebar_section div.button a {
   display: block;
   text-align: center;
 }

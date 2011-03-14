@@ -1,1 +1,11 @@
-<h1>TODO</h1>
+<% content_for(:feature) do %>
+	<h1>Welcome to your dashboard</h1>
+	<p>On this page you can track your progress and awards as you help to report and fix issues around your city.</p>
+<% end %>
+
+<% content_for(:sidebar) do %>
+  <% if !is_mobile_device? %>
+    <% render :partial => 'shared/sidebar' %>
+  <% end %>
+<% end %>
+

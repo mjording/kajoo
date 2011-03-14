@@ -5,8 +5,7 @@ class Report < ActiveRecord::Base
   belongs_to :issue
 #  before_validation :geocode, :reverse_geocode
    
-  validates_presence_of :user
-  
+  validates_presence_of :user, :title, :description
   
   #def geocoded?
     #return !location.nil?
