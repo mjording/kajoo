@@ -294,3 +294,31 @@ Footer
 	background-color: #79593C;
 	color: #E0E0E0;
 }
+
+/***********
+Achievements
+**********/
+#achievements {
+  border-bottom: 1px solid black;
+}
+.achievement {
+  display:block;
+  clear: both;
+  border-top: 1px solid black;
+  height: 25px;
+  padding: 0 0 0 10px;
+  margin: 0px;
+}
+.achievement p {
+  float: left;
+  margin: 0px;
+}
+.achievement .name { 
+  width: 150px;
+}
+.achievement .description { 
+  width: 200px;
+}
+.achievement .has_achieved { 
+  width: 50px;
+}

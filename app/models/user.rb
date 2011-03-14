@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :issue_votes, :class_name => 'IssueVote'
   has_many :solution_votes, :class_name => 'SolutionVote'
+  has_many :achievements, :class_name => 'UserAchievement'
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar_url, :twitter_username, :twitter_id
@@ -56,7 +57,11 @@ class User < ActiveRecord::Base
     add_points(SITE['points'][action.to_s])
   end
 
-  SITE['points']['vote_on_issue']
+#  SITE['points']['vote_on_issue']
+ 
+  def has_achieved?(achievement)
+    return UserAchievement.where('achievement = :achievement_code and user_id = :user_id', {:achievement_code => achievement.id, :user_id => self.id}).exists?
+  end
   
   protected
   
