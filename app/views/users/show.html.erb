@@ -7,7 +7,7 @@
   <h3>My Reports</h3>
   <ul>
   <% current_user.reports.each do |report|%>
-    <li><%= report.title %></li>
+    <li><%= link_to report.title, report_path(report) %></li>
   <% end %>
 </ul>
 </div>

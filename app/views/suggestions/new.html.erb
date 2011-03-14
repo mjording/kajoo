@@ -1,1 +1,20 @@
 suggestion
+<div id="submit_form" class="grid_12"><!--feature left starts-->
+		
+		<h1>Make a suggestion</h1>
+		
+		<%= simple_form_for @solution do |f| %>
+		  <%#= f.input :title %>
+		  <%#= f.input :description %>
+		  <%#= f.input :tags %>
+      <%#= f.input :lat, :as => :hidden %> 
+      <%#= f.input :lon, :as => :hidden %>  
+		  <%# if @report.geocoded? %>
+			  <div id="change"><%#= link_to 'Change', :geocoded => false %></a></div>	
+			<%# else %>
+			  <%#= f.input :address %>
+			<%# end %>
+		  <%#= f.button :submit %>	
+		<% end %>
+
+</div><!--Closes feature left content-->
