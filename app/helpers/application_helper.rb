@@ -34,10 +34,6 @@ module ApplicationHelper
     (SITE['units'] == 'mi') ? 'miles' : 'kms'
   end
   
-  def available_achievements
-    return Achievement::ACHIEVEMENTS
-  end
-  
   def summary_date(date)
     #March 8, 2011
     date.strftime('%B %d, %Y')

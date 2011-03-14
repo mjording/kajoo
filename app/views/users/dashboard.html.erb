@@ -12,7 +12,7 @@
 <h2>Achievements</h2>
 
 <ul id="achievements">
-<% available_achievements.each do |achievement| %>
+<% Achievement.all.each do |achievement| %>
 <li class="achievement">
   <p class="name"><%= achievement.name %></p>
   <p class="description"><%= achievement.description %></p>
