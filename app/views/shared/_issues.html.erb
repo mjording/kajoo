@@ -1,9 +1,24 @@
 <!-- main content -->
 <div id="filter">
 	<ul>
-		<li><%= link_to 'Most Recent', {:order => 'latest'}, :class => (order == 'latest') ? 'active' : '' %></li>		
-		<li><%= link_to 'Most Voted', {:order => 'votes'}, :class => (order == 'votes') ? 'active' : '' %></li>		
-		<li><%= link_to 'Recently Resolved', {:order => 'resolved'}, :class => (order == 'resolved') ? 'active' : '' %></li>				
+	<% #XXX TODO there must be a better way to do this
+	 if(is_mobile_device?)
+	   latest_label = 'Recent'
+	   nearest_label = 'Nearest'
+	   voted_label = 'Rating'
+	   resolved_label = 'Resolved'
+	 else
+	   latest_label = 'Most Recent'
+	   nearest_label = 'Nearest to Me'
+	   voted_label = 'Most Voted'
+	   resolved_label = 'Recently Resolved'
+	 end
+	%>
+	
+		<li><%= link_to latest_label, {:order => 'latest'}, :class => (order == 'latest') ? 'active' : '' %></li>
+		<li><%= link_to nearest_label, {:order => 'near'}, :class => (order == 'near') ? 'active' : '' %></li>
+		<li><%= link_to voted_label, {:order => 'votes'}, :class => (order == 'votes') ? 'active' : '' %></li>
+		<li><%= link_to resolved_label, {:order => 'resolved'}, :class => (order == 'resolved') ? 'active' : '' %></li>
 	</ul>
 </div><!--Closes filter navigation-->
 
@@ -11,14 +26,21 @@
 
   <div id="report_sum"><!--STARTS: report summaries-->
   <% issues.each do |issue| %>
-    <div class="report_details">
+    <div class="report_details grid_8">
     <h4><%= link_to issue.title, issue %></h4>
       <h6><%= issue.street_address %> <%= summary_date(issue.created_at) %></h6>
       <%#= image_tag :source => '', :style => " width='50px' height='50px'" %>
   		<p><%= issue.description %></p>
 		</div>
-		<div class="report_stats">
-		  <p class="stat">Votes: <%= issue.votes.count %></p>
+		<div class="report_stats grid_6">
+		  <p class="user">
+		    Created By
+		    <%= image_tag issue.creator.avatar_url %> <%= link_to "@#{issue.creator.twitter_username}", user_path(issue.creator.id) %>
+		  </p>
+		  <p class="stat">
+		    Votes: <%= issue.votes.count %><br />
+		    <%= Geocoder::Calculations.distance_between(issue.lat, issue.lon, user_lat, user_lon, {:units => distance_units}).to_i %> <%= distance_units_name %>
+		  </p>
 		</div>
 		<div class="report_actions">
 			<ul>

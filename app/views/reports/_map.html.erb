@@ -10,27 +10,26 @@
 	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
 	      mapTypeId: google.maps.MapTypeId.ROADMAP      
 	    }	
-  	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  	map = new google.maps.Map(document.getElementById("report_map"), myOptions);
   	
-  	initialize();
+  	setTimeout(initialize, 10);
 	});
 	
 function initialize()
 {
 	if(geo_position_js.init())
 	{
-		document.getElementById('current').innerHTML="Receiving...";
-		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Couldn't get location"},{enableHighAccuracy:true});
+		$('#current').html("<img src=\"/images/spinner.gif\"/> Finding Location...");
+		geo_position_js.getCurrentPosition(show_position,function(){$('#current').html("Couldn't get location")},{enableHighAccuracy:true});
 	}
 	else
 	{
-		document.getElementById('current').innerHTML="Functionality not available";
+		$('#current').html("Automatic Location not available");
 	}
 }
 
 function show_position(p)
 {
-	<%#document.getElementById('current').innerHTML="latitude="+p.coords.latitude.toFixed(2)+" longitude="+p.coords.longitude.toFixed(2);%>
   geocoder = new google.maps.Geocoder();
   $('#report_lat').val(p.coords.latitude);
   $('#report_lon').val(p.coords.longitude);
@@ -38,7 +37,9 @@ function show_position(p)
 
   geocoder.geocode({'latLng': pos}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      $('#report_address').val(results[1].formatted_address);
+      var address = results[1].formatted_address;
+      $('#report_address').val(address);
+      $('#current').html(address);
     }
   });
    map.setCenter(pos);
@@ -62,7 +63,7 @@ function show_position(p)
 	
 </script>
 
-<div id="current">TODO</div>
-<div id="map_canvas" class="grid_10" style="height:350px"></div>
+<div id="current">Map not available</div>
+<div id="report_map" class="grid_10"></div>
 
 </div>

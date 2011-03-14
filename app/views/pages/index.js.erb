@@ -1,0 +1,10 @@
+<%= render :partial => 'shared/close_alerts' %>
+
+var buildForm = function(){
+  var index_html = "<%= escape_javascript(render :partial => 'index_feature')%>"
+  $(this).html(index_html);
+};
+
+$('#feature_content').slideUp(500, buildForm).slideDown(500);
+
+$('#feature').scrollToMe();

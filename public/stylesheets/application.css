@@ -58,6 +58,9 @@ Submit Form
 	color: #898989;
 	padding: 0 0 5px 0;
 }
+#report_map {
+  height: 280px;
+}
 #title, #description, #tags, #location{
 	width: 300px;
 }
@@ -74,11 +77,11 @@ Submit Form
 #location, #change{
 	width: 300px;
 }
-.button{
-	margin: 20px 0 0 10px;
+div.button{
+	margin: 20px 10px 0 0;
   float: left;
 }
-.button a {
+div.button a {
 	background-color: #FF8939;
 	padding: 10px 25px;
 	-webkit-border-radius: 5px;
@@ -86,17 +89,17 @@ Submit Form
 	text-decoration: none;
 	border: 1px solid #F47119;
 }
-.button a:hover{
+div.button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
 }
 
-.sidebar_section .button {
+.sidebar_section div.button {
 	margin: 10px 0px;	
 	float: none;
 }
 
-.sidebar_section .button a {
+.sidebar_section div.button a {
   display: block;
   text-align: center;
 }
@@ -200,7 +203,8 @@ margin: 0 10px 0 0;
 }
 .report_actions ul{
 	margin:7px 0 10px ;
-	}
+	clear: both;
+}
 .report_actions li{
 	margin: 0px;
 	padding-bottom: 20px;
@@ -219,6 +223,18 @@ margin: 0 10px 0 0;
 .report_actions a:hover{
 	color: #2D2D2D;
 	background-color: #A0A0A0;
+}
+.report_stats .user {
+  /*font-size: larger;*/
+}
+.report_stats .user img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.report_stats .stat {
+  font-weight: bold;
+  font-size: larger;
 }
 .supported a {
 	background-color: green;
@@ -277,4 +293,41 @@ Footer
 	padding: 0px;
 	background-color: #79593C;
 	color: #E0E0E0;
+}
+
+/***********
+Achievements
+**********/
+#achievements {
+  border-bottom: 1px solid black;
+}
+.achievement {
+  display:block;
+  clear: both;
+  border-top: 1px solid black;
+  height: 25px;
+  padding: 0 0 0 10px;
+  margin: 0px;
+}
+.achievement p {
+  float: left;
+  margin: 0px;
+}
+.achievement .name { 
+  width: 150px;
+  font-weight: bold;
+}
+.achievement .description { 
+  width: 200px;
+}
+.achievement .has_achieved { 
+  width: 50px;
+}
+.achievement .achieved {
+  color: green;
+  font-weight: bold;
+}
+.achievement .not_achieved {
+  color: red;
+  font-weight: bold;
 }

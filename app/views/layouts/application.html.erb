@@ -8,6 +8,9 @@
   
   <% if is_mobile_device? %>
     <%= javascript_include_tag 'application_mobile' %>
+    <% if is_device?('iphone') %>
+      <%= javascript_include_tag 'application_iphone' %>
+    <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
     <script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
@@ -24,8 +27,8 @@
 
 <div id="wrapper" class="container_24">
 <div id="notices">
-  <div class="grid_24"><% if notice %><div class="flash_message" id="flash_notice"><%= notice %></div><% end %></div>
-  <div class="grid_24"><% if alert %><div class="flash_message" id="flash_alert"><%= alert %></div><% end %></div>
+  <div class="grid_24"><div class="flash_message" id="flash_notice"><% if notice %><div class="flash_message_body"><%= raw(notice) %></div><% end %></div></div>
+  <div class="grid_24"><div class="flash_message" id="flash_alert"><% if alert %><div class="flash_message_body"><%= raw(alert) %></div><% end %></div></div>
 </div>
 <div id="header" class="container_24"><!--Header starts-->
   <%= render :partial => 'shared/navigation' %>
@@ -49,13 +52,6 @@
 </div>		
 
 <div id="sidebar" class="grid_6"><!--starts sidebar-->
-  <div class="sidebar_section" class="grid_6">
-    <% if(current_user) %>
-      <div class="button"><%= link_to "Submit A Report", new_report_path, :id => 'create-report-link' %></div>
-    <% else %>
-      <div class="button"><%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %></div>
-    <% end %>
-  </div>
 	<%= yield(:sidebar) %>		
 </div>	<!--Closes sidebar-->
 

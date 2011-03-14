@@ -119,11 +119,11 @@ Submit Form
 #location, #change{
 	width: auto;
 }
-.button{
+div.button{
 	margin: 20px 5px 0 0;	
 	float: left;
 }
-.button a {
+div.button a {
 	background-color: #FF8939;
 	padding: 10px 15px;
 	-webkit-border-radius: 5px;
@@ -131,7 +131,7 @@ Submit Form
 	text-decoration: none;
 	border: 1px solid #F47119;
 }
-.button a:hover{
+div.button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
 }
@@ -274,6 +274,16 @@ ul{
 	margin: 0px;
 }
 
+.report_stats .user img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.report_stats .stat {
+  font-weight: bold;
+}
+
+
 .report_actions li a{
   margin: 0 0 0 0;
 	color: #898989;
@@ -331,4 +341,43 @@ Footer
 #footer {
 	border-top: 3px solid brown; 
 	margin: 5px;
+}
+
+/**
+ACHIEVEMENTS
+**/
+#achievements {
+  border-bottom: 1px solid black;
+}
+.achievement {
+  display:block;
+  clear: both;
+  border-top: 1px solid black;
+  height: 40px;
+  padding: 0 0 0 10px;
+  margin: 0px;
+}
+.achievement p {
+  float: left;
+  margin: 0px;
+}
+.achievement .name { 
+/*  width: 150px;*/
+  border-bottom: 1px solid #e0e0e0;
+  float: none;
+  font-weight: bold;
+}
+.achievement .description { 
+  width: 200px;
+}
+.achievement .has_achieved { 
+  width: 50px;
+}
+.achievement .achieved {
+  color: green;
+  font-weight: bold;
+}
+.achievement .not_achieved {
+  color: red;
+  font-weight: bold;
 }

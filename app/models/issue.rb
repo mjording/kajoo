@@ -6,6 +6,7 @@ class Issue < ActiveRecord::Base
   has_many :votes, :class_name => 'IssueVote'
   has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true, :source => 'user'
   has_one :resolver, :class_name => 'User'
+  belongs_to :creator, :class_name => 'User'
   has_one :solution
   has_many :solution_votes
   has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'

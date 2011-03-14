@@ -1,3 +1,7 @@
-$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>").show();
-$("#alert_notice").html("<%= escape_javascript(flash[:alert])%>").show();
-$('#notices').slideDown().delay(2000).slideUp(1000);
+<% if !flash[:notice].nil? %>
+  $("#flash_notice").html("<%= escape_javascript(raw('<div class="flash_message_body">'+flash[:notice]+'</div>'))%>").show();
+<% end %>
+<% if !flash[:alert].nil? %>
+  $("#alert_notice").html("<%= escape_javascript(raw('<div class="flash_message_body">'+flash[:alert]+'</div>'))%>").show();
+<% end %>
+$('#notices').slideDown(1000).delay(2000).slideUp(1000);

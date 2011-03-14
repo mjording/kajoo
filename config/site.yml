@@ -2,14 +2,20 @@ development: &default
   city_name: 'Austin'
   state_name: 'Texas'
   country_name: 'United States'
+  lat: 30.2545168
+  lon: -97.7442346
+  radius: 100
+  units: mi
   site_name: 'SXSW Civic Hackathon'
   daily_vote_limit: 100
+  geolocate_enabled: false
+  default_user_lat: 30.2545168
+  default_user_lon: -97.7442346
   points: 
     vote_on_issue: 1
     submit_an_issue: 5
     tweet_clickthrough: 1
     report_closed_one_week: 5 
-  
   awards: 
 
 test: &test

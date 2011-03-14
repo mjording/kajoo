@@ -1,3 +1,8 @@
+<% content_for(:feature) do %>
+	<h1><%= @user.name %>'s Page</h1>
+	<p>Keep track of <%= @user.name %>'s progress as they work to fix their city.</p>
+<% end %>
+
 <div id="userprofile" class="grid_7">
   <h2><%= current_user.name %></h2>
   <%= image_tag current_user.avatar_url.gsub('_normal',''), :style => 'height:200px;' %>

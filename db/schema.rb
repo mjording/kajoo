@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110312224301) do
+ActiveRecord::Schema.define(:version => 20110314050714) do
 
   create_table "comments", :force => true do |t|
     t.integer  "issue_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110312224301) do
     t.integer  "vote_count",     :default => 0
     t.datetime "resolved_at"
     t.integer  "resolver_id"
+    t.integer  "creator_id"
   end
 
   create_table "reports", :force => true do |t|
@@ -73,6 +74,13 @@ ActiveRecord::Schema.define(:version => 20110312224301) do
     t.datetime "updated_at"
   end
 
+  create_table "user_achievements", :force => true do |t|
+    t.string   "achievement"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_tokens", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -98,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20110312224301) do
     t.integer  "twitter_id"
     t.string   "name"
     t.integer  "points",                              :default => 0
+    t.string   "twitter_username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

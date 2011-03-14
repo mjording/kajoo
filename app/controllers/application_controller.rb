@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   #def is_mobile_device?
   #  return true
   #end
+  
+  helper_method :site_location #returns [lat, lon]
 
   protect_from_forgery
 
@@ -34,18 +36,46 @@ class ApplicationController < ActionController::Base
   protected
 
     SHOW_LIMIT = 10
+    
+    def site_location
+      return [SITE['lat'], SITE['lon']]
+    end
+  
+    def site_radius
+      return SITE['radius']
+    end
   
     #the issues list from the front page and several other pages 
+    #XXX TODO revert this to non-radius searches.
+    #         we should prevent users from entering reports that are outside the service area in the first place. 
+    #         queries will be faster that way.
     def fetch_issues  
-      @order = ['latest', 'votes', 'resolved'].include?(params[:order]) ?  params[:order] : 'latest'
+      @order = ['latest', 'votes', 'resolved', 'near', 'trending'].include?(params[:order]) ?  params[:order] : 'latest'
       if(@order == 'latest')
-        @issues = Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100).order('created_at desc').limit(SHOW_LIMIT)
+        #"#{SITE['city_name']}, #{SITE['state_code']}, US"
+        @issues = Issue.order('created_at desc').limit(SHOW_LIMIT) # near(site_location, site_radius).
+        
       elsif(@order == 'votes')
-        @issues = Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100).order('vote_count desc').limit(SHOW_LIMIT)
+      
+        @issues = Issue.order('vote_count desc').limit(SHOW_LIMIT)
+        
       elsif(@order == 'resolved')
-        @issues = Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100).where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
+      
+        @issues = Issue.where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
+      
+      elsif(@order == 'near') 
+      
+        #issues near me - XXX TODO geocode on page load
+      
+        @issues = Issue.near(site_location, 10000).limit(SHOW_LIMIT)
+        
+      elsif(@order == 'trending')
+      
+        #issues ordered by votes case in the last 48 hours - XXX TODO update trending score on issue save. rank = (5 x reports in last 24 hrs) + (1 x votes in last 24 hrs)
+        
       end
-      @issues ||= Issue.near("#{SITE['city_name']}, #{SITE['state_code']}, US", 100)
+      
+      @issues ||= Issue.near(site_location, site_radius)
     end
   
     #ensure we redirect to authenticate even on AJAX requests

@@ -11,7 +11,7 @@ class ReportObserver < ActiveRecord::Observer
     if(report.issue.nil?)
       puts "Doing after create for report #{report.title}"
       #begin 
-      issue = Issue.create(:title => report.title, :description => report.description, :lat => report.lat, :lon => report.lon, :radius => report.radius)
+      issue = Issue.create(:title => report.title, :description => report.description, :lat => report.lat, :lon => report.lon, :radius => report.radius, :creator => report.user)
       report.issue = issue
     else
       issue = report.issue
