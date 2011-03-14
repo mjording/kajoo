@@ -26,7 +26,8 @@ issues.each_with_index do|issue,i|
     :description => issue['description'],
     :location => issue['address'],
     :lat => issue["lat"],
-    :lon => issue["lng"]
+    :lon => issue["lng"],
+    :created_by => user
   })
   issue.save!
 
