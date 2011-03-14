@@ -78,7 +78,7 @@ Submit Form
 	width: 300px;
 }
 div.button{
-	margin: 20px 0 0 10px;
+	margin: 20px 10px 0 0;
   float: left;
 }
 div.button a {

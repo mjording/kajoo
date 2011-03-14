@@ -16,6 +16,24 @@ module ApplicationHelper
     SITE['country_name']
   end
   
+  # XXX TODO - pull this from js when the plane lands :-)
+  def user_lat
+#    if(SITE['geolocate_enabled'])
+    return SITE['default_user_lat']
+  end
+  
+  def user_lon
+    return SITE['default_user_lon']
+  end
+  
+  def distance_units
+    return SITE['units'].to_sym
+  end
+  
+  def distance_units_name
+    (SITE['units'] == 'mi') ? 'miles' : 'kms'
+  end
+  
   def summary_date(date)
     #March 8, 2011
     date.strftime('%B %d, %Y')

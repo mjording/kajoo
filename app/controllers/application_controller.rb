@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   #helper_method :is_mobile_device?
 
 
-  #def is_mobile_device?
-  #  return true
-  #end
+  def is_mobile_device?
+    return true
+  end
   
   helper_method :site_location #returns [lat, lon]
 
@@ -50,23 +50,25 @@ class ApplicationController < ActionController::Base
     #         we should prevent users from entering reports that are outside the service area in the first place. 
     #         queries will be faster that way.
     def fetch_issues  
-      @order = ['latest', 'votes', 'resolved'].include?(params[:order]) ?  params[:order] : 'latest'
+      @order = ['latest', 'votes', 'resolved', 'near', 'trending'].include?(params[:order]) ?  params[:order] : 'latest'
       if(@order == 'latest')
         #"#{SITE['city_name']}, #{SITE['state_code']}, US"
-        @issues = Issue.near(site_location, site_radius).order('created_at desc').limit(SHOW_LIMIT)
+        @issues = Issue.order('created_at desc').limit(SHOW_LIMIT) # near(site_location, site_radius).
         
       elsif(@order == 'votes')
       
-        @issues = Issue.near(site_location, site_radius).order('vote_count desc').limit(SHOW_LIMIT)
+        @issues = Issue.order('vote_count desc').limit(SHOW_LIMIT)
         
       elsif(@order == 'resolved')
       
-        @issues = Issue.near(site_location, site_radius).where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
+        @issues = Issue.where(:resolved => true).order('resolved_at desc').limit(SHOW_LIMIT)
       
       elsif(@order == 'near') 
       
         #issues near me - XXX TODO geocode on page load
       
+        @issues = Issue.near(site_location, 10000).limit(SHOW_LIMIT)
+        
       elsif(@order == 'trending')
       
         #issues ordered by votes case in the last 48 hours - XXX TODO update trending score on issue save. rank = (5 x reports in last 24 hrs) + (1 x votes in last 24 hrs)

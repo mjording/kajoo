@@ -58,10 +58,31 @@
   position: fixed;
   top: 0px;
   margin: 0px auto;
-  padding: 10px;
   font-size: larger;
   font-weight: bold;
 }
+
+.flash_message_body {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.flash_message ul {
+  list-style: none;
+  margin: 0px;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+.flash_message ul li {
+  display: block; 
+  margin: 5px 0px;
+}
+
+.flash_message ul li:before {
+	content: "\00BB \0020";
+}
+
 
 #flash_alert {
   background-color: #FFBBBB;

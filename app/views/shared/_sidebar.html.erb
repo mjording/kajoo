@@ -1,3 +1,11 @@
+  <div class="sidebar_section" class="grid_6">
+    <% if(current_user) %>
+      <div class="button"><%= link_to "Submit A Report", new_report_path, :id => 'create-report-link' %></div>
+    <% else %>
+      <div class="button"><%= link_to "Sign Up",user_omniauth_authorize_path(:twitter), :id => 'sign_up' %></div>
+    <% end %>
+  </div>
+
   <h3>Notifications</h3>
 	<p>Lorizzle ipsizzle dolor the bizzle amizzle, ma nizzle adipiscing elit. Nullam sapien velit, gangsta volutpizzle, pot black, gravida vizzle, . Pellentesque rizzle tortizzle. Sizzle erizzle. Ma nizzle at dolor dapibus suscipit. Mah nizzle black velit sizzle mammasay mammasa mamma oo sa.</p>
 	

@@ -119,11 +119,11 @@ Submit Form
 #location, #change{
 	width: auto;
 }
-.button{
+div.button{
 	margin: 20px 5px 0 0;	
 	float: left;
 }
-.button a {
+div.button a {
 	background-color: #FF8939;
 	padding: 10px 15px;
 	-webkit-border-radius: 5px;
@@ -131,7 +131,7 @@ Submit Form
 	text-decoration: none;
 	border: 1px solid #F47119;
 }
-.button a:hover{
+div.button a:hover{
 	background-color: #DD691B;
 	border: 1px solid #F47119;
 }

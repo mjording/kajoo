@@ -63,8 +63,13 @@ class ReportsController < ApplicationController
       else
         format.html { 
           @issues = fetch_issues
+          errors = 'Your report could not be saved: <ul>'
+          @report.errors.each do |field, error|
+            errors += "<li>#{field} #{error}</li>"
+          end
+          errors += '</ul>'
           puts "Your report could not be saved: #{@report.errors.inspect}"
-          flash[:alert] = "Your report could not be saved: #{@report.errors.inspect}"
+          flash[:alert] = errors
           redirect_to :action => 'new'
         }
         format.xml  { render :xml => @report.errors, :status => :unprocessable_entity }
