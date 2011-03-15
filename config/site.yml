@@ -7,7 +7,7 @@ development: &default
   radius: 100
   units: mi
   site_name: 'SXSW Civic Hackathon'
-  daily_vote_limit: 100
+  daily_vote_limit: 5
   geolocate_enabled: false
   default_user_lat: 30.2545168
   default_user_lon: -97.7442346
