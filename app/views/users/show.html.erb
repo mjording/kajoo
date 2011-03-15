@@ -1,18 +1,48 @@
 <% content_for(:feature) do %>
-	<h1><%= @user.name %>'s Page</h1>
-	<p>Keep track of <%= @user.name %>'s progress as they work to fix their city.</p>
+  <% if(current_user && @user.id == current_user.id) %>
+    <h1>Welcome to your dashboard</h1>
+  	<p>On this page you can track your progress and awards as you help to report and fix issues around your city.</p>
+  <% else %>
+  	<h1><%= @user.name %>'s Page</h1>
+  	<p>Keep track of <%= @user.name %>'s progress as they work to fix their city.</p>
+  <% end %>
+<% end %>
+
+<% content_for(:sidebar) do %>
+  <% if !is_mobile_device? %>
+    <% render :partial => 'shared/sidebar' %>
+  <% end %>
 <% end %>
 
 <div id="userprofile" class="grid_7">
-  <h2><%= current_user.name %></h2>
-  <%= image_tag current_user.avatar_url.gsub('_normal',''), :style => 'height:200px;' %>
+  <h2><%= @user.name %></h2>
+  <%= image_tag @user.avatar_url.gsub('_normal',''), :style => 'height:200px;' %>
    
 </div>
+
 <div class="grid_6">
   <h3>My Reports</h3>
+  <%= will_paginate @reports %>
   <ul>
-  <% current_user.reports.each do |report|%>
-    <li><%= link_to report.title, report_path(report) %></li>
-  <% end %>
-</ul>
+    <% @reports.each do |report|%>
+      <li style="display: block; float: none"><%= link_to report.title, report_path(report) %></li>
+    <% end %>
+  </ul>
+  <%= will_paginate @reports %>
 </div>
+
+<div class="grid_16">
+<h2>Achievements</h2>
+
+<ul id="achievements">
+  <% Achievement.all.each do |achievement| %>
+  <li class="achievement">
+    <p class="name"><%= achievement.name %></p>
+    <p class="description"><%= achievement.description %></p>
+    <p class="has_achieved"><%= @user.has_achieved?(achievement) ? raw('<span class="achieved">Yes</span>') : raw('<span class="not_achieved">No</span>') %></p>
+  </li>
+  <% end %>
+  </ul>
+</div>
+
+

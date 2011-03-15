@@ -17,6 +17,10 @@ class Achievement
     return ACHIEVEMENTS
   end
   
+  #available event types:
+  # report_saved
+  # vote_saved
+  # 
   def self.for_event(event)
     return ACHIEVEMENTS.collect {|a| return event.to_s == a.event }
   end

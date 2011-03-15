@@ -17,7 +17,7 @@ gem 'annotate'
 gem 'open311'
 gem 'geocoder'
 gem 'meta_search'
-gem "will_paginate"
+gem "will_paginate", '3.0.pre2'
 gem 'cancan'
 gem 'vestal_versions', :git => 'https://github.com/laserlemon/vestal_versions.git'
 #gem 'globalize3'

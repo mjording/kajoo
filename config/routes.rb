@@ -21,9 +21,11 @@ FixIt::Application.routes.draw do
   match 'helpus' => 'pages#helpus', :as => 'helpus'
   match 'help' => 'pages#help', :as => 'help'
 
-  get "users/dashboard"
+#  get "users/dashboard"
   
-  resources :users
+  #resources :users
+  
+  match 'users/:userid' => 'users#show', :as => 'user'
 
    # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
