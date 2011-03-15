@@ -23,7 +23,7 @@ gem 'vestal_versions', :git => 'https://github.com/laserlemon/vestal_versions.gi
 #gem 'globalize3'
 gem 'simple_form'
 gem 'mysql2'
-
+#gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'ruby-debug19'

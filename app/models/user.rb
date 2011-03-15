@@ -17,11 +17,17 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
     puts "** data: #{data.inspect}"
-    if user = User.find_by_email("#{data['screen_name']}@twitter.com")
+    if user = User.find_by_twitter_id("#{data['screen_name']}")
       user
     else # Create an user with a stub password. 
-      User.create!(:email => "#{data['screen_name']}@twitter.com", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
+      User.create!(:twitter_id => "#{data['screen_name']}", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
     end
+
+    #if user = User.find_by_email("#{data['screen_name']}@twitter.com")
+      #user
+    #else # Create an user with a stub password. 
+      #User.create!(:email => "#{data['screen_name']}@twitter.com", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
+    #end
   end 
 
   def self.new_with_session(params, session)

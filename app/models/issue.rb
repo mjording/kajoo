@@ -11,11 +11,12 @@ class Issue < ActiveRecord::Base
   has_many :solution_votes
   has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
   #validates_presence_of :reports
+  #acts_as_taggable_on :categories 
+  accepts_nested_attributes_for :reports, :allow_destroy => true
   
-
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
-  
+   
   reverse_geocoded_by :lat, :lon do |obj, geo|
   #, :address => :location 
     obj.city = geo.city
@@ -32,6 +33,7 @@ class Issue < ActiveRecord::Base
   
   def self.find_similar(report)
     similar = self.near([report.lat, report.lon], 1)
+    
   end
     
   def add_vote_for_user(user)

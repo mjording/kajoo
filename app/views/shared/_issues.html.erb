@@ -38,7 +38,7 @@
 		    <%= image_tag issue.creator.avatar_url %> <%= link_to "@#{issue.creator.twitter_username}", user_path(issue.creator.id) %>
 		  </p>
 		  <p class="stat">
-		    Votes: <%= issue.votes.count %><br />
+      Votes: <%= issue.votes.count %><br />
 		    <%= Geocoder::Calculations.distance_between(issue.lat, issue.lon, user_lat, user_lon, {:units => distance_units}).to_i %> <%= distance_units_name %>
 		  </p>
 		</div>
