@@ -6,7 +6,7 @@ class Report < ActiveRecord::Base
 #  before_validation :geocode, :reverse_geocode
    
   validates_presence_of :user, :title, :description
-  
+  #acts_as_taggable_on :categories  
   #def geocoded?
     #return !location.nil?
   #end
@@ -24,7 +24,9 @@ class Report < ActiveRecord::Base
     obj.lat = geo.latitude
     obj.lon = geo.longitude
   end
-
+  def categories
+    tags.split.map{|tag|tag.strip.gsub(',','')}
+  end
   #def address_with_city_and_state
     #return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
   #end

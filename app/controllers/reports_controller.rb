@@ -49,7 +49,7 @@ class ReportsController < ApplicationController
     end
 
     @report.user = current_user
-
+    @similar_issues = Issue.find_similar(@report)
     respond_to do |format|
       if @report.save
         format.html { 

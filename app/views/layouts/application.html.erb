@@ -71,7 +71,20 @@
         </li>
         <li>
           <%= link_to "View Issues", issues_path %>
-        </li>
+          </li>
+<li class="navigation-item">
+         	  <% if user_signed_in? %>
+         	    Signed in as <%= current_user.email || current_user.user_name %>. Not you?
+         	    <%= link_to "Sign out", destroy_user_session_path %>
+         	  <% else %>
+         	    <%= link_to "Sign in", new_user_session_path %> or
+         	    <%#= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
+              or
+            <%#= link_to "Sign in as User with meetup", user_omniauth_authorize_path(:meetup) %> or <%= link_to "sign in", new_user_session_path %>
+         	  <% end %>
+          
+      </li>
+          
       <% if(current_user) %>
           <li><a href="#">Votes Remaining</a></li>
       <% else %>
