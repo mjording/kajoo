@@ -35,7 +35,7 @@
 		<div class="report_stats grid_6">
 		  <p class="user">
 		    Created By
-		    <%= image_tag issue.creator.avatar_url %> <%= link_to "@#{issue.creator.twitter_username}", user_path(issue.creator.id) %>
+		    <%= image_tag issue.creator.avatar_url %> <%= link_to "@#{issue.creator.twitter_username}", user_path(issue.creator.twitter_username) %>
 		  </p>
 		  <p class="stat">
       Votes: <%= issue.votes.count %><br />
