@@ -20,9 +20,12 @@ class Achievement
   #available event types:
   # report_saved
   # vote_saved
-  # 
+  # referral
+  # issue_closed
   def self.for_event(event)
-    return ACHIEVEMENTS.collect {|a| return event.to_s == a.event }
+    achievements = ACHIEVEMENTS.select {|a| return event.to_s == a.event }
+    puts "Achievements (in achievement.rb): #{achievements}"
+    return achievements
   end
   
 end
