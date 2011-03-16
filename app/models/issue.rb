@@ -32,8 +32,16 @@ class Issue < ActiveRecord::Base
   before_save :set_resolved_at
   
   def self.find_similar(report)
+    self.find_near_report(report)
+  end
+  def self.find_near_report(report)
     similar = self.near([report.lat, report.lon], 1)
-    
+  end
+  def self.find_similar_tags_for_report(report)
+    reports = self.find_near_report.map{|issue|issue.reports}
+    reports.map{|r|r.categories}.flatten
+    similar.map{|s|s.reports.map{|r|r.categories}.flatten}.flatten.include? report.categories
+    similar 
   end
     
   def add_vote_for_user(user)

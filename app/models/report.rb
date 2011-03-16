@@ -25,7 +25,11 @@ class Report < ActiveRecord::Base
     obj.lon = geo.longitude
   end
   def categories
-    tags.split.map{|tag|tag.strip.gsub(',','')}
+    if tags
+      tags.split.map{|tag|tag.strip.gsub(',','')}.flatten
+    else
+      []
+    end
   end
   #def address_with_city_and_state
     #return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
