@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     if user = User.find_by_twitter_id("#{data['screen_name']}")
       user
     else # Create an user with a stub password. 
-      User.create!(:twitter_id => "#{data['screen_name']}", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
+      User.create!(:email => "#{data['screen_name']}@kajoo.org", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
     end
 
     #if user = User.find_by_email("#{data['screen_name']}@twitter.com")
@@ -61,6 +61,23 @@ class User < ActiveRecord::Base
 
   def add_points_for_action(action)
     add_points(SITE['points'][action.to_s])
+#    available_achievements = Achievement.for_event('vote_saved')
+
+    available_achievements = ACHIEVEMENTS.select {|a| return action.to_s == a.event }
+
+    puts "Achievements: #{available_achievements}"
+    
+    available_achievements.each do |achievement|
+#    available_achievements.each do |achievement|
+#    achievements.each do |achievement|
+      puts "Checking for achievement '#{achievement.name}'"
+      if(!self.has_achieved?(achievement) && achievement[:condition].call(user))
+        puts "Achievement is true!"
+        self.achieve(achievement)
+      else
+        puts "Achievement is false"
+      end
+    end
   end
 
 #  SITE['points']['vote_on_issue']
@@ -71,6 +88,10 @@ class User < ActiveRecord::Base
   
   protected
   
+    def achieve(achievement)
+      self.achievements.create(:achievement => achievement.id)
+    end
+  
     def add_points(newpoints)
       self.points += newpoints
     end
@@ -79,17 +100,18 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: users
 #
-#  id                   :integer         not null, primary key
+#  id                   :integer(4)      not null, primary key
 #  email                :string(255)     default(""), not null
 #  encrypted_password   :string(128)     default(""), not null
 #  reset_password_token :string(255)
 #  remember_token       :string(255)
 #  remember_created_at  :datetime
-#  sign_in_count        :integer         default(0)
+#  sign_in_count        :integer(4)      default(0)
 #  current_sign_in_at   :datetime
 #  last_sign_in_at      :datetime
 #  current_sign_in_ip   :string(255)
@@ -97,8 +119,9 @@ end
 #  created_at           :datetime
 #  updated_at           :datetime
 #  avatar_url           :string(255)
-#  twitter_id           :integer
+#  twitter_id           :integer(4)
 #  name                 :string(255)
-#  points               :integer         default(0)
+#  points               :integer(4)      default(0)
+#  twitter_username     :string(255)
 #
 
