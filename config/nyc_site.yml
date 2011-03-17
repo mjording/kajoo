@@ -6,7 +6,7 @@ development: &default
   lon: -74.0059731
   radius: 100
   units: mi
-  site_name: 'SXSW Civic Hackathon'
+  site_name: 'NYC Kajoo'
   daily_vote_limit: 5
   geolocate_enabled: false
   default_user_lat: 40.7143528

@@ -38,10 +38,14 @@ class Issue < ActiveRecord::Base
     similar = self.near([report.lat, report.lon], 1)
   end
   def self.find_similar_tags_for_report(report)
-    reports = self.find_near_report.map{|issue|issue.reports}
+    reports = self.find_near_report(report).map{|issue|issue.reports}
     reports.map{|r|r.categories}.flatten
-    similar.map{|s|s.reports.map{|r|r.categories}.flatten}.flatten.include? report.categories
-    similar 
+    #similar.map{|s|s.reports.map{|r|r.categories}.flatten}.flatten.include? report.categ
+    #similar
+    similar.map{|issue|issue.reports.map{|r|r.categories.include? report.categories ? report : nil }.compact}.flatten
+     
+    #similar = self.near([report.lat, report.lon], 1)
+    #reports = similar.map{|issue|issue.reports}
   end
     
   def add_vote_for_user(user)
@@ -76,21 +80,20 @@ class Issue < ActiveRecord::Base
 end
 
 
-
 # == Schema Information
 #
 # Table name: issues
 #
-#  id             :integer(4)      not null, primary key
+#  id             :integer         not null, primary key
 #  title          :string(255)
 #  description    :text
 #  lat            :float
 #  lon            :float
-#  radius         :integer(4)
+#  radius         :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #  address        :string(255)
-#  resolved       :boolean(1)
+#  resolved       :boolean
 #  ip_address     :string(255)
 #  location       :text
 #  city           :string(255)
@@ -99,9 +102,6 @@ end
 #  country_name   :string(255)
 #  street_address :string(255)
 #  zipcode        :string(255)
-#  vote_count     :integer(4)      default(0)
-#  resolved_at    :datetime
-#  resolver_id    :integer(4)
-#  creator_id     :integer(4)
+#  vote_count     :integer         default(0)
 #
 
