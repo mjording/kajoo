@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     
     @user = User.find_by_twitter_username(params[:userid]) || User.find(params[:userid])
     @issues = @user.reports.map{|r|r.issue}
-    @reports = @user.reports.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
+    @reports = @user.reports.page(params[:page]).per(5)
+ #.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
   end
 end

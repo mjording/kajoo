@@ -1,6 +1,6 @@
 class Issue < ActiveRecord::Base
   #versioned
-
+  paginates_per 5 
   has_many :reports
   has_many :comments #XXX unused
   has_many :votes, :class_name => 'IssueVote'
@@ -49,7 +49,6 @@ class Issue < ActiveRecord::Base
     #similar = self.near([report.lat, report.lon], 1)
     #reports = similar.map{|issue|issue.reports}
   end
-    
   def add_vote_for_user(user)
     
     unless(user.votes_remaining > 0)
@@ -68,7 +67,6 @@ class Issue < ActiveRecord::Base
     
     user.save!
   end
-  
   protected
   
     ##update fields when issue gets resolved

@@ -22,13 +22,13 @@
 
 <div class="grid_6">
   <h3>My Reports</h3>
-  <%= will_paginate @reports %>
+  <%= paginate @reports %>
   <ul>
     <% @reports.each do |report|%>
       <li style="display: block; float: none"><%= link_to report.title, report_path(report) %></li>
     <% end %>
   </ul>
-  <%= will_paginate @reports %>
+  <%= paginate @reports %>
 </div>
 
 <div class="grid_16">

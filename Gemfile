@@ -14,7 +14,7 @@ gem 'dynamic_form'
 gem 'annotate'
 gem 'geocoder'
 gem 'meta_search'
-gem 'will_paginate', '3.0.pre2'
+gem "kaminari"  
 gem 'cancan'
 gem 'vestal_versions', :git => 'https://github.com/laserlemon/vestal_versions.git'
 #gem 'globalize3'

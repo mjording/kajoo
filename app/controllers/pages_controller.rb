@@ -4,12 +4,22 @@ class PagesController < ApplicationController
 
 
   def index
-    @issues = fetch_issues
-  end
+     @issues = case params[:order] 
+                when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
+                when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
+                when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
+                else Issue.near(site_location, site_radius).page(params[:page]||'1')
+               end
+   end
 
   #XXX TODO - sleep
   def dashboard
-    @issues = fetch_issues
+     @issues = case params[:order] 
+                when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
+                when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
+                when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
+                else Issue.near(site_location, site_radius).page(params[:page]||'1')
+               end
     @submitted_reports = Report.all.count
     @resolved_reports = Issue.where(:resolved => true).join(:reports).count('reports')
     @user_count = User.all.count

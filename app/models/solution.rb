@@ -1,7 +1,12 @@
 class Solution < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
+  validates_presence_of :title, :description
+
   has_many :votes, :class_name => 'SolutionVote'
+  def create_action
+    :suggested_solution
+  end
   def add_vote_for_user(user)
     unless(user.votes_remaining > 0)
       throw VoteException.new('Not enough votes')

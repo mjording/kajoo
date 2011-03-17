@@ -3,6 +3,9 @@ require 'spec_helper'
 describe Solution do
  it { should belong_to(:user) }
  it { should belong_to(:issue) }
+ it { should validate_presence_of(:title) }
+ it { should validate_presence_of(:description) }
+
  describe "#add_vote_for_user" do
     let(:solution){ Fabricate.build :solution}
     subject { solution }

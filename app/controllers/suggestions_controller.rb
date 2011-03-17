@@ -28,7 +28,8 @@ class SuggestionsController < ApplicationController
 
     flash[:notice] = "Thank you - your vote for solution '#{@solution.title}' has been received"
     
-    redirect_to :controller => 'welcome', :action => 'index'
+    redirect_to :root
+    #controller => 'pages', :action => 'index'
   end
   def new
     @issue = Issue.find(params[:issue_id])
@@ -39,11 +40,20 @@ class SuggestionsController < ApplicationController
   end
   def create
     @issue = Issue.find(params[:issue_id])
-    @suggestion = Solution.new(params[:suggestion])
+    @suggestion = @issue.suggestions.build(params[:solution])
     if @suggestion.save
-      respond_to do |format|
-        format.html { redirect_to(issue_solution_url(@issue, @suggestion) ) }
-      end
+      current_user.add_points_for_create(@suggestion)
+      flash[:notice] = "Thank you for your suggestion '#{@suggestion.title}' way to go"
+    
+      redirect_to :root
+      #controller => 'welcome', :action => 'index'
+
+      #respond_to do |format|
+        #format.html { redirect_to(issue_solution_url(@issue, @suggestion) ) }
+      #end
+
+    else
+      redirect_to(@issue)
     end
   end 
 end

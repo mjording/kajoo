@@ -1,3 +1,7 @@
+PAGE <%= paginate @issues %>  
+
+<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+
 <% content_for(:feature) do %>
 	<% render :partial => 'index_feature' %>
 <% end %>
@@ -8,4 +12,5 @@
   <% end %>
 <% end %>
 
-<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+
+
