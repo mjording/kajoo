@@ -1,4 +1,4 @@
-FixIt::Application.routes.draw do
+Kajoo::Application.routes.draw do
   
   resources :issues do 
     resource :solution

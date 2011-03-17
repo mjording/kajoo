@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-FixIt::Application.load_tasks
+Kajoo::Application.load_tasks

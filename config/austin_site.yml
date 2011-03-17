@@ -1,16 +1,16 @@
 development: &default
-  city_name: 'New York'
-  state_name: 'New York'
+  city_name: 'Austin'
+  state_name: 'Texas'
   country_name: 'United States'
-  lat: 40.7143528
-  lon: -74.0059731
+  lat: 30.2545168
+  lon: -97.7442346
   radius: 100
   units: mi
   site_name: 'SXSW Civic Hackathon'
   daily_vote_limit: 5
   geolocate_enabled: false
-  default_user_lat: 40.7143528
-  default_user_lon: -74.0059731
+  default_user_lat: 30.2545168
+  default_user_lon: -97.7442346
   points: 
     vote_on_issue: 1
     submit_an_issue: 5

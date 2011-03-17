@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
       @order = ['latest', 'votes', 'resolved', 'near', 'trending'].include?(params[:order]) ?  params[:order] : 'latest'
       if(@order == 'latest')
         #"#{SITE['city_name']}, #{SITE['state_code']}, US"
-        @issues = Issue.order('created_at desc').limit(SHOW_LIMIT) # near(site_location, site_radius).
+        @issues = Issue.near(site_location, site_radius).order('created_at desc').limit(SHOW_LIMIT) # near(site_location, site_radius).
         
       elsif(@order == 'votes')
       
@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
       
         #issues near me - XXX TODO geocode on page load
       
-        @issues = Issue.near(site_location, 10000).limit(SHOW_LIMIT)
+        @issues = Issue.near(site_location, site_radius).limit(SHOW_LIMIT)
         
       elsif(@order == 'trending')
       
