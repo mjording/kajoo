@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
-  has_many :reports 
+  has_many :user_tokens
+  has_many :reports
+  has_many :issues 
   has_many :solutions
   has_many :votes
   has_many :issue_votes, :class_name => 'IssueVote'

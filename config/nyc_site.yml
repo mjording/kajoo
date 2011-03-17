@@ -16,6 +16,7 @@ development: &default
     submit_an_issue: 5
     tweet_clickthrough: 1
     report_closed_one_week: 5 
+    vote_on_solution: 5
   awards: 
 
 test: &test

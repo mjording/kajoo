@@ -6,9 +6,12 @@ class Solution < ActiveRecord::Base
     unless(user.votes_remaining > 0)
       throw VoteException.new('Not enough votes')
     end
-    @vote = votes.create({:user => current_user})
+    @vote = votes.create({:user => user})
 
-    user.add_points(5)
+    user.add_points_for_action(:vote_on_solution)
+
+    #user.add_points(5)
+    user.save! 
   end
   
 end

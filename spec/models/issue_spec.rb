@@ -1,7 +1,26 @@
 require 'spec_helper'
 
 describe Issue do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:creator)}
+
+  describe "#add_vote_for_user" do
+    let(:issue){ Fabricate.build :issue}
+    subject { issue }
+    let(:user){ Fabricate :user }
+    it do
+      expect { subject.add_vote_for_user(user) }.to change(IssueVote, :count).by(1)
+    end
+  end
+  #describe ".find_similar" do
+    #context 'when passed a report' do
+      #let(:report){ Fabricate :report}
+      #subject { described_class.find_similar(report) }
+
+      #it { should_not be_blank }
+    #end
+  #end
+
+
 end
 
 

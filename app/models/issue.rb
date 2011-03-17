@@ -69,7 +69,7 @@ class Issue < ActiveRecord::Base
   
   protected
   
-    #update fields when issue gets resolved
+    ##update fields when issue gets resolved
     def set_resolved_at
       if(resolved && resolved_at.nil?)
         resolved_at = Time.now.to_datetime
