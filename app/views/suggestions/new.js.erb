@@ -1,0 +1,13 @@
+<%= render :partial => 'shared/close_alerts' %>
+
+var buildForm = function(){
+  var form_html = "<%= escape_javascript(render :partial => 'form')%>"
+  <%#var map_html = "<%= escape_javascript(render :partial => 'map')%>"%>
+  $(this).html(form_html);
+  $('.suggestion input:text').clearingInput();
+  $('.suggestion textarea').clearingInput();
+};
+
+$('#feature_content').slideUp(500, buildForm).slideDown(500);
+
+$('#feature').scrollToMe();

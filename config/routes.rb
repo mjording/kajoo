@@ -1,9 +1,11 @@
 Kajoo::Application.routes.draw do
   
   resources :issues do 
-    resource :solution
-    resources :suggestions
+    #resource :solution
+    resources :suggestions, :as => 'solutions'
+    #, :as => 's'
     #disabled for now
+    #match 'suggestions/:id/new'
     #match 'solutions/:id/vote' => 'solutions#vote', :as => 'vote_for_solution'
     #resources :comments
   end

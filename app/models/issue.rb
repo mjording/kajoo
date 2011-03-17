@@ -8,12 +8,14 @@ class Issue < ActiveRecord::Base
   has_one :resolver, :class_name => 'User'
   belongs_to :creator, :class_name => 'User'
   has_one :solution
-  has_many :solution_votes
-  has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
+  #has_many :solution_votes
+  #has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
+  has_many :suggestions, :class_name => 'Solution', :uniq => true
   #validates_presence_of :reports
   #acts_as_taggable_on :categories 
   accepts_nested_attributes_for :reports, :allow_destroy => true
-  
+  accepts_nested_attributes_for :suggestions, :allow_destroy => true
+ 
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
    
@@ -73,7 +75,7 @@ class Issue < ActiveRecord::Base
     def set_resolved_at
       if(resolved && resolved_at.nil?)
         resolved_at = Time.now.to_datetime
-        resolver = current_user
+        resolver ||= current_user
       end
     end
   

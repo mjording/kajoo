@@ -30,5 +30,12 @@ class SolutionsController < ApplicationController
     
     redirect_to :controller => 'welcome', :action => 'index'
   end
+  def new
+    @issue = Issue.find(params[:issue_id])
+    @suggestion = @issue.suggestions.build  
+  end
+  def index
+    @issue = Issue.find(params[:issue_id])
+  end
 
 end

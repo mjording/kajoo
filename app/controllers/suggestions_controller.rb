@@ -32,9 +32,19 @@ class SuggestionsController < ApplicationController
   end
   def new
     @issue = Issue.find(params[:issue_id])
+    @suggestion = @issue.suggestions.build  
   end
   def index
     @issue = Issue.find(params[:issue_id])
   end
+  def create
+    @issue = Issue.find(params[:issue_id])
+    @suggestion = Solution.new(params[:suggestion])
+    if @suggestion.save
+      respond_to do |format|
+        format.html { redirect_to(issue_solution_url(@issue, @suggestion) ) }
+      end
+    end
+  end 
 end
 
