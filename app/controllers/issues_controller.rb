@@ -51,11 +51,16 @@ class IssuesController < ApplicationController
     end
     
     #@issue.add_vote_for_user(current_user)
-    
-    begin
+    if(current_user.votes_remaining > 0)
+       
       @issue.add_vote_for_user(current_user)
-    rescue Exception => e
-
+       flash[:notice] = "Thank you - your vote for '#{@issue.title}' has been received"
+    
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
+    else
       flash[:alert] = e.inspect
       puts e.backtrace
       logger.warn(flash[:alert])
@@ -74,15 +79,6 @@ class IssuesController < ApplicationController
           end
         }
       end
-      
-      return
-    end
-    
-    flash[:notice] = "Thank you - your vote for '#{@issue.title}' has been received"
-    
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js
     end
   end
   

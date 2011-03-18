@@ -1,0 +1,29 @@
+development: &default
+  city_name: 'New York'
+  state_name: 'New York'
+  country_name: 'United States'
+  lat: 40.7143528
+  lon: -74.0059731
+  radius: 100
+  units: mi
+  site_name: 'NYC Kajoo'
+  daily_vote_limit: 5
+  geolocate_enabled: false
+  default_user_lat: 40.7143528
+  default_user_lon: -74.0059731
+  points: 
+    vote_on_issue: 1
+    submit_an_issue: 5
+    tweet_clickthrough: 1
+    report_closed_one_week: 5 
+    vote_on_solution: 5
+  awards: 
+
+test: &test
+  <<: *default
+
+production: 
+  <<: *default
+  
+cucumber:
+  <<: *test

@@ -1,3 +1,7 @@
+<%= paginate @issues, :window => 2, :num_pages =>  (@issues.all.count.to_f / 5)+1  %>  
+
+<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+
 <% content_for(:feature) do %>
 	<% render :partial => 'index_feature' %>
 <% end %>
@@ -8,4 +12,5 @@
   <% end %>
 <% end %>
 
-<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+
+

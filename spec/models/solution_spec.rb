@@ -1,7 +1,20 @@
 require 'spec_helper'
 
 describe Solution do
-  pending "add some examples to (or delete) #{__FILE__}"
+ it { should belong_to(:user) }
+ it { should belong_to(:issue) }
+ it { should validate_presence_of(:title) }
+ it { should validate_presence_of(:description) }
+
+ describe "#add_vote_for_user" do
+    let(:solution){ Fabricate.build :solution}
+    subject { solution }
+    let(:user){ Fabricate :user }
+    it do
+      expect { subject.add_vote_for_user(user) }.to change(SolutionVote, :count).by(1)
+    end
+  end
+
 end
 
 

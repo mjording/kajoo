@@ -63,7 +63,6 @@
 <% end %>
 
 <% content_for(:feature) do %>
-		
 	<div id="map" class="grid_16"><!--feature left starts-->
 	<h5>Issues Around <%= city_name %>, <%= state_name %></h5>
 	<p id="current_location"></p>
@@ -95,4 +94,10 @@
   <% render :partial => 'dashboard_sidebar' %>
 <% end %>
 
+<%= paginate @issues, :window => 2, :num_pages =>  (@issues.all.count.to_f / 5)+1  %>  
+
+
 <%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+<%= paginate @issues, :window => 2, :num_pages =>  (@issues.all.count.to_f / 5)+1  %>  
+
+

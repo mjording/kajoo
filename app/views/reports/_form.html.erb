@@ -4,8 +4,8 @@
 		  <h1>Add detail to '<%= @issue.title %>'</h1>
 		<% else %>
   		<h1>Submit A Report</h1>
-    <% end %>	
-		<%= simple_form_for @report do |f| %>
+    <% end %>
+    <%= simple_form_for @report, :html =>{:multipart => true} do |f| %>
 		  <%= f.input :title %>
 		  <%= f.input :description %>
 		  <%= f.input :tags %>
@@ -16,7 +16,10 @@
 			  <div id="change"><%= link_to 'Change', :geocoded => false %></a></div>	
 			<% else %>
 			  <%= f.input :address %>
-			<% end %>
+      <% end %>
+       <label>report photo</label>
+        <%= f.file_field :report_image %>
+        <%= f.hidden_field :report_image_cache %>
 		  <%= f.button :submit %>
 <!--		  <% content_tag :button, :type => :submit, :class => :positive do %>
          <%= image_tag '/images/cancel.png' %>

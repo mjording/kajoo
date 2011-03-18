@@ -7,17 +7,14 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 #
 user = User.create({
-  :email => "tpop@twitter.com", 
+  :email => "mjording@gmail.com", 
   :password => Devise.friendly_token[0,20],
   :avatar_url => 'http://a1.twimg.com/profile_images/1188388501/Photo_on_2010-12-10_at_15.09__4.jpg', 
   :name => 'mjording', 
-  :twitter_id => '@twitter' 
+  :twitter_username => 'mjording' 
 })
 
-#report = tpop.reports.create({
-#  :title => "Remove the Monster Gator threat",
-#  :description => "orizzle ipsizzle dolor the bizzle amizzle, ma nizzl..."
-#})
+
 issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
 issues.each_with_index do|issue,i|
   puts "creating issue #{i}"

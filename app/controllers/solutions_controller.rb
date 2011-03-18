@@ -16,19 +16,54 @@ class SolutionsController < ApplicationController
       redirect_to :controller => 'welcome', :action => 'index'
       return
     end
-    
-    begin
+     if(current_user.votes_remaining > 0)
+       
       @solution.add_vote_for_user(current_user)
-    rescue Exception => e
-      flash[:alert] = 'Sorry: '+e.message
+       flash[:notice] = "Thank you - your vote for '#{@solution.title}' has been received"
+    
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
+    else
+      flash[:alert] = e.inspect
       puts e.backtrace
-      redirect_to :controller => 'welcome', :action => 'index'
-      return
+      logger.warn(flash[:alert])
+      respond_to do |format|
+        format.html { 
+          if(request.env["HTTP_REFERER"])
+            redirect_to :back 
+          end
+        }
+        format.js { 
+          render :update do |page| 
+            if(request.env["HTTP_REFERER"])
+              page.redirect_to(:back)
+            end
+          end
+        }
+      end
     end
+
+    #begin
+      #@solution.add_vote_for_user(current_user)
+    #rescue Exception => e
+      #flash[:alert] = 'Sorry: '+e.message
+      #puts e.backtrace
+      #redirect_to :controller => 'welcome', :action => 'index'
+      #return
+    #end
 
     flash[:notice] = "Thank you - your vote for solution '#{@solution.title}' has been received"
     
     redirect_to :controller => 'welcome', :action => 'index'
+  end
+  def new
+    @issue = Issue.find(params[:issue_id])
+    @suggestion = @issue.suggestions.build  
+  end
+  def index
+    @issue = Issue.find(params[:issue_id])
   end
 
 end

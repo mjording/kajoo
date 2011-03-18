@@ -1,0 +1,12 @@
+<% content_for(:feature) do %>
+	<%= render :partial => 'form' %>
+	<%#= render :partial => 'map' %>
+<% end %>
+
+<% content_for(:sidebar) do %>
+  <% if !is_mobile_device? %>
+    <%= render :partial => 'shared/sidebar' %>
+  <% end %>
+<% end %>
+
+

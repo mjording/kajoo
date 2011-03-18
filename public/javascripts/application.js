@@ -51,7 +51,9 @@ function maybeShowNavBar(evt) {
 /**
  * extend jquery with "$('elem').scrollToMe();
  */
-$(function($){
+(function($) {
+  //$(function() {
+
 	$.fn.scrollToMe = function(){
 		$('html,body').animate({
 			scrollTo: this.offset().top

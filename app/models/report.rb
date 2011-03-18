@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base  
   #versioned
-
+  mount_uploader :report_image, ReportImageUploader
   belongs_to :user
   belongs_to :issue
 #  before_validation :geocode, :reverse_geocode

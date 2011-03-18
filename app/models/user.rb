@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
-  has_many :reports 
+  has_many :user_tokens
+  has_many :reports
+  has_many :issues 
   has_many :solutions
   has_many :votes
   has_many :issue_votes, :class_name => 'IssueVote'
@@ -58,7 +59,9 @@ class User < ActiveRecord::Base
     votes_today = self.votes.where('created_at > :one_day_ago', {:one_day_ago => Time.now - 1.day}).count
     return limit - votes_today
   end
-
+  def add_points_for_create(model)
+    add_points_for_action(model.send('create_action'))
+  end
   def add_points_for_action(action)
     add_points(SITE['points'][action.to_s])
 #    available_achievements = Achievement.for_event('vote_saved')
@@ -94,6 +97,13 @@ class User < ActiveRecord::Base
   
     def add_points(newpoints)
       self.points += newpoints
+    end
+
+    def accreditation_value(supporter_count)
+      scale_number = 0.3
+      factor = supporter_count / scale_number
+      position = (Math.sqrt(8 * factor + 1) -1) / 2
+      position * scale_number
     end
 
 end

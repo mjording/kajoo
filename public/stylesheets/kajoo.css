@@ -45,6 +45,17 @@
 .simple_form.report textarea {
   height: 50px;
 }
+.simple_form.solution input[type='text'], .simple_form.solution textarea {
+  border: 1px solid #E0E0E0;
+  padding: 2px 2px 2px 6px;
+  margin: 0 0 10px 0px;
+  width: 400px;
+}
+.simple_form.solution textarea {
+ height: 50px;
+}
+
+
 
 #twitter-register-link {
   text-indent: -4000px;
