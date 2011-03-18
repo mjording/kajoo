@@ -31,7 +31,7 @@
       <li><%= link_to raw("<span id=\"votes-remaining\">#{current_user.votes_remaining}</span> #{votes_label}"), user_path(current_user.twitter_username) %></li>
       <li><%= link_to raw("<span id=\"reputation-points\">#{current_user.points}</span> #{rep_label}"), user_path(current_user.twitter_username) %></li>
   	  <li><img id="twitter_avatar" src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>">
-    	  <% if !is_mobile_device? %><%= link_to current_user.name, user_path(current_user), :id => 'account_link' %> | <% end %>
+    	  <% if !is_mobile_device? %><%= link_to current_user.name, user_path(current_user.twitter_username), :id => 'account_link' %> | <% end %>
     	  <%= link_to 'Logout', destroy_user_session_path, :id => 'logout_link' %></li>
 		<% else %>
   		<li><%= link_to home_label, root_path, :id => 'home_link' %></li>
