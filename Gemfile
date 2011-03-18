@@ -12,7 +12,7 @@ gem 'dragonfly', '~>0.8.1'
 gem 'gollum'
 gem 'dynamic_form'
 gem 'annotate'
-gem 'geocoder'
+gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git'
 gem 'meta_search'
 gem "kaminari"  
 gem 'cancan'

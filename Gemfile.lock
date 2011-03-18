@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/alexreisner/geocoder.git
+  revision: 46d1cb818c38b3ecd616e123fd1e2263858415c2
+  specs:
+    geocoder (0.9.10)
+
+GIT
   remote: https://github.com/laserlemon/vestal_versions.git
   revision: 3574a0b4e98ef187931376d1e38a01e109474c71
   specs:
@@ -92,7 +98,6 @@ GEM
       faraday (~> 0.5.4)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    geocoder (0.9.10)
     gherkin (2.3.3)
       json (~> 1.4.6)
     github-markup (0.5.3)
@@ -267,7 +272,7 @@ DEPENDENCIES
   dragonfly (~> 0.8.1)
   dynamic_form
   fabrication
-  geocoder
+  geocoder!
   gollum
   heroku
   kaminari

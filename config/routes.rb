@@ -11,6 +11,8 @@ Kajoo::Application.routes.draw do
   end
 
   match 'issues/:id/vote' => 'issues#vote', :as => 'vote_for_issue'
+  match 'users/:userid' => 'users#show', :as => 'user'
+
 
   resources :reports
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions" }
@@ -27,9 +29,7 @@ Kajoo::Application.routes.draw do
   
   #resources :users
   
-  match 'users/:userid' => 'users#show', :as => 'user'
-
-   # You can have the root of your site routed with "root"
+     # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "pages#index"
 

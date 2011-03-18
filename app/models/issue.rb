@@ -1,5 +1,6 @@
 class Issue < ActiveRecord::Base
   #versioned
+  default_scope order('vote_count desc')
   has_many :reports
   has_many :comments #XXX unused
   has_many :votes, :class_name => 'IssueVote'
@@ -83,7 +84,7 @@ end
 #
 # Table name: issues
 #
-#  id             :integer         not null, primary key
+#' id             :integer         not null, primary key
 #  title          :string(255)
 #  description    :text
 #  lat            :float

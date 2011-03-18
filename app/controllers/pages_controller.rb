@@ -10,8 +10,22 @@ class PagesController < ApplicationController
                 #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
                 #else Issue.near(site_location, site_radius).page(params[:page]||'1')
                #end
-     @issues = Issue.near([SITE['lat'], SITE['lon']],SITE['radius'])
-   end
+
+
+        @issues = Issue.near(site_location, site_radius).page(params[:page]).per(5)
+        #all
+        #@issues.instance_eval <<-EVAL
+              #def current_page
+                ##{params[:page] || 1}
+              #end
+              #def num_pages
+                #count
+              #end
+              #def limit_value                                                                               
+                #10
+              #end
+        #EVAL
+  end
 
   #XXX TODO - sleep
   def dashboard
@@ -21,7 +35,9 @@ class PagesController < ApplicationController
                 #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
                 #else Issue.near(site_location, site_radius).page(params[:page]||'1')
                #end
-     @issues = Issue.near(site_location, site_radius).page params[:page]
+     #@issues = Issue.near(site_location, site_radius, :select => "issues.*").page params[:page]
+     @issues = Issue.near(site_location, site_radius).page(params[:page]).per(5)
+ 
      @submitted_reports = Report.all.count
     @resolved_reports = Issue.where(:resolved => true).join(:reports).count('reports')
     @user_count = User.all.count
