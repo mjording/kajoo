@@ -56,6 +56,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.3)
+    carrierwave (0.5.2)
+      activesupport (~> 3.0)
     celerity (0.8.8)
     childprocess (0.1.7)
       ffi (~> 0.6.3)
@@ -189,6 +191,7 @@ GEM
       rest-client (~> 1.6.1)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rmagick (2.13.1)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -257,6 +260,7 @@ DEPENDENCIES
   annotate
   cancan
   capybara
+  carrierwave
   cucumber-rails
   database_cleaner
   devise (= 1.2.rc)
@@ -277,6 +281,7 @@ DEPENDENCIES
   rails (= 3.0.4)
   rails3-generators
   relish
+  rmagick
   rspec-rails
   ruby-debug19
   shoulda

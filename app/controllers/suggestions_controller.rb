@@ -13,27 +13,37 @@ class SuggestionsController < ApplicationController
       
     if(SolutionVote.find_by_solution_id_and_user_id(@solution.id, current_user.id))
       flash[:alert] = 'You cannot vote for the same solution twice'
-      redirect_to :controller => 'welcome', :action => 'index'
+      redirect_to :root
       return
     end
     
-    begin
+    if(current_user.votes_remaining > 0)
       @solution.add_vote_for_user(current_user)
-    rescue Exception => e
+      flash[:notice] = "Thank you - your vote for solution '#{@solution.title}' has been received"
+    
+     redirect_to :root
+    #controller => 'pages', :action => 'index'
+    else 
       flash[:alert] = 'Sorry: '+e.message
       puts e.backtrace
-      redirect_to :controller => 'welcome', :action => 'index'
+       redirect_to :root
       return
     end
 
-    flash[:notice] = "Thank you - your vote for solution '#{@solution.title}' has been received"
     
-    redirect_to :root
-    #controller => 'pages', :action => 'index'
   end
   def new
-    @issue = Issue.find(params[:issue_id])
-    @suggestion = @issue.suggestions.build  
+     if(current_user.votes_remaining > 0)
+
+        @issue = Issue.find(params[:issue_id])
+        @suggestion = @issue.suggestions.build 
+     else
+       flash[:alert] = 'Sorry: '+e.message
+        puts e.backtrace
+        redirect_to :root
+        return
+    end
+
   end
   def index
     @issue = Issue.find(params[:issue_id])

@@ -16,28 +16,53 @@ class ReportsController < ApplicationController
   # GET /reports/new
   # GET /reports/new.xml
   def new
+    if(current_user.votes_remaining > 0)
+       
     @report = Report.new
     @issue_id = params[:issue]
     if(@issue_id)
       @issue = Issue.find(params[:issue])
     end
-     @issues = case params[:order] 
-                when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
-                when 'resolved' then Issue.where(:resolved => true).order('resolved_at desc').page(params[:page]||'1')
-                when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
-                else Issue.near(site_location, site_radius).page(params[:page]||'1')
-               end
-    #@order = ['latest', 'votes', 'resolved', 'near', 'trending'].include?(params[:order]) ?  params[:order] : 'latest'
- 
-    #@issues = params[:order] ? Issue.fetch_issues( params[:order]).page(params[:page]).per(5)   : Issue.fetch_issues.page(params[:page]).per(5)  
+#@issues = case params[:order] 
+                #when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
+                #when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
+                #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
+                #else Issue.near(site_location, site_radius).page(params[:page]||'1')
+               #end
+       @issues = Issue.near(site_location, site_radius).page(params[:page]||'1')
+      #@order = ['latest', 'votes', 'resolved', 'near', 'trending'].include?(params[:order]) ?  params[:order] : 'latest'
+   
+      #@issues = params[:order] ? Issue.fetch_issues( params[:order]).page(params[:page]).per(5)   : Issue.fetch_issues.page(params[:page]).per(5)  
 
-    puts "XHR: #{request.xhr?}"
+      puts "XHR: #{request.xhr?}"
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @report }
-      format.js
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @report }
+        format.js
+      end
+
+    else
+      flash[:alert] = e.inspect
+      puts e.backtrace
+      logger.warn(flash[:alert])
+      respond_to do |format|
+        format.html { 
+          if(request.env["HTTP_REFERER"])
+            redirect_to :back 
+          end
+        }
+        format.js { 
+          render :update do |page| 
+            if(request.env["HTTP_REFERER"])
+              page.redirect_to(:back)
+            end
+          end
+        }
+      end
     end
+
+
   end
 
   # GET /reports/1/edit
@@ -70,13 +95,14 @@ class ReportsController < ApplicationController
         format.xml  { render :xml => @report.issue, :status => :created, :location => @report }
       else
         format.html { 
-     @issues = case params[:order] 
-                when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
-                when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
-                when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
-                else Issue.near(site_location, site_radius).page(params[:page]||'1')
-               end          #@issues = params[:order] ? Issue.fetch_issues(params[:order]).page(params[:page]).per(5) : Issue.fetch_issues.page(params[:page]).per(5)  
-          errors = 'Your report could not be saved: <ul>'
+ #@issues = case params[:order] 
+                #when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
+                #when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
+                #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
+                #else Issue.near(site_location, site_radius).page(params[:page]||'1')
+               #end
+     @issues = Issue.near(site_location, site_radius).page(params[:page]||'1')
+        errors = 'Your report could not be saved: <ul>'
           @report.errors.each do |field, error|
             errors += "<li>#{field} #{error}</li>"
           end

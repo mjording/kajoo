@@ -17,12 +17,11 @@ gem 'meta_search'
 gem "kaminari"  
 gem 'cancan'
 gem 'vestal_versions', :git => 'https://github.com/laserlemon/vestal_versions.git'
-#gem 'globalize3'
 gem 'simple_form'
 gem 'mysql2'
 gem 'fabrication'
-#gem 'acts-as-taggable-on'
-
+gem 'carrierwave'
+gem 'rmagick'
 group :development do
   gem 'heroku'
   gem 'looksee'

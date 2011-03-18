@@ -8,9 +8,6 @@ class Solution < ActiveRecord::Base
     :suggested_solution
   end
   def add_vote_for_user(user)
-    unless(user.votes_remaining > 0)
-      throw VoteException.new('Not enough votes')
-    end
     @vote = votes.create({:user => user})
 
     user.add_points_for_action(:vote_on_solution)

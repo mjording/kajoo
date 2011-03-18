@@ -4,23 +4,25 @@ class PagesController < ApplicationController
 
 
   def index
-     @issues = case params[:order] 
-                when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
-                when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
-                when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
-                else Issue.near(site_location, site_radius).page(params[:page]||'1')
-               end
+     #@issues = case params[:order] 
+                #when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
+                #when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
+                #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
+                #else Issue.near(site_location, site_radius).page(params[:page]||'1')
+               #end
+     @issues = Issue.near([SITE['lat'], SITE['lon']],SITE['radius'])
    end
 
   #XXX TODO - sleep
   def dashboard
-     @issues = case params[:order] 
-                when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
-                when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
-                when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
-                else Issue.near(site_location, site_radius).page(params[:page]||'1')
-               end
-    @submitted_reports = Report.all.count
+   #@issues = case params[:order] 
+                #when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
+                #when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
+                #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
+                #else Issue.near(site_location, site_radius).page(params[:page]||'1')
+               #end
+     @issues = Issue.near(site_location, site_radius).page params[:page]
+     @submitted_reports = Report.all.count
     @resolved_reports = Issue.where(:resolved => true).join(:reports).count('reports')
     @user_count = User.all.count
     

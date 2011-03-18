@@ -1,19 +1,18 @@
 class Issue < ActiveRecord::Base
   #versioned
-  paginates_per 5 
   has_many :reports
   has_many :comments #XXX unused
   has_many :votes, :class_name => 'IssueVote'
   has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true, :source => 'user'
   has_one :resolver, :class_name => 'User'
   belongs_to :creator, :class_name => 'User'
-  has_one :solution
+  #has_one :solution
   #has_many :solution_votes
   #has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
   has_many :suggestions, :class_name => 'Solution', :uniq => true
   #validates_presence_of :reports
   #acts_as_taggable_on :categories 
-  accepts_nested_attributes_for :reports, :allow_destroy => true
+  #accepts_nested_attributes_for :reports, :allow_destroy => true
   accepts_nested_attributes_for :suggestions, :allow_destroy => true
  
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
@@ -51,9 +50,9 @@ class Issue < ActiveRecord::Base
   end
   def add_vote_for_user(user)
     
-    unless(user.votes_remaining > 0)
-      throw VoteException.new('Not enough votes. Please return in a few hours to vote on more issues.')
-    end
+    #unless(user.votes_remaining > 0)
+      #throw VoteException.new('Not enough votes. Please return in a few hours to vote on more issues.')
+    #end
     
    if(user.has_voted_for_issue?(self))
      throw VoteException.new('You cant vote twice for the same issue');
