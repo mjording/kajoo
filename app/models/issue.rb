@@ -12,7 +12,7 @@ class Issue < ActiveRecord::Base
   #has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
   has_many :suggestions, :class_name => 'Solution', :uniq => true
   #validates_presence_of :reports
-  #acts_as_taggable_on :categories 
+  acts_as_taggable_on :auto_categories 
   #accepts_nested_attributes_for :reports, :allow_destroy => true
   accepts_nested_attributes_for :suggestions, :allow_destroy => true
  

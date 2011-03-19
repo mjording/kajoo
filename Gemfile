@@ -22,6 +22,8 @@ gem 'mysql2'
 gem 'fabrication'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'summarize'
+
 group :development do
   gem 'heroku'
   gem 'looksee'

@@ -31,6 +31,10 @@ class Report < ActiveRecord::Base
       []
     end
   end
+
+  def generate_category_list
+    (title.summarize(:topics => true).last.split(',') + description.summarize(:topics => true).last.split(',')).uniq
+  end
   #def address_with_city_and_state
     #return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
   #end

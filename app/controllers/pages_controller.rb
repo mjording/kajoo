@@ -2,7 +2,6 @@
 
 class PagesController < ApplicationController
 
-
   def index
      #@issues = case params[:order] 
                 #when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')

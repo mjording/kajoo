@@ -1,4 +1,12 @@
 class ApplicationController < ActionController::Base
+  rescue_from KajooException, :with => :render_exception
+  def render_exception
+        flash[:alert] = "its a KajooException"
+        redirect_to root 
+
+        #render 'This is a 404', :status => 404
+  end
+
   has_mobile_fu
   
   #helper_method :is_mobile_device?
@@ -92,6 +100,11 @@ class ApplicationController < ActionController::Base
 #    end
 
   private
+    def xhr_exceptions
+      yield
+      rescue
+        render('shared/exception', :status => 500) if request.xhr?
+    end
 
 #     def current_user
 #       @current_user ||= User.find(session[:user_id]) if session[:user_id]
