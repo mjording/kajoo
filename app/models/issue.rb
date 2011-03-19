@@ -1,5 +1,5 @@
 class Issue < ActiveRecord::Base
-  #versioned
+  versioned
   default_scope order('vote_count desc')
   has_many :reports
   has_many :comments #XXX unused
@@ -12,10 +12,10 @@ class Issue < ActiveRecord::Base
   #has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
   has_many :suggestions, :class_name => 'Solution', :uniq => true
   #validates_presence_of :reports
-  acts_as_taggable_on :auto_categories 
+  acts_as_taggable_on :discovered
   #accepts_nested_attributes_for :reports, :allow_destroy => true
   accepts_nested_attributes_for :suggestions, :allow_destroy => true
- 
+   
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
    
@@ -67,6 +67,11 @@ class Issue < ActiveRecord::Base
     
     user.save!
   end
+  
+  def add_free_vote_for
+    @vote = votes.create({:user => User.find_by_email('admin@kajoo.org')})
+  end
+
   protected
   
     ##update fields when issue gets resolved

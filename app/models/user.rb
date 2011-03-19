@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :user_tokens
   has_many :reports
-  has_many :issues 
+  has_many :issues,:foreign_key => "creator_id" 
   has_many :solutions
   has_many :votes
   has_many :issue_votes, :class_name => 'IssueVote'

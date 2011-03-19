@@ -7,28 +7,43 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 #
 user = User.create({
-  :email => "mjording@gmail.com", 
+  :email => "admin@kajoo.org", 
   :password => Devise.friendly_token[0,20],
   :avatar_url => 'http://a1.twimg.com/profile_images/1188388501/Photo_on_2010-12-10_at_15.09__4.jpg', 
-  :name => 'mjording', 
-  :twitter_username => 'mjording' 
+  :name => 'kajooit', 
+  :twitter_username => 'kajooit' 
 })
 
 
-issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
-issues.each_with_index do|issue,i|
-  puts "creating issue #{i}"
-  issue = Issue.create({
-    :title => issue['summary'],
-    :description => issue['description'],
-    :location => issue['address'],
-    :lat => issue["lat"],
-    :lon => issue["lng"],
-    :creator => user
-  })
-  issue.save!
+fixture_issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
+fixture_issues.each_with_index do|fixture_issue,i|
+  issue = Issue.find_by_title( fixture_issue['summary'])
+ 
+  puts "found issue #{issue.id}"  unless issue.nil? 
+  issue ||= Issue.new({:title => fixture_issue['summary'],
+        :description =>fixture_issue['description'].blank? ? fixture_issue['summary'] : fixture_issue['description'],
+        :location => fixture_issue['address'],
+        :lat => fixture_issue["lat"],
+        :lon => fixture_issue["lng"],
+        :creator => user
+    })
 
-  issue.reports.create({:title => issue.title, :description => issue.description, :lat => issue.lat, :lon => issue.lon, :location => issue.location, :user => user})
+  report = user.reports.build({
+    :title => fixture_issue['summary'],
+    :description => fixture_issue['description'].blank? ? fixture_issue['summary'] : fixture_issue['description'],
+    :location => fixture_issue['address'],
+    :lat => fixture_issue["lat"],
+    :lon => fixture_issue["lng"],
+    :issue => issue 
+  })
+  #issue.reports.build()
+   report.save!
+  
+  puts "created report #{report.id}"
+
+  #issue.reports.create({:title => issue.title, :description => issue.description, :lat => issue.lat, :lon => issue.lon, :location => issue.location, :user => issue.creator})
+  #report = issue.reports.create({:title => issue.title, :description => issue.description, :lat => issue.lat, :lon => issue.lon, :location => issue.location, :user => issue.creator})
+
 end
 #issues = JSON.load(File.new('issues.json'))
 #issue = report.issue

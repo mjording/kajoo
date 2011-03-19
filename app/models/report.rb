@@ -3,14 +3,7 @@ class Report < ActiveRecord::Base
   mount_uploader :report_image, ReportImageUploader
   belongs_to :user
   belongs_to :issue
-#  before_validation :geocode, :reverse_geocode
-   
   validates_presence_of :user, :title, :description
-  #acts_as_taggable_on :categories  
-  #def geocoded?
-    #return !location.nil?
-  #end
-  
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
   
@@ -35,36 +28,6 @@ class Report < ActiveRecord::Base
   def generate_category_list
     (title.summarize(:topics => true).last.split(',') + description.summarize(:topics => true).last.split(',')).uniq
   end
-  #def address_with_city_and_state
-    #return "#{address}, #{SITE['city_name']}, #{SITE['state_name']}, #{SITE['country_name']}"
-  #end
-
-  #geocode if lat/lon empty and address not empty. Address -geocode-> Lat/Lon -reverse_geocode-> Location (i.e. fully resolved address)
-  #def geocode
-    #if(address.nil? && !(lat.nil? || lon.nil?))
-      #puts "Geocoding for location '#{address}'"
-      #begin
-        #super
-      #rescue Exception => e
-        #puts("Couldn't geocode '#{location}': #{e.message}")
-        #puts e.backtrace
-      #end
-    #end
-  #end
-  
-  #reverse geocode if location empty and lat/lon not empty
-  #def reverse_geocode
-    #if(!(lat.nil? || lon.nil?))
-    #puts "Reverse geocoding for location '#{lat}, #{lon}'"
-      #begin
-        #super
-      #rescue Exception => e
-        #puts("Couldn't reverse-geocode '#{lat}, #{lon}': #{e.message}")
-        #puts e.backtrace
-      #end
-    #end
-  #end
-
 end
 
 

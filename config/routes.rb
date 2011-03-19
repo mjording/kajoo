@@ -11,12 +11,12 @@ Kajoo::Application.routes.draw do
   end
 
   match 'issues/:id/vote' => 'issues#vote', :as => 'vote_for_issue'
-  match 'users/:userid' => 'users#show', :as => 'user'
-
 
   resources :reports
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions" }
-  
+  match 'users/:userid' => 'users#show', :as => 'user'
+
+
   match 'index' => "pages#index", :as => 'index'
   match 'dashboard' => 'pages#dashboard', :as => 'dashboard'
   match 'home' => 'pages#home', :as => 'home'

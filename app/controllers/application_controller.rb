@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
   #end
   
   helper_method :site_location, :site_radius 
-  
-  #returns [lat, lon]
 
   protect_from_forgery
 
@@ -39,7 +37,7 @@ class ApplicationController < ActionController::Base
   
 #   helper_method :current_user
 
-  def render_404
+  def render_exception
     render :file => "#{Rails.root}/public/404.html", :status => :not_found
   end
 

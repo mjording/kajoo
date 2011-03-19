@@ -23,6 +23,6 @@ Kajoo::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
-  config.active_record.observers = :report_observer
+  config.active_record.observers = :report_observer, :issue_observer
 end
 

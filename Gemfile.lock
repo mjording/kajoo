@@ -42,6 +42,7 @@ GEM
       activemodel (= 3.0.4)
       activesupport (= 3.0.4)
     activesupport (3.0.4)
+    acts-as-taggable-on (2.0.6)
     addressable (2.2.4)
     akephalos (0.2.5)
       capybara (~> 0.4.0)
@@ -263,6 +264,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   akephalos
   annotate
   cancan
