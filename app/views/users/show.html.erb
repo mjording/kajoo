@@ -20,15 +20,15 @@
    
 </div>
 
-<div class="grid_6">
+<div class="grid_8">
   <h3>My Reports</h3>
-  <%= paginate @reports %>
+  <%= paginate @reports, :window => 2 %>
   <ul>
     <% @reports.each do |report|%>
-      <li style="display: block; float: none"><%= link_to report.title, report_path(report) %></li>
+      <li style="display: block; float: none"><%= link_to truncate(report.title, :length => 30), report_path(report) %></li>
     <% end %>
   </ul>
-  <%= paginate @reports %>
+  <%= paginate @reports, :window => 2 %>
 </div>
 
 <div class="grid_16">

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   rescue_from KajooException, :with => :render_exception
+  
   def render_exception
         flash[:alert] = "its a KajooException"
         redirect_to root 
@@ -60,6 +61,8 @@ class ApplicationController < ActionController::Base
         
         store_location!
         
+        #redirect via twitter on protected action if not logged in - neato!
+        #requires that all AJAX actions are also RESTful
         respond_to do |format|
           format.html { redirect_to(user_omniauth_authorize_path(:twitter)) }
           format.js { 

@@ -2,6 +2,7 @@
 log/*.log
 tmp/**/*
 config/database.yml
+slurper_config.xml
 db/*.sqlite3
 vendor/rails
 #vim swap file
