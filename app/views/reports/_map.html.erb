@@ -1,69 +1,109 @@
 <div id="similar_reports" class="grid_10">
-
-<script>
-  $(document).ready(function(){
-    var myOptions = {
-	      zoom: 4,
-	      mapTypeControl: true,
-	      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-	      navigationControl: true,
-	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-	      mapTypeId: google.maps.MapTypeId.ROADMAP      
-	    }	
-  	map = new google.maps.Map(document.getElementById("report_map"), myOptions);
+  <script>
+    $(document).ready(function(){
+      var myOptions = {
+  	      zoom: 4,
+  	      mapTypeControl: true,
+  	      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+  	      navigationControl: true,
+  	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+  	      mapTypeId: google.maps.MapTypeId.ROADMAP      
+  	    }	
+    	map = new google.maps.Map(document.getElementById("report_map"), myOptions);
+    	
+    	if(Modernizr.webworkers) {
+        var geoWorker = new Worker('/javascripts/workers/getreportlocation.js');
+        
+        geoWorker.onmessage = function(e){
+        
+          var data = e.data
+          if(data['address']) {
+            show_report_address(data['address']);
+          }
+          
+          if(data['pos']) {
+            show_report_position(data['pos']);
+          }
+          
+          if(data['error']) {
+            show_report_error(data['error']);
+          }
+        };
+        
+        geoWorker.postMessage({'geolocate': navigator.geolocation});
+    	} else { 
+        setTimeout(initialize_report_map, 1000);
+      }
+  	});
   	
-  	setTimeout(initialize, 10);
-	});
-	
-function initialize()
-{
-	if(geo_position_js.init())
-	{
-		$('#current').html("<img src=\"/images/spinner.gif\"/> Finding Location...");
-		geo_position_js.getCurrentPosition(show_position,function(){$('#current').html("Couldn't get location")},{enableHighAccuracy:true});
-	}
-	else
-	{
-		$('#current').html("Automatic Location not available");
-	}
-}
-
-function show_position(p)
-{
-  geocoder = new google.maps.Geocoder();
-  $('#report_lat').val(p.coords.latitude);
-  $('#report_lon').val(p.coords.longitude);
-  var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
-
-  geocoder.geocode({'latLng': pos}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      var address = results[1].formatted_address;
+    function initialize_report_map()
+    {
+    	if(geo_position_js.init())
+    	{
+    		$('#current').html("<img src=\"/images/spinner.gif\"/> Finding Location");
+    		
+    		/* get position 3 times in succession to ensure highest accuracy */
+    		for(i = 1; i < 4; i++) {
+    		  setTimeout('get_report_position('+i+')', i * 2000);
+        }
+    	}
+    	else
+    	{
+    		$('#current').html("Automatic Location not available");
+    	}
+    }
+    
+    function get_report_position(count) {
+      $('#current').append('.. '+count);
+      geo_position_js.getCurrentPosition(geocode_and_show_report_position,function(){$('#current').html("Couldn't get location")},{enableHighAccuracy:true});
+    }
+    
+    function geocode_and_show_report_position(p) {
+      geocoder = new google.maps.Geocoder();
+      var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
+      geocoder.geocode({'latLng': pos}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var address = results[1].formatted_address;
+          show_report_address(address);
+        }
+      });
+      
+      show_report_position(p);
+    }
+    
+    function show_report_address(address) {
       $('#report_address').val(address);
       $('#current').html(address);
     }
-  });
-   map.setCenter(pos);
-	map.setZoom(14);
-
-	var infowindow = new google.maps.InfoWindow({
-	    content: "<strong>yes</strong>"
-	});
-	var marker = new google.maps.Marker({
-	    position: pos,
-	    map: map,
-	    title:"You are here"
-	});
-
-	google.maps.event.addListener(marker, 'click', function() {
-	  infowindow.open(map,marker);
-	});
-	
-}
-
-	
-</script>
-
-<div id="current">Map not available</div>
-<div id="report_map" class="grid_10"></div>
-
+    
+    function show_report_position(p)
+    {
+      $('#report_lat').val(p.coords.latitude);
+      $('#report_lon').val(p.coords.longitude);
+      var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
+    
+      map.setCenter(pos);
+    	map.setZoom(14);
+    
+    	var infowindow = new google.maps.InfoWindow({
+    	    content: "<strong>yes</strong>"
+    	});
+    	var marker = new google.maps.Marker({
+    	    position: pos,
+    	    map: map,
+    	    title:"You are here"
+    	});
+    
+    	google.maps.event.addListener(marker, 'click', function() {
+    	  infowindow.open(map,marker);
+    	});	
+    }
+    
+    function show_report_error(error) {
+      $('#current').html('<strong>'+error+'</strong>');
+    }
+  </script>
+  
+  <div id="current">Map not available</div>
+  <div id="report_map" class="grid_10"></div>
 </div>

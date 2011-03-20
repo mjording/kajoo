@@ -217,7 +217,9 @@ var geo_position_js=function() {
                         }
                 }
                 catch (e){ 
+					
 					alert("error="+e);
+					
 					if(typeof(console)!="undefined")
 					{
 						console.log(e);

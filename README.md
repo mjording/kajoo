@@ -36,6 +36,12 @@ Install missing gems:
 
 - bundle install
 
+Set up "slurper" to connect to pivotal tracker:
+
+- vi config/slurper\_config.xml
+
+- edit contents as per: https://github.com/hashrocket/slurper
+
 Create Your Database 
 
 - rake db:create
