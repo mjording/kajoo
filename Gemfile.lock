@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/alexreisner/geocoder.git
-  revision: 46d1cb818c38b3ecd616e123fd1e2263858415c2
+  remote: https://github.com/alexreisner/geocoder.git
+  revision: 2f1729e7514c153de3522246a78759b4d5d12c58
   specs:
     geocoder (0.9.10)
 
