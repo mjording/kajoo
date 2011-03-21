@@ -12,40 +12,25 @@
 	    }	
   	map = new google.maps.Map(document.getElementById("report_map"), myOptions);
   	
-  	setTimeout(initialize, 10);
+  	initialize();
 	});
 	
 function initialize()
 {
-	if(geo_position_js.init())
-	{
-		$('#current').html("<img src=\"/images/spinner.gif\"/> Finding Location...");
-		geo_position_js.getCurrentPosition(show_position,function(){$('#current').html("Couldn't get location")},{enableHighAccuracy:true});
-	}
-	else
-	{
-		$('#current').html("Automatic Location not available");
-	}
-}
-
-function show_position(p)
-{
-  geocoder = new google.maps.Geocoder();
-  $('#report_lat').val(p.coords.latitude);
-  $('#report_lon').val(p.coords.longitude);
-  var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
-
-  geocoder.geocode({'latLng': pos}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      var address = results[1].formatted_address;
-      $('#report_address').val(address);
-      $('#current').html(address);
-    }
-  });
-   map.setCenter(pos);
+  var lat = getUserLat();
+  var lon = getUserLon();
+  var address = getUserAddress();
+  
+  $('#report_lat').val(lat);
+  $('#report_lon').val(lon);
+	$('#report_address').val(address);
+	$('#current').html(address);
+	
+	var pos=new google.maps.LatLng(lat,lon);
+  map.setCenter(pos);
 	map.setZoom(14);
 
-	var infowindow = new google.maps.InfoWindow({
+  var infowindow = new google.maps.InfoWindow({
 	    content: "<strong>yes</strong>"
 	});
 	var marker = new google.maps.Marker({
@@ -57,9 +42,7 @@ function show_position(p)
 	google.maps.event.addListener(marker, 'click', function() {
 	  infowindow.open(map,marker);
 	});
-	
 }
-
 	
 </script>
 

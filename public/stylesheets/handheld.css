@@ -103,20 +103,20 @@ Submit Form
 	padding: 0px 0 5px 0;
 	
 }
-#title, #description, #tags, #location{
+#submit_form .title, #submit_form .description, #submit_form .tags, #submit_form .location{
 	width: auto;
 }
-#title, #description, #tags, #location, #change{
+#submit_form .title, #submit_form .description, #submit_form .tags, #submit_form .location, #submit_form .change{
 	width: auto;
  	background-color: #ffffff;
  	border:  1px solid #E0E0E0;
  	padding: 2px 2px 2px 6px;
  	margin: 0 0 10px 0px
 }
-#description{
+#submit_form .description{
 	height: 50px;
 }
-#location, #change{
+#submit_form .location, #submit_form .change{
 	width: auto;
 }
 div.button{

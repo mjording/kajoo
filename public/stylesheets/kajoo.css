@@ -142,3 +142,9 @@
 #city_map {
   width: 635px; height: 285px;
 }
+
+#location img {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}

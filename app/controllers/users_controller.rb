@@ -21,6 +21,8 @@ class UsersController < ApplicationController
     current_user.lat = cookies[:lat] = @lat
     current_user.lon = cookies[:lon] = @lon
     
+    cookies[:location_updated] = Time.now.to_i * 1000;
+    
     if current_user.save    
       respond_to do |format|
         format.html { 
@@ -44,4 +46,36 @@ class UsersController < ApplicationController
 
     end
   end
+  
+  def address
+    @address = params[:address]
+    
+    current_user.address = cookies[:address] = @address
+    
+    cookies[:address_updated] = Time.now.to_i * 1000;
+    
+    if current_user.save    
+      respond_to do |format|
+        format.html { 
+          #render :text => "user location set to (#{@lat},#{@lon})"
+        }
+        format.js {
+          # XXX TODO update user loc indicator on web app
+          # and set in-page vars (user_location_updated, etc)
+          #render :text => "user location set to (#{@lat},#{@lon})"        
+        }
+      end
+    else
+      respond_do do |format|
+        format.html { 
+          render :text => "error saving user address: #{current_user.errors.inspect}"
+        }
+        format.js { 
+          render :text => "error saving user address: #{current_user.errors.inspect}"
+        }
+      end
+
+    end
+  end
+
 end

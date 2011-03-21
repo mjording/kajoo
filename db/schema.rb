@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321095256) do
+ActiveRecord::Schema.define(:version => 20110321121924) do
 
   create_table "comments", :force => true do |t|
     t.integer  "issue_id"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20110321095256) do
     t.string   "twitter_username"
     t.float    "lat"
     t.float    "lon"
+    t.text     "address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
