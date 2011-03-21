@@ -18,6 +18,8 @@ $(document).ready(function(){
   //fade out alerts  
   $('#notices').delay(2000).slideUp(1000);
   
+  $('#location').live('click', function(){updateUserLocation(true)});
+  
   user_lat = getCookie('lat');
   user_lon = getCookie('lon');
   user_address = getCookie('address');
