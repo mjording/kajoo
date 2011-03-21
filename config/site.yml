@@ -4,7 +4,7 @@ development: &default
   country_name: 'United States'
   lat: 30.2545168
   lon: -97.7442346
-  radius: 100
+  radius: 1000
   units: mi
   site_name: 'SXSW Civic Hackathon'
   daily_vote_limit: 5

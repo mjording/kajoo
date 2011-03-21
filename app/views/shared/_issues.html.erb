@@ -23,8 +23,10 @@
 </div><!--Closes filter navigation-->
 
 	<h1>Browse Submitted Issues</h1>
+	<%= paginate @issues, :window => 2 %>  
   <div id="report_sum"><!--STARTS: report summaries-->
 
+<<<<<<< HEAD
        <% @issues.each do |issue| %>
       
 
@@ -65,7 +67,45 @@
     <div class="clear"></div>
 
   <% end %>
+=======
+    <% @issues.each do |issue| %>
+      <div class="report_details grid_8">
+       <h4><%= link_to issue.title, issue %></h4>
+        <h6><%= issue.street_address %> <%= summary_date(issue.created_at) %></h6>
+        <%#= image_tag :source => '', :style => " width='50px' height='50px'" %>
+    		<p><%= issue.description %></p>
+  		</div>
+  		<div class="report_stats grid_6">
+  		  <p class="user">
+  		    Created By
+  		    <%= image_tag issue.creator.avatar_url %> <%= link_to "@#{issue.creator.twitter_username}", user_path(issue.creator) %>
+  		  </p>
+  		  <p class="stat">
+        Votes: <%= issue.votes.count %><br />
+  		    <%= Geocoder::Calculations.distance_between(issue.lat, issue.lon, user_lat, user_lon, {:units => distance_units}).to_i %> <%= distance_units_name %>
+  		  </p>
+  		</div>
+  		<div class="report_actions">
+  			<ul>
+  			  <% if(current_user && current_user.has_voted_for_issue?(issue)) %>
+            <li class="supported"><%= link_to 'Supported', vote_for_issue_path(issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{issue.id}" %></li>
+            <li><%= link_to 'Add Details', {:controller=>'reports', :action=>'new', :issue=>issue.id}, :remote => !is_mobile_device?, :class => 'new-report-link', :id => "new-report-link-#{issue.id}" %></li>
+  			  <% else %>
+      			<li><%= link_to 'Support this', vote_for_issue_path(issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{issue.id}" %></li>
+      			<li><%= link_to 'Support with Details', {:controller=>'reports', :action=>'new', :issue=>issue.id}, :remote => !is_mobile_device?, :class => 'new-report-link', :id => "new-report-link-#{issue.id}" %></li>
+    			<% end %>
+          <li><%= link_to 'Propose Solution', new_issue_solution_path(issue), :remote => !is_mobile_device?,  :class => 'new-issue-suggestion-link', :id => "new-issue-suggestion-link-#{issue.id}" %></li>
+  
+          <%#<li><a href="#">Propose Solution</a></li>%>
+    			<% if !issue.resolved %>
+      			<li><a href="#">Mark Resolved</a></li>			
+    			<% end %>
+  			</ul>
+  		</div><!--Closes report_actions-->
+      <div class="clear"></div>
+    <% end %>
+>>>>>>> added first cut of geolocate-on-page-load
  
- </div><!--Closes report summaries-->
+  </div><!--Closes report summaries-->
 
 </div><!--Closes Main Content-->

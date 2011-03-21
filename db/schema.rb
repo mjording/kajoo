@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(:version => 20110321095256) do
     t.string   "name"
     t.integer  "points",                              :default => 0
     t.string   "twitter_username"
+    t.float    "lat"
+    t.float    "lon"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

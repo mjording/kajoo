@@ -17,6 +17,7 @@ class Report < ActiveRecord::Base
     obj.lat = geo.latitude
     obj.lon = geo.longitude
   end
+  
   def categories
     if tags
       tags.split.map{|tag|tag.strip.gsub(',','')}.flatten
