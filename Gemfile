@@ -45,7 +45,7 @@ group :development, :test do
   gem 'watchr'
 end
 group :test do
-  #  gem 'pickler'
+  gem 'pickler'
   gem 'timecop'
   gem 'simplecov'
 end
