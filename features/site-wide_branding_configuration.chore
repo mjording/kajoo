@@ -1,0 +1,10 @@
+@https://www.pivotaltracker.com/story/show/10921829 @alpha
+Chore: Site-wide branding configuration
+  As a site owner, I want to be able to re-brand Kajoo to suit my city.
+
+  Scenario: Site-wide branding configuration
+
+  Given I have cloned the kajoo repo
+  When I enter all the required configuration fields in config/site.yml
+  And I start to a new server
+  Then I should be able to view a kajoo localized to my city

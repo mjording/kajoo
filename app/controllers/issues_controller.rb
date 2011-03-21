@@ -81,5 +81,30 @@ class IssuesController < ApplicationController
       end
     end
   end
+
+  def mark_resolved
+    @issue = Issue.find(params[:id])
+    if params[:attributed_to]
+      @issue.resolver = User.find(params[:attributed_to])
+    end
+    if params[:solved_with]
+      @issue.solution = Solution.find(params[:solved_with])
+    end
+    @issue.resolver_id = current_user.id
+    @issue.resolved = true
+          
+    if @issue.save
+      respond_to do |format|
+         flash[:notice] = "Thank you - '#{@issue.title}' has been resolved"
+
+         format.html {  redirect_to(root_path)}
+         format.js
+
+      end
+      else
+         flash[:alert] = "whoa there buddy"
+         redirect_to root_path
+      end
+  end
   
 end

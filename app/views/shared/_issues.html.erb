@@ -56,8 +56,9 @@
         <li><%= link_to 'Propose Solution', new_issue_solution_path(issue), :remote => !is_mobile_device?,  :class => 'new-issue-suggestion-link', :id => "new-issue-suggestion-link-#{issue.id}" %></li>
 
         <%#<li><a href="#">Propose Solution</a></li>%>
-  			<% if !issue.resolved %>
-    			<li><a href="#">Mark Resolved</a></li>			
+        <% if !issue.resolved %>
+          <li><%= link_to 'Mark Resolved', resolve_issue_path(issue.id), :remote => true, :class => 'issue-resolve-link', :id => "issue-resolve-link-#{issue.id}" %></li>
+ 
   			<% end %>
 			</ul>
 		</div><!--Closes report_actions-->

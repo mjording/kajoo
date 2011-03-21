@@ -5,12 +5,11 @@ Feature: User posts photo for report
 
   Scenario: Post Photo Report
 
-  Given I am logged in
-  When I click submit report
-  Then I should be on the submit new report page
-  When I fill in required fields
-  And I fill in photo with valid photo path
-  And I press submit
+  Given I am a new, authenticated user
+  When I go to new report page
+  When I have completed the new report form
+  And I fill in report_image with valid photo path
+  And I press "create report"
   Then I should be on the report page
   And I should see "report submitted"
   And I should see a valid photo

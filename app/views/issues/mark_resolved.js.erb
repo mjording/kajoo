@@ -1,0 +1,7 @@
+<%= render :partial => 'shared/close_alerts' %>
+
+$('#issue-resolve-link-<%= @issue.id %>')
+  .html('Resolved!')
+  .parent().addClass('resolved');
+  
+$('#reputation-points').html('<%= current_user.points %>');

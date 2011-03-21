@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_many :user_tokens
   has_many :reports
   has_many :issues,:foreign_key => "creator_id" 
+  has_many :attributed_issues,:class_name => 'Issue', :foreign_key => "attributed_to" 
+  has_many :closed_issues,:class_name => 'Issue', :foreign_key => "resolver_id" 
+
+
   has_many :solutions
   has_many :votes
   has_many :issue_votes, :class_name => 'IssueVote'

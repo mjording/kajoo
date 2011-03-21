@@ -7,8 +7,8 @@ class PagesController < ApplicationController
                 when 'votes' then Issue.page(params[:page]).order('vote_count desc').per(5)
                 when 'resolved' then Issue.where(:resolved => true).page(params[:page]).order('resolved_at desc').per(5)
                 when 'near' then Issue.near(site_location, site_radius).page(params[:page]).per(5)
-                else Issue.near(site_location, site_radius).page(params[:page]).per(5)
-
+                #else Issue.near(site_location, site_radius).page(params[:page]).per(5)
+                else Issue.order('created_at DESC').page(params[:page]).per(5)
                end
 
 

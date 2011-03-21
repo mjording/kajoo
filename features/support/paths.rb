@@ -10,7 +10,18 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-
+    when /the sign in page/
+      '/users/sign_in'
+    when /new report page/
+      '/reports/new'
+    when /the report page/
+      issue_path(@report)
+    when /the reports issue page/
+      issue_path(@report.issue)
+    when /the issue page/
+      issue_path(@issue)
+    
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

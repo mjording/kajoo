@@ -5,7 +5,7 @@ Feature: User earns 1 pt per click on their referral url
 
   Scenario: Referral rewards
 
-  Given I am not logged in
+  Given I am not authenticated
   When I follow a valid referral link
   And I sign up
   Then the referral user should gain 1 point

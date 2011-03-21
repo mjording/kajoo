@@ -5,9 +5,10 @@ class Issue < ActiveRecord::Base
   has_many :comments #XXX unused
   has_many :votes, :class_name => 'IssueVote'
   has_many :supporters, :through => :votes, :class_name => 'User', :uniq => true, :source => 'user'
+  has_one :attributed, :class_name => 'User'
   has_one :resolver, :class_name => 'User'
   belongs_to :creator, :class_name => 'User'
-  #has_one :solution
+  has_one :solution
   #has_many :solution_votes
   #has_many :suggestions, :through => :solution_votes, :class_name => 'Solution', :uniq => true, :source => 'solution'
   has_many :suggestions, :class_name => 'Solution', :uniq => true
@@ -78,7 +79,7 @@ class Issue < ActiveRecord::Base
     def set_resolved_at
       if(resolved && resolved_at.nil?)
         resolved_at = Time.now.to_datetime
-        resolver ||= current_user
+        #resolver ||= current_user
       end
     end
   

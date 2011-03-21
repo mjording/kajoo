@@ -4,7 +4,7 @@ Feature: User validates fix
 
   Scenario: Mark Report Fixed
 
-  Given I am logged in
+  Given I am a new, authenticated user
   And I am on a resolved report page
-  When I click the validate fix button
+  When I press "I agree"
   Then I should see "Congratulations, your issue is solved"

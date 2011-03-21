@@ -11,7 +11,7 @@ Kajoo::Application.routes.draw do
   end
 
   match 'issues/:id/vote' => 'issues#vote', :as => 'vote_for_issue'
-
+  match 'issues/:id/mark_resolved' => 'issues#mark_resolved',:as => 'resolve_issue'
   resources :reports
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions" }
   match 'users/:userid' => 'users#show', :as => 'user'

@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
      
      rescue ActiveRecord::RecordNotFound
        session[:user_id] = nil
-       redirect
+       redirect root_path
      end
     end  
   
