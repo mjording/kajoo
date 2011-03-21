@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   #  return true
   #end
   
-  helper_method :site_location, :site_radius 
+  helper_method :site_location, :user_location, :site_radius 
 
   protect_from_forgery
 
@@ -36,6 +36,21 @@ class ApplicationController < ActionController::Base
     ##end
   #end
   
+  def get_issues
+    page = params[:page] || 1
+    items= 10
+    @issues = case params[:order] 
+      when 'votes' then Issue.open.page(page).per(items)
+      when 'resolved' then Issue.resolved.page(page).per(items)
+      when 'near' then Issue.open.near(user_location, site_radius).page(page).per(items)
+      else Issue.page(page).per(items)
+    end
+
+    if(!@issues)
+      @issues = Issue.near(site_location, site_radius).page(params[:page]).per(5)
+    end
+  end
+  
 #   helper_method :current_user
 
   def render_exception
@@ -46,8 +61,12 @@ class ApplicationController < ActionController::Base
 
     #SHOW_LIMIT = 10
     
+    def user_location
+      return cookies[:lat], cookies[:lon]      
+    end
+    
     def site_location
-      return [SITE['lat'], SITE['lon']]
+      return SITE['lat'], SITE['lon']
     end
   
     def site_radius

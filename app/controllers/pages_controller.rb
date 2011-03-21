@@ -3,27 +3,7 @@
 class PagesController < ApplicationController
 
   def index
-     #@issues = case params[:order] 
-                #when 'votes' then Issue.page(params[:page]||'1').order('vote_count desc')
-                #when 'resolved' then Issue.where(:resolved => true).page(params[:page]||'1').order('resolved_at desc')
-                #when 'near' then Issue.near(site_location, site_radius).page(params[:page]||'1')
-                #else Issue.near(site_location, site_radius).page(params[:page]||'1')
-               #end
-
-
-        @issues = Issue.near(site_location, site_radius).page(params[:page]).per(5)
-        #all
-        #@issues.instance_eval <<-EVAL
-              #def current_page
-                ##{params[:page] || 1}
-              #end
-              #def num_pages
-                #count
-              #end
-              #def limit_value                                                                               
-                #10
-              #end
-        #EVAL
+    get_issues
   end
 
   #XXX TODO - sleep

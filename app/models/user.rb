@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :achievements, :class_name => 'UserAchievement'
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar_url, :twitter_username, :twitter_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar_url, :twitter_username, :twitter_id, :lat, :lon
   
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']

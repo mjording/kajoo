@@ -17,6 +17,7 @@ class ReportObserver < ActiveRecord::Observer
       report.issue = issue
     end
   end
+  
   def after_create(report)
     puts "Doing after create for report #{report.title}"
     issue = report.issue
