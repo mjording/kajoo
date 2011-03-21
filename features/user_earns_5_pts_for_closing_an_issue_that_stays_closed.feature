@@ -3,13 +3,15 @@ Feature: User earns 5 pts for closing an issue that stays closed
   As a user I want to be rewarded for closing an issue
 
   Background: 
-    Given 10 reports
+    Given 10 issues
 
+  @javascript
   Scenario: User earns 5 pts for closing an issue that stays closed
 
     Given I am a new, authenticated user
-    And I am on the home page
-    Then I should see "Mark Resolved"
+    When I am on the home page
+    Then I should see "Propose Solution"
+    And I should see "Mark Resolved"
     When I follow "Mark Resolved"
     And I fill in the required fields
     And I press "submit"

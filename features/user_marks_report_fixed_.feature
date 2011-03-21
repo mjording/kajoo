@@ -4,7 +4,8 @@ Feature: User marks report fixed.
   
   Background:
     Given 10 issues
-  
+
+  @javascript
   Scenario: Mark Report Fixed
 
     Given I am a new, authenticated user
