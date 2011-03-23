@@ -6,6 +6,7 @@ var buildForm = function(){
   $(this).html(form_html+map_html);
   $('.report input:text').clearingInput();
   $('.report textarea').clearingInput();
+  $('#report_address').val(getUserAddress());
 };
 
 $('#feature_content').slideUp(500, buildForm).slideDown(500);

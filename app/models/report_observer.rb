@@ -3,10 +3,12 @@ class ReportObserver < ActiveRecord::Observer
   def logger
     RAILS_DEFAULT_LOGGER
   end
+  def after_validation(report)
+    report.geocode
+  end
   def before_create(report)
     if report.issue.nil?
       #issue = Issue.find_by_title( report.title )
-      
       issue = Issue.tagged_with(report.description.summarize(:topics => true).last.split(',')).near([report.lat,report.lon],1).first
  
       puts "found issue #{issue.id}"  unless issue.nil? 

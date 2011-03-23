@@ -27,9 +27,7 @@
       <li><%= link_to 'Mark Resolved', resolve_issue_path(issue.id), :remote => true, :class => 'issue-resolve-link', :id => "issue-resolve-link-#{issue.id}" %></li>
     <% elsif current_user %>
       <li><%= link_to 'Agree!', issue_path(issue.id), :remote => true, :class => 'issue-resolve-link', :id => "issue-resolve-link-#{issue.id}" %></li>
- 
     <% end %>
-
   </ul>
 </div><!--Closes report_actions-->
 <div class="clear"></div>

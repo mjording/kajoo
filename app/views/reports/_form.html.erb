@@ -8,7 +8,7 @@
     <%= simple_form_for @report, :html =>{:multipart => true} do |f| %>
 		  <%#= f.input :title %>
 		  <%= f.input :description %>
-		  <%= f.input :tags %>
+		  <%#= f.input :tags %>
       <%= f.input :lat, :as => :hidden %> 
       <%= f.input :lon, :as => :hidden %>
       <input name="issue_id" id="issue_id" type="hidden" value="<%= @issue_id %>"/>  

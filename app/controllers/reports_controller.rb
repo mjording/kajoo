@@ -74,13 +74,12 @@ class ReportsController < ApplicationController
   # POST /reports.xml
   def create
     #params[:report][:updated_by] = current_user
-    
     @report = Report.new(params[:report])
+    @report.location = request.location
 
     if(!(params[:issue_id].nil? || params[:issue_id] == ''))
       @report.issue = Issue.find(params[:issue_id])
     end
-      
 
     @report.user = current_user
     @similar_issues = Issue.find_similar(@report)
@@ -90,7 +89,7 @@ class ReportsController < ApplicationController
           if(@report.issue)
             redirect_to(@report.issue, :notice => 'Supporting Report was successfully created.') 
           else
-            @report.creator.add_points_for_create
+            @report.add_points_for_user(@report.user, @report.create_action)
             redirect_to(@report, :notice => 'Report was successfully created.') 
           end
         }

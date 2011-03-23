@@ -136,7 +136,7 @@ function setUserLocation(p)
   geocoder = new google.maps.Geocoder();
   geocoder.geocode({'latLng': pos}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      var address = results[1].formatted_address;
+      var address = results[0].formatted_address;
       showUserAddress(address);
       
 //      setCookie('address', address);
@@ -149,7 +149,7 @@ function setUserLocation(p)
         data: addr_param,
         dataType: 'script',
         complete: function( res, status ) {
-          //alert("set location");
+          //setUserAddress(address);
         }
       });
     }

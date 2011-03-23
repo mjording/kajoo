@@ -13,21 +13,22 @@ class Report < ActiveRecord::Base
     obj.zipcode = geo.postal_code
     obj.country_name = geo.country
     obj.country_code = geo.country_code 
-    obj.street_address = geo.address
+    obj.address = geo.address
     obj.lat = geo.latitude
     obj.lon = geo.longitude
   end
+
   def create_action
     :report_issue
   end
   
-  #def categories
-    #if tags
-      #tags.split.map{|tag|tag.strip.gsub(',','')}.flatten
-    #else
-      #[]
-    #end
-  #end
+  def add_points_for_user(user,action)
+    user.add_points_for_action(action)
+    user.save!
+  end
+
+  
+
 
   def generate_category_list
     (description.summarize(:topics => true).last.split(',')).uniq

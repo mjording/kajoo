@@ -1,7 +1,8 @@
 <div id="similar_reports" class="grid_10">
 
-<script>
-  $(document).ready(function(){
+
+ <script>
+    $(document).ready(function(){
     var myOptions = {
 	      zoom: 4,
 	      mapTypeControl: true,
@@ -14,20 +15,15 @@
   	map = new google.maps.Map(document.getElementById("report_map"), myOptions);
   	
   	initialize();
-	});
-	
+  });
 function initialize()
 {
   var lat = getUserLat();
   var lon = getUserLon();
-  var address = getUserAddress();
-  
-  $('#report_lat').val(lat);
-  $('#report_lon').val(lon);
-	$('#report_address').val(address);
-	$('#current').html(address);
-	
-	var pos=new google.maps.LatLng(lat,lon);
+  var address = getUserAddress();	
+  var pos=new google.maps.LatLng(lat,lon);
+  var geocoder = new google.maps.Geocoder();
+ 
   map.setCenter(pos);
 	map.setZoom(14);
 
@@ -37,17 +33,36 @@ function initialize()
 	var marker = new google.maps.Marker({
 	    position: pos,
 	    map: map,
-	    title:"You are here"
+      title:"You are here",
+      draggable: true
 	});
 
-	google.maps.event.addListener(marker, 'click', function() {
-	  infowindow.open(map,marker);
-	});
+  google.maps.event.addListener(marker, 'dragend', function() {
+     geocoder.geocode({'latLng': marker.position}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        setUserAddress(results[0].formatted_address);
+      }
+    });
+  });
+  $('#report_address').val(getUserAddress()).focusout(function(e){  
+      geocoder.geocode( { 'address': $(this).val()}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        marker.setPosition(results[0].geometry.location);
+        $('#report_lat').val(results[0].geometry.location.lat());
+        $('#report_lon').val(results[0].geometry.location.lon());
+      }
+    });
+  }); 
+  $('#report_lat').val(lat);
+  $('#report_lon').val(lon);
 }
-	
-</script>
 
-<div id="current">Map not available</div>
+
+
+
+</script>
+ <div id="current">Map not available</div>
 <div id="report_map" class="grid_10"></div>
 
 </div>
