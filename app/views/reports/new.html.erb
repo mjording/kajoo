@@ -10,5 +10,5 @@
 <% end %>
 
 <% if !is_mobile_device? %>
-  <%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+  <%= render :partial => 'issues/dashboard_list', :locals => {:issues => @issues, :order => @order} %>
 <% end %>

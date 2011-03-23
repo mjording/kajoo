@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/issues', :locals => {:issues => @issues, :order => @order} %>
+<%= render :partial => 'issues/dashboard_list', :locals => {:issues => @issues, :order => @order} %>
 
 <% content_for(:feature) do %>
 	<% render :partial => 'index_feature' %>
