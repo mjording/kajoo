@@ -102,7 +102,7 @@ class IssuesController < ApplicationController
           
     if @issue.save
       respond_to do |format|
-         flash[:notice] = "Thank you - '#{truncate(@issue.description,:length => 30)}' has been resolved"
+         flash[:notice] = "Thank you - #{@issue.description.slice(0,30)+'...'} has been resolved"
 
          format.html {  redirect_to(root_path)}
          format.js

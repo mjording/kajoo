@@ -65,5 +65,18 @@ class SolutionsController < ApplicationController
   def index
     @issue = Issue.find(params[:issue_id])
   end
+  def create
+    @solution = Solution.new(params[:solution])
+    if @solution.save
+       @solution.add_points_for_user(current_user, @solution.create_action)
+
+      flash[:notice] = "Thank you for your suggestion #{@solution.description.slice(0,30)+'...'} way to go"
+      redirect_to :root
+      
+    else
+      flash[:notice] = "sorry couldnt save #{@solution.description.slice(0,30)+'...'} "
+      redirect_to :root
+     end
+  end
 
 end

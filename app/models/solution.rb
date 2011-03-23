@@ -15,6 +15,11 @@ class Solution < ActiveRecord::Base
     #user.add_points(5)
     user.save! 
   end
+    
+  def add_points_for_user(user,action)
+    user.add_points_for_action(action)
+    user.save!
+  end
   
 end
 

@@ -19,7 +19,7 @@ class SuggestionsController < ApplicationController
     
     if(current_user.votes_remaining > 0)
       @solution.add_vote_for_user(current_user)
-      flash[:notice] = "Thank you - your vote for solution '#{truncate(@suggestion.description,:length => 30)}' has been received"
+      flash[:notice] = "Thank you - your vote for solution '#{@suggestion.description}' has been received"
     
      redirect_to :root
     #controller => 'pages', :action => 'index'
@@ -52,8 +52,9 @@ class SuggestionsController < ApplicationController
     @issue = Issue.find(params[:issue_id])
     @suggestion = @issue.suggestions.build(params[:solution])
     if @suggestion.save
-      current_user.add_points_for_create(@suggestion)
-      flash[:notice] = "Thank you for your suggestion '#{truncate(@suggestion.description,:length => 30)}' way to go"
+      @suggestion.add_points_for_user(current_user, @suggestion.create_action)
+
+      flash[:notice] = "Thank you for your suggestion #{@suggestion.description.slice(0,30)+'...'} way to go"
     
       redirect_to :root
       #controller => 'welcome', :action => 'index'
