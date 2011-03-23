@@ -1,0 +1,48 @@
+<div id="similar_reports" class="grid_10">
+
+
+ <script>
+    $(document).ready(function(){
+    var myOptions = {
+	      zoom: 4,
+	      mapTypeControl: true,
+	      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+	      navigationControl: true,
+	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+	      mapTypeId: google.maps.MapTypeId.ROADMAP      
+	    }	
+
+  	map = new google.maps.Map(document.getElementById("issue_map"), myOptions);
+  	
+  	initialize();
+  });
+function initialize()
+{
+  var lat = getUserLat();
+  var lon = getUserLon();
+  var address = getUserAddress();	
+  var pos=new google.maps.LatLng(lat,lon);
+  var geocoder = new google.maps.Geocoder();
+ 
+  map.setCenter(pos);
+	map.setZoom(14);
+
+  var infowindow = new google.maps.InfoWindow({
+	    content: "<strong>yes</strong>"
+	});
+	var marker = new google.maps.Marker({
+	    position: pos,
+	    map: map,
+      title:"You are here"
+	});
+
+}
+
+
+
+
+</script>
+ <div id="current">Map not available</div>
+<div id="issue_map" class="grid_10"></div>
+
+</div>

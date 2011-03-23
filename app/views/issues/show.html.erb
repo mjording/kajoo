@@ -1,31 +1,5 @@
-<% content_for(:head) do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      var myOptions = {
-  	      zoom: 4,
-  	      mapTypeControl: true,
-  	      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-  	      navigationControl: true,
-  	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-  	      mapTypeId: google.maps.MapTypeId.ROADMAP      
-  	    }	
-    	map = new google.maps.Map(document.getElementById("issue_map"), myOptions);
-    	var pos=new google.maps.LatLng('<%= @issue.lat %>','<%= @issue.lon %>');
-    	map.setCenter(pos);
-    	map.setZoom(14);
-    
-    	var infowindow = new google.maps.InfoWindow({
-    	    content: "<span style='font-size: smaller'><%= escape_javascript(@issue.location) %></span>"
-    	});
-    
-    	var marker = new google.maps.Marker({
-    	    position: pos,
-    	    map: map,
-          title:"<%= escape_javascript(truncate(@issue.description, :length => 30) %>"
-    	});
-  	});
-  </script>  
-<% end %>
+
+<%= render :partial => 'map', :locals => {:issue => @issue} %>
 
 <% content_for(:feature) do %>  
   <div id="single_issue_feature" class="grid_16"><!--feature left starts-->
@@ -41,7 +15,7 @@
   		</div>
 			<div id="issue_stats">
 				<div class="label">Originally Reported</div>			
-				<div class="date"><%= summary_date(@issue.created_at) %></div>				
+				<div class="date"><%#= summary_date(@issue.created_at) %></div>				
 			</div><!--close city_reports-->
 			<div id="issue_map" class="grid_6" style="height: 200px;">
         
@@ -75,19 +49,12 @@
 <h1>Additional Reports &amp; Suggested Solutions</h1>
 
 <% @issue.reports.each do |report| %>
-<div class="report_sum" class=""><!--STARTS: report summaries-->
-	<div class="text_description">		
+  <div class="report_sum" class="">
+    <div class="text_description">		
   	<p class="date"><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></p>	
   	<p><%= report.description %></p>
 	</div>
 	<div class="clear"></div>
-<!--	<div class="report_actions">
-		<ul>
-  		<li><a href="#">Support with Details</a></li>
-  		<li><a href="#">Propose Solution</a></li>
-  		<li><a href="#">Mark Resolved</a></li>			
-    </ul>
-  </div>-->
 </div>
 <% end %>
 
