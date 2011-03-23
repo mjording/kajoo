@@ -20,20 +20,14 @@ $(document).ready(function(){
   
   $('#location').live('click', function(){updateUserLocation(true)});
   
-  user_lat = getCookie('lat');
-  user_lon = getCookie('lon');
-  user_address = getCookie('address');
-  user_location_updated = getCookie('location_updated');
+  user_lat = $.cookie('lat');
+  user_lon = $.cookie('lon');
+  user_address = $.cookie('address');
+  user_location_updated = $.cookie('location_updated');
   
   updateUserLocation();
 });
 
-$.fn.animateHighlight = function(highlightColor, duration) {
-  var highlightBg = highlightColor || "#FFFF9C";
-  var animateMs = duration || 1500;
-  var originalBg = this.css("backgroundColor");
-  this.stop().css("background-color", highlightBg).animate({backgroundColor: originalBg}, animateMs);
-};
 
 function updateUserLocation(force) {
   var lastupdated = getUserLocationUpdated();
@@ -87,9 +81,44 @@ function maybeShowNavBar(evt) {
 
 	$.fn.scrollToMe = function(){
 		$('html,body').animate({
-			scrollTo: this.offset().top
+			height: this.offset().top
 		}, 'fast');
 	}
+  
+  $.cookie = function(key, value, options){
+  // key and at least value given, set cookie...
+  if (arguments.length > 1 && String(value) !== "[object Object]") {
+      options = jQuery.extend({}, options);
+      if (value === null || value === undefined) {
+          options.expires = -1;
+      }
+      if (typeof options.expires === 'number') {
+          var days = options.expires, t = options.expires = new Date();
+          t.setDate(t.getDate() + days);
+      }
+      value = String(value);
+      return (document.cookie = [
+          encodeURIComponent(key), '=',
+          options.raw ? value : encodeURIComponent(value),
+          options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+          options.path ? '; path=' + options.path : '',
+          options.domain ? '; domain=' + options.domain : '',
+          options.secure ? '; secure' : ''
+      ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+  };
+  
+  $.fn.animateHighlight = function(highlightColor, duration) {
+    var highlightBg = highlightColor || "#FFFF9C";
+    var animateMs = duration || 1500;
+    var originalBg = this.css("backgroundColor");
+    this.stop().css("background-color", highlightBg).animate({backgroundColor: originalBg}, animateMs);
+  };
 })(jQuery);
 
 //callback from geo.js
@@ -195,23 +224,3 @@ function setUserAddress(address) {
   user_address = address;
 }
 
-function getCookie(c_name)
-{
-  var i,x,y,ARRcookies=document.cookie.split(";");
-  for (i=0;i<ARRcookies.length;i++) {
-    x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-    y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-    x=x.replace(/^\s+|\s+$/g,"");
-    if (x==c_name) {
-      return unescape(y);
-    }
-  }
-}
-
-function setCookie(c_name,value,exdays)
-{
-  var exdate=new Date();
-  exdate.setDate(exdate.getDate() + exdays);
-  var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-  document.cookie=c_name + "=" + c_value;
-}

@@ -19,17 +19,16 @@
     <% if(current_user && current_user.has_voted_for_issue?(issue)) %>
       <li class="supported"><%= link_to 'Supported', vote_for_issue_path(issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{issue.id}" %></li>
       <li><%= link_to 'Add Details', {:controller=>'reports', :action=>'new', :issue=>issue.id}, :remote => !is_mobile_device?, :class => 'new-report-link', :id => "new-report-link-#{issue.id}" %></li>
-    <% else %>
+    <% elsif !issue.resolved %>
       <li><%= link_to 'Support this', vote_for_issue_path(issue.id), :remote => true, :class => 'issue-vote-link', :id => "issue-vote-link-#{issue.id}" %></li>
       <li><%= link_to 'Support with Details', {:controller=>'reports', :action=>'new', :issue=>issue.id}, :remote => !is_mobile_device?, :class => 'new-report-link', :id => "new-report-link-#{issue.id}" %></li>
+      <li><%= link_to 'Propose Solution', new_issue_solution_path(issue), :remote => !is_mobile_device?,  :class => 'new-issue-suggestion-link', :id => "new-issue-suggestion-link-#{issue.id}" %></li>
+      <li><%= link_to 'Mark Resolved', resolve_issue_path(issue.id), :remote => true, :class => 'issue-resolve-link', :id => "issue-resolve-link-#{issue.id}" %></li>
+    <% elsif current_user %>
+      <li><%= link_to 'Agree!', issue_path(issue.id), :remote => true, :class => 'issue-resolve-link', :id => "issue-resolve-link-#{issue.id}" %></li>
+ 
     <% end %>
-     <li><%= link_to 'Propose Solution', new_issue_solution_path(issue), :remote => !is_mobile_device?,  :class => 'new-issue-suggestion-link', :id => "new-issue-suggestion-link-#{issue.id}" %></li>
 
-  <%#<li><a href="#">Propose Solution</a></li>%>
-  <% if !issue.resolved %>
-    <li><%= link_to 'Mark Resolved', resolve_issue_path(issue.id), :remote => true, :class => 'issue-resolve-link', :id => "issue-resolve-link-#{issue.id}" %></li>
-
-  <% end %>
   </ul>
 </div><!--Closes report_actions-->
 <div class="clear"></div>

@@ -85,7 +85,7 @@ class IssuesController < ApplicationController
   def mark_resolved
     @issue = Issue.find(params[:id])
     if params[:attributed_to]
-      @issue.resolver = User.find(params[:attributed_to])
+      @issue.attributed = User.find(params[:attributed_to])
     end
     if params[:solved_with]
       @issue.solution = Solution.find(params[:solved_with])
