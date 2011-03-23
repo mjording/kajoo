@@ -20,8 +20,8 @@ $(document).ready(function(){
   
   $('#location').live('click', function(){updateUserLocation(true)});
   
-  user_lat = $.cookie('lat');
-  user_lon = $.cookie('lon');
+  user_lat = $.cookie('lat') / 1;
+  user_lon = $.cookie('lon') / 1;
   user_address = $.cookie('address');
   user_location_updated = $.cookie('location_updated');
   
@@ -161,7 +161,7 @@ function setUserLocation(p)
   setCookie('location_updated', new Date().getTime());
 */
   
-  var loc = {lat: lat, lon: lon}; // lat, lon
+  var loc = {lat: lat / 1, lon: lon / 1}; // lat, lon
   //ping server
   $.ajax({
     url: '/user/location',
@@ -192,11 +192,11 @@ function userLocationError() {
 }
 
 function getUserLat() {
-  return user_lat;
+  return user_lat / 1;
 }
 
 function getUserLon() {
-  return user_lon;
+  return user_lon / 1;
 }
 
 function getUserAddress() {
@@ -213,11 +213,11 @@ function setUserLocationUpdated(time) {
 }
 
 function setUserLat(lat) {
-  user_lat = lat;
+  user_lat = lat / 1;
 }
 
 function setUserLon(lon) {
-  user_lon = lon;
+  user_lon = lon / 1;
 }
 
 function setUserAddress(address) {

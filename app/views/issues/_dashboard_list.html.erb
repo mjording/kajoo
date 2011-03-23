@@ -23,14 +23,13 @@
 </div><!--Closes filter navigation-->
 
 	<h1>Browse Submitted Issues</h1>
-	<%= paginate @issues, :window => 2 %>  
-  <div id="report_sum"><!--STARTS: report summaries-->
+	 <div id="report_sum"><!--STARTS: report summaries-->
 
 
     <% @issues.each do |issue| %>
-      <%= render :partial => 'issues/brief', :locals => {:issue => issue} %>
+      <%= render :partial => 'issues/brief', :locals => {:issue => issue, :order => @order} %>
     <% end %>
- 
+<%= paginate @issues, :window => 2 %>   
   </div><!--Closes report summaries-->
 
 </div><!--Closes Main Content-->

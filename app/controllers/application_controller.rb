@@ -39,15 +39,12 @@ class ApplicationController < ActionController::Base
   def get_issues
     page = params[:page] || 1
     items= 10
+    puts "site loc #{site_location},user loc #{user_location}"
     @issues = case params[:order] 
       when 'votes' then Issue.open.page(page).per(items)
       when 'resolved' then Issue.resolved.page(page).per(items)
-      when 'near' then Issue.open.near(user_location, site_radius).page(page).per(items)
+      when 'near' then Issue.near(site_location, site_radius).page(params[:page]).per(items)
       else Issue.page(page).per(items)
-    end
-
-    if(!@issues)
-      @issues = Issue.near(site_location, site_radius).page(params[:page]).per(5)
     end
   end
   
@@ -62,7 +59,7 @@ class ApplicationController < ActionController::Base
     #SHOW_LIMIT = 10
     
     def user_location
-      return cookies[:lat], cookies[:lon]      
+      return cookies[:lat].to_f, cookies[:lon].to_f
     end
     
     def site_location
