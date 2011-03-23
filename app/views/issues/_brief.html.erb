@@ -1,7 +1,8 @@
 <div class="report_details grid_8">
- <h4><%= link_to issue.title, issue %></h4>
+
+  <h4><%= link_to truncate(issue.description,:length => 30) %> </h4>
  <h6><%= issue.street_address %> <%= summary_date(issue.created_at) %></h6>
- <%#= image_tag :source => '', :style => " width='50px' height='50px'" %>
+ <%= issue.reports.first.report_image? ? image_tag(issue.reports.first.report_image.tiny.url) : '' %>
  <p><%= issue.description %></p>
 </div>
 <div class="report_stats grid_6">

@@ -19,7 +19,7 @@ gem 'simple_form'
 gem 'mysql2'
 gem 'fabrication'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'summarize'
 gem 'acts-as-taggable-on'
 

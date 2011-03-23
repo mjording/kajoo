@@ -20,8 +20,7 @@
     
     	var marker = new google.maps.Marker({
     	    position: pos,
-    	    map: map,
-    	    title:"<%= escape_javascript(@report.title) %>"
+          map: map
     	});
   	});
   </script>  
@@ -29,7 +28,6 @@
 
 <% content_for(:feature) do %>  
   <div id="single_issue_feature" class="grid_16"><!--feature left starts-->
-  	<h3><%= @report.title %></h3>
   	<h5><%= @report.street_address %></h5>
   	<p><%= @report.description %></p>
   </div><!--Closes feature left content-->

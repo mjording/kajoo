@@ -80,6 +80,7 @@ class ReportsController < ApplicationController
     if(!(params[:issue_id].nil? || params[:issue_id] == ''))
       @report.issue = Issue.find(params[:issue_id])
     end
+      
 
     @report.user = current_user
     @similar_issues = Issue.find_similar(@report)
@@ -87,8 +88,9 @@ class ReportsController < ApplicationController
       if @report.save
         format.html { 
           if(@report.issue)
-            redirect_to(@report.issue, :notice => 'Report was successfully created.') 
+            redirect_to(@report.issue, :notice => 'Supporting Report was successfully created.') 
           else
+            @report.creator.add_points_for_create
             redirect_to(@report, :notice => 'Report was successfully created.') 
           end
         }

@@ -19,6 +19,13 @@ class IssuesController < ApplicationController
       }
     end
   end
+  def create
+    @issue = Issue.new(params[:issue])
+    if @issue.save
+      current_user.add_points_for_action(:report_issue)
+    end
+
+  end
 
   def show 
     @issue  = Issue.find(params[:id])
@@ -54,7 +61,7 @@ class IssuesController < ApplicationController
     if(current_user.votes_remaining > 0)
        
       @issue.add_vote_for_user(current_user)
-       flash[:notice] = "Thank you - your vote for '#{@issue.title}' has been received"
+       flash[:notice] = "Thank you - your vote for '#{truncate(@issue.description,:length => 30)}' has been received"
     
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -95,7 +102,7 @@ class IssuesController < ApplicationController
           
     if @issue.save
       respond_to do |format|
-         flash[:notice] = "Thank you - '#{@issue.title}' has been resolved"
+         flash[:notice] = "Thank you - '#{truncate(@issue.description,:length => 30)}' has been resolved"
 
          format.html {  redirect_to(root_path)}
          format.js

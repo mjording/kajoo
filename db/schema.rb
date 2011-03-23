@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321121924) do
+ActiveRecord::Schema.define(:version => 20110323103358) do
 
   create_table "comments", :force => true do |t|
     t.integer  "issue_id"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(:version => 20110321121924) do
   end
 
   create_table "issues", :force => true do |t|
-    t.string   "title"
     t.text     "description"
     t.float    "lat"
     t.float    "lon"
@@ -47,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20110321121924) do
 
   create_table "reports", :force => true do |t|
     t.integer  "user_id"
-    t.string   "title"
     t.text     "description"
     t.float    "lat"
     t.float    "lon"

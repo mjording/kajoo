@@ -21,7 +21,7 @@
     	var marker = new google.maps.Marker({
     	    position: pos,
     	    map: map,
-    	    title:"<%= escape_javascript(@issue.title) %>"
+          title:"<%= escape_javascript(truncate(@issue.description, :length => 30) %>"
     	});
   	});
   </script>  
@@ -29,7 +29,6 @@
 
 <% content_for(:feature) do %>  
   <div id="single_issue_feature" class="grid_16"><!--feature left starts-->
-  	<h3><%= @issue.title %></h3>
   	<h5><%= @issue.street_address %></h5>
   	<p><%= @issue.description %></p>
   </div><!--Closes feature left content-->
@@ -77,7 +76,6 @@
 
 <% @issue.reports.each do |report| %>
 <div class="report_sum" class=""><!--STARTS: report summaries-->
-  <h4><%= report.title %></h4>
 	<div class="text_description">		
   	<p class="date"><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></p>	
   	<p><%= report.description %></p>

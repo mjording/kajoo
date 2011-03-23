@@ -1,12 +1,12 @@
 <div id="submit_form" class="grid_12"><!--feature left starts-->
 		
 		<% if(@issue) %>
-		  <h1>Add detail to '<%= @issue.title %>'</h1>
+		  <h1>Add detail to '<%= truncate(@issue.description,  :length => 30) %>'</h1>
 		<% else %>
   		<h1>Submit A Report</h1>
     <% end %>
     <%= simple_form_for @report, :html =>{:multipart => true} do |f| %>
-		  <%= f.input :title %>
+		  <%#= f.input :title %>
 		  <%= f.input :description %>
 		  <%= f.input :tags %>
       <%= f.input :lat, :as => :hidden %> 

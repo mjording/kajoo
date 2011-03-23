@@ -1,16 +1,16 @@
 class Solution < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
-  validates_presence_of :title, :description
+  validates_presence_of :description
 
   has_many :votes, :class_name => 'SolutionVote'
   def create_action
-    :suggested_solution
+    :suggest_solution
   end
   def add_vote_for_user(user)
     @vote = votes.create({:user => user})
 
-    user.add_points_for_action(:vote_on_solution)
+    user.add_points_for_action(:support_solution)
 
     #user.add_points(5)
     user.save! 

@@ -12,10 +12,18 @@ development: &default
   default_user_lat: 30.2545168
   default_user_lon: -97.7442346
   points: 
-    vote_on_issue: 1
-    submit_an_issue: 5
+    support_issue: 1
+    report_issue: 5
+    other_supports_issue: 1
+    close_issue: 1
+    closed_report_one_week: 2
+    closed_report_one_month: 3 
+    other_supports_supported_issue: 1
+    suggest_solution: 1
+    support_solution: 1
+    other_supports_suggested_solution: 1
+    credited_solution_on_close: 3
     tweet_clickthrough: 1
-    report_closed_one_week: 5 
     vote_on_solution: 5
   awards: 
 

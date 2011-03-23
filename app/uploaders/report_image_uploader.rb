@@ -3,7 +3,7 @@
 class ReportImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -29,9 +29,22 @@ class ReportImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
+  version :tiny do
+     process :resize_to_fit => [50, 50]
+   end
+  version :small do 
+    process :resize_to_fit => [75,75]
+  end
+  version :medium do
+    process :resize_to_fit => [150,150]
+  end
+  version :large do
+    process :resize_to_fit => [250,250]
+  end
+  version :grande do
+    process :resize_to_fit => [350,350]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

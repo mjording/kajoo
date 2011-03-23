@@ -19,7 +19,7 @@ class SolutionsController < ApplicationController
      if(current_user.votes_remaining > 0)
        
       @solution.add_vote_for_user(current_user)
-       flash[:notice] = "Thank you - your vote for '#{@solution.title}' has been received"
+       flash[:notice] = "Thank you - your vote for '#{truncate(@solution.description,:length => 30)}' has been received"
     
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -54,7 +54,7 @@ class SolutionsController < ApplicationController
       #return
     #end
 
-    flash[:notice] = "Thank you - your vote for solution '#{@solution.title}' has been received"
+    flash[:notice] = "Thank you - your vote for solution '#{@solution.description,:length => 30)}' has been received"
     
     redirect_to :controller => 'welcome', :action => 'index'
   end

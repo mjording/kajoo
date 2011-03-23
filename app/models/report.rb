@@ -3,7 +3,7 @@ class Report < ActiveRecord::Base
   mount_uploader :report_image, ReportImageUploader
   belongs_to :user
   belongs_to :issue
-  validates_presence_of :user, :title, :description
+  validates_presence_of :user, :description
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
   
@@ -17,17 +17,20 @@ class Report < ActiveRecord::Base
     obj.lat = geo.latitude
     obj.lon = geo.longitude
   end
-  
-  def categories
-    if tags
-      tags.split.map{|tag|tag.strip.gsub(',','')}.flatten
-    else
-      []
-    end
+  def create_action
+    :report_issue
   end
+  
+  #def categories
+    #if tags
+      #tags.split.map{|tag|tag.strip.gsub(',','')}.flatten
+    #else
+      #[]
+    #end
+  #end
 
   def generate_category_list
-    (title.summarize(:topics => true).last.split(',') + description.summarize(:topics => true).last.split(',')).uniq
+    (description.summarize(:topics => true).last.split(',')).uniq
   end
 end
 

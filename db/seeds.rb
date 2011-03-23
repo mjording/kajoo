@@ -17,11 +17,17 @@ user = User.create({
 
 fixture_issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
 fixture_issues.each_with_index do|fixture_issue,i|
-  issue = Issue.find_by_title( fixture_issue['summary'])
- 
+  #issue = Issue.find_by_title( fixture_issue['summary'])
+  #near_report = Issue   
+  inputtext = fixture_issue['summary']+' '+(fixture_issue['description'].blank? ? fixture_issue['summary'] : fixture_issue['description'])
+  categories = inputtext.summarize(:topics => true).last.split(',')
+  similar = Issue.tagged_with(categories).near([fixture_issue["lat"],fixture_issue["lon"]],1)
+  issue = similar.first
   puts "found issue #{issue.id}"  unless issue.nil? 
-  issue ||= Issue.new({:title => fixture_issue['summary'],
-        :description =>fixture_issue['description'].blank? ? fixture_issue['summary'] : fixture_issue['description'],
+
+  issue ||= Issue.new({
+        #:title => fixture_issue['summary'],
+        :description => inputtext,
         :location => fixture_issue['address'],
         :lat => fixture_issue["lat"],
         :lon => fixture_issue["lng"],
@@ -29,8 +35,7 @@ fixture_issues.each_with_index do|fixture_issue,i|
     })
 
   report = user.reports.build({
-    :title => fixture_issue['summary'],
-    :description => fixture_issue['description'].blank? ? fixture_issue['summary'] : fixture_issue['description'],
+    :description => inputtext,
     :location => fixture_issue['address'],
     :lat => fixture_issue["lat"],
     :lon => fixture_issue["lng"],
