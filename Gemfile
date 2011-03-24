@@ -1,7 +1,6 @@
 
 source 'http://rubygems.org'
 gem 'rails', '3.0.4'
-#gem 'pg'
 gem 'open311'
 gem 'devise', '1.2.rc'
 gem 'oa-oauth', :require => 'omniauth/oauth'
@@ -16,20 +15,21 @@ gem 'kaminari'
 gem 'cancan'
 gem 'vestal_versions', :git => 'https://github.com/laserlemon/vestal_versions.git'
 gem 'simple_form'
-gem 'mysql2'
 gem 'fabrication'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'summarize'
 gem 'acts-as-taggable-on'
-
+group :production do
+  gem 'pg'
+end
 group :development do
   gem 'heroku'
   gem 'looksee'
   gem 'relish'
   gem 'slurper'
   gem 'unicorn'
-
+  gem 'whiskey_disk'
 end
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -46,7 +46,6 @@ group :development, :test do
   gem 'thin'
 end
 group :test do
-  gem 'pickler'
   gem 'timecop'
   gem 'simplecov'
 end
