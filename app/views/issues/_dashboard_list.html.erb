@@ -24,12 +24,15 @@
 
 	<h1>Browse Submitted Issues</h1>
 	 <div id="report_sum"><!--STARTS: report summaries-->
-
+    <%= !@nearpaged.nil? ? paginate(@nearpaged, :num_pages => (@issues.length.to_f / 10)) : paginate(@issues)  %>  
 
     <% @issues.each do |issue| %>
       <%= render :partial => 'issues/brief', :locals => {:issue => issue, :order => @order} %>
     <% end %>
-<%= paginate @issues, :window => 2 %>   
+
+  <%= !@nearpaged.nil? ? paginate(@nearpaged, :num_pages => (@issues.length.to_f / 10)) : paginate(@issues)  %>  
+
+
   </div><!--Closes report summaries-->
 
 </div><!--Closes Main Content-->

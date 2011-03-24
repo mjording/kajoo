@@ -15,8 +15,9 @@ class PagesController < ApplicationController
                 #else Issue.near(site_location, site_radius).page(params[:page]||'1')
                #end
      #@issues = Issue.near(site_location, site_radius, :select => "issues.*").page params[:page]
-     @issues = Issue.near(site_location, site_radius).page(params[:page]).per(5)
- 
+     @nearissues = Issue.near(site_location, site_radius)
+     #@issue_pages = nearissues.count
+     @issues = @nearissues.page(params[:page]).per(10)
      @submitted_reports = Report.all.count
     #@resolved_reports = Issue.where(:resolved => true).join(:reports).count('reports')
     @user_count = User.all.count

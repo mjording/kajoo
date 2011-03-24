@@ -8,6 +8,7 @@
 -%>
 <%= paginator.render do -%>
   <nav class="pagination">
+    <ul>
     <%= current_page > 1 ? prev_link_tag : prev_span_tag %>
     <% each_page do |page| -%>
       <% if page.current? -%>
@@ -25,5 +26,7 @@
       <% end -%>
     <% end -%>
     <%= num_pages > current_page ? next_link_tag : next_span_tag %>
-  </nav>
+    </ul>
+
+    </nav>
 <% end -%>

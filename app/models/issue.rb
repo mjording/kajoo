@@ -1,8 +1,7 @@
 class Issue < ActiveRecord::Base
-  #versioned
-
-  #default_scope order('vote_count desc')
-  paginates_per 10 
+  versioned
+  paginates_per 10
+  default_scope order('vote_count desc')
   has_many :reports
   has_many :comments #XXX unused
   has_many :votes, :class_name => 'IssueVote'
@@ -27,39 +26,11 @@ class Issue < ActiveRecord::Base
     }
   }  
   
-  scope :resolved, lambda { 
+  scope :closed, lambda { 
     { :conditions => ["resolved = ?", true],
       :order => 'resolved_at desc'
     }
   }  
-
-  #open and resolved named scopes
-  scope :nearopen, lambda {  |location, *args|
-          latitude, longitude = location.is_a?(Array) ? location : Geocoder.coordinates(location)
-          if latitude and longitude
-                near_scope_options(latitude, longitude, *args, {  :conditions => ["resolved = ?", false]}
-)
-           else
-             {  :conditions => ["resolved = ?", false]}
-           end
-  }  
-  
-  scope :nearresolved, lambda {  |location, *args|
-            latitude, longitude = location.is_a?(Array) ?
-            location : Geocoder.coordinates(location)
-          if latitude and longitude
-            near_scope_options(latitude, longitude, *args, {  :conditions => ["resolved = ?", false],
-                :order => 'vote_count desc'}
-)
-           else
-             { :conditions => ["resolved = ?", true],
-              :order => 'resolved_at desc'
-            }            
-          end
-
-     }  
-   
-
    
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon

@@ -331,3 +331,40 @@ Achievements
   color: red;
   font-weight: bold;
 }
+.pagination ul{
+  display:inline-block;
+  border:10px; margin:3px; padding:2px;
+}
+.pagination li{
+  border:0; margin:auto; padding:1px;
+  font-size:11px;
+  list-style:none;
+}
+.pagination li a{
+  border:solid 1px #DDDDDD;
+  margin-right:2px;
+}
+.pagination li.last{
+  float:left;
+}
+.pagination li.next a,
+.pagination li.prev a,{
+  font-weight:bold;
+  border:solid 1px #FFFFFF;
+  
+}
+.pagination li.current{
+  color:#ff0084;
+  font-weight:bold;
+  padding:0px 1px;
+}
+.pagination a:visited {
+  color:#0063e3;
+  padding:3px 6px;
+  text-decoration:none;
+}
+
+
+.pagination a:hover { 
+  border:solid 1px #666666;
+}

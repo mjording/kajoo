@@ -94,11 +94,12 @@
   <% render :partial => 'dashboard_sidebar' %>
 <% end %>
 
-<%#= paginate @issues, :window => 2, :num_pages =>  (@issues.all.count.to_f / 5)  %>  
-<%= paginate @issues, :window => 2 %>  
+<%= paginate @issues, :window => 2, :num_pages =>  (@nearissues.length.to_f / 10)  %>  
+<%#= paginate @issues, :window => 2 %>  
 
 
 <%= render :partial => 'issues/dashboard_list', :locals => {:issues => @issues, :order => @order} %>
-<%= paginate @issues, :window => 2, :num_pages =>  (@issues.all.count.to_f / 5)  %>  
+<%#= paginate @issues, :window => 2, :num_pages =>  ( @issue_pages.count.to_f / 10)  %>  
+<%= paginate @issues, :window => 2, :num_pages =>  (@nearissues.length.to_f / 10)  %>  
 
 

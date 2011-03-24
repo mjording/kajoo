@@ -42,9 +42,12 @@ class ApplicationController < ActionController::Base
     puts "site loc #{site_location},user loc #{user_location}"
     @issues = case params[:order] 
       when 'votes' then Issue.open.page(page).per(items)
-      when 'resolved' then Issue.resolved.page(page).per(items)
-      when 'near' then Issue.near(site_location, site_radius).page(params[:page]).per(items)
+      when 'resolved' then Issue.closed.page(page).per(items)
+      when 'near' then Issue.near(user_location, site_radius)
       else Issue.page(page).per(items)
+    end
+    if params[:order] == 'near'
+       @nearpaged = @issues.page(page).per(items)
     end
   end
   
