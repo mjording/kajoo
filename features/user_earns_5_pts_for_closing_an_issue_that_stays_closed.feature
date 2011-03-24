@@ -2,8 +2,7 @@
 Feature: User earns 5 pts for closing an issue that stays closed
   As a user I want to be rewarded for closing an issue
 
-  Background: 
-    Given 10 issues
+  Background: Given 1 reports
 
   @javascript
   Scenario: User earns 5 pts for closing an issue that stays closed

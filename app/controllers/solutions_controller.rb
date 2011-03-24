@@ -54,9 +54,9 @@ class SolutionsController < ApplicationController
       #return
     #end
 
-    flash[:notice] = "Thank you - your vote for solution '#{@solution.description,:length => 30)}' has been received"
+    flash[:notice] = "Thank you - your vote for solution #{@solution.description.slice(0,30)+'...'} has been received"
     
-    redirect_to :controller => 'welcome', :action => 'index'
+    redirect_to root_path
   end
   def new
     @issue = Issue.find(params[:issue_id])
@@ -72,7 +72,6 @@ class SolutionsController < ApplicationController
 
       flash[:notice] = "Thank you for your suggestion #{@solution.description.slice(0,30)+'...'} way to go"
       redirect_to :root
-      
     else
       flash[:notice] = "sorry couldnt save #{@solution.description.slice(0,30)+'...'} "
       redirect_to :root

@@ -43,6 +43,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'timecop'
   gem 'watchr'
+  gem 'thin'
 end
 group :test do
   gem 'pickler'

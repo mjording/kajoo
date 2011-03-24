@@ -88,6 +88,10 @@ class IssuesController < ApplicationController
       end
     end
   end
+  def index
+    get_issues
+  end
+
 
   def mark_resolved
     @issue = Issue.find(params[:id])

@@ -2,6 +2,8 @@
 Feature: User validates fix
   As a user I want to validate a resolved report.
 
+  Background: Given 4 reports 
+
   Scenario: Mark Issue Fixed
 
   Given I am a new, authenticated user
