@@ -1,14 +1,11 @@
 class Report < ActiveRecord::Base  
-  #versioned
   mount_uploader :report_image, ReportImageUploader
   belongs_to :user
   belongs_to :issue
   validates_presence_of :user, :description
-  geocoded_by :address, :latitude  => :lat, :longitude => :lon
-  #_with_city_and_state, :latitude  => :lat, :longitude => :lon
   
-  reverse_geocoded_by :lat, :lon do |obj, geo|
-  #, :address => :location 
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  reverse_geocoded_by :lat, :lon  do |obj, geo|
     obj.city = geo.city
     obj.zipcode = geo.postal_code
     obj.country_name = geo.country
@@ -27,12 +24,18 @@ class Report < ActiveRecord::Base
     user.save!
   end
 
-  
+  def zipcode_cannot_be_outside_city
+    errors.add(:zipcode, "connot be outside the city") if 
+      !ZIPS.include? zipcode.to_i
+  end 
 
 
   def generate_category_list
     (description.summarize(:topics => true).last.split(',')).uniq
   end
+
+   
+  
 end
 
 

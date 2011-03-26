@@ -344,9 +344,6 @@ Achievements
   border:solid 1px #DDDDDD;
   margin-right:2px;
 }
-.pagination li.last{
-  float:left;
-}
 .pagination li.next a,
 .pagination li.prev a,{
   font-weight:bold;

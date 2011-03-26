@@ -25,7 +25,7 @@ development: &default
     credited_solution_on_close: 3
     tweet_clickthrough: 1
     vote_on_solution: 5
-  awards: 
+  awards:
 
 test: &test
   <<: *default
