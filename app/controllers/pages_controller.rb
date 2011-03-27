@@ -14,6 +14,7 @@ class PagesController < ApplicationController
      @user_count = User.all.count
      chart = GoogleChart.bar_vertical_stacked_300x100(10,20,15,50,5,15,22,25,19,60)
      @submissions_chart_url = chart.to_url
+     @tags = Issue.tag_counts_on(:discovered).limit(10)
   end
   def about
   

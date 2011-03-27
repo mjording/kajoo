@@ -117,5 +117,10 @@ class IssuesController < ApplicationController
          redirect_to root_path
       end
   end
+
+  def tag_cloud
+    @tags = Issue.tag_counts_on(:discovered)
+  end
+  
   
 end

@@ -1,4 +1,5 @@
 module ApplicationHelper
+include ActsAsTaggableOn::TagsHelper
 
   def site_name
     SITE['site_name']

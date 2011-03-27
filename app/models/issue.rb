@@ -83,14 +83,14 @@ class Issue < ActiveRecord::Base
     supporters = votes.map{|v|v.users} 
     supporters.each do|supporter|
       case supporter
-        when user
-          #do nothing 
-        when creator
-          supporter.add_points_for_action(:other_supports_issue)
-        else 
-          supporter.add_points_for_action(:other_supports_supported_issue)
-        end
-
+      when user
+        puts "#do nothing "
+      when creator
+        supporter.add_points_for_action(:other_supports_issue)
+      else 
+        supporter.add_points_for_action(:other_supports_supported_issue)
+      end
+    end
     user.save!
   end
   

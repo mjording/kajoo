@@ -7,13 +7,12 @@
 <div class="sidebar_section">
 		<h5>Most Common Reports</h5>
 		<ul class="most_stat">
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>
-		<li><div class="label">Pot Holes</div>
+ <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+   <li><%= tag.name %><%#= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %></li>	
+  <% end %>
+  
+  
+      <li><div class="label">Pot Holes</div>
 		<p class="stat_number">240</p></li>							
 		</ul>
 </div><!--Closes sidebar-->
