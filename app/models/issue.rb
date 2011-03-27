@@ -80,7 +80,17 @@ class Issue < ActiveRecord::Base
     self.vote_count += 1
     
     user.add_points_for_action(:support_issue)
-    
+    supporters = votes.map{|v|v.users} 
+    supporters.each do|supporter|
+      case supporter
+        when user
+          #do nothing 
+        when creator
+          supporter.add_points_for_action(:other_supports_issue)
+        else 
+          supporter.add_points_for_action(:other_supports_supported_issue)
+        end
+
     user.save!
   end
   

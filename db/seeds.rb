@@ -15,6 +15,7 @@ user = User.create({
 })
 
 
+
 fixture_issues = JSON.load(File.read(File.join(Rails.root, 'db', 'issues.json')))
 fixture_issues.each_with_index do|fixture_issue,i|
   #issue = Issue.find_by_title( fixture_issue['summary'])

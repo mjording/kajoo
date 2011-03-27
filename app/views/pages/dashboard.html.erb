@@ -1,7 +1,11 @@
-<% content_for(:head) do %>
+<% content_for :head do %>
 
-  <script>
-  $(document).ready(function(){
+  <script type="text/javascript">
+      var marker_resultset = <%= @issue_markers.html_safe %>
+  </script>
+<% end %>
+ <script>
+    $(document).ready(function(){
     var myOptions = {
 	      zoom: 4,
 	      mapTypeControl: true,
@@ -10,13 +14,26 @@
 	      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
 	      mapTypeId: google.maps.MapTypeId.ROADMAP      
 	    }	
+
   	map = new google.maps.Map(document.getElementById("city_map"), myOptions);
   	
   	initialize();
-	});
+  });
+
 	
   function initialize()
   {
+
+      var lat = getUserLat();
+      var lon = getUserLon();
+      var address = getUserAddress();	
+      var pos=new google.maps.LatLng(lat,lon);
+      var geocoder = new google.maps.Geocoder();
+     
+      map.setCenter(pos);
+      map.setZoom(14);
+
+
   	if(geo_position_js.init())
   	{
   		$('#current_location').html("<img src=\"/images/spinner.gif\"/> finding location...");
@@ -41,9 +58,6 @@
       }
     });
 
-  	var infowindow = new google.maps.InfoWindow({
-  	    content: "<strong>You are here</strong>"
-  	});
   	var marker = new google.maps.Marker({
   	    position: pos,
   	    map: map,
@@ -56,11 +70,8 @@
   	
   	marker.click();
   }
-  
-  	
   </script>
 
-<% end %>
 
 <% content_for(:feature) do %>
 	<div id="map" class="grid_16"><!--feature left starts-->
@@ -101,5 +112,7 @@
 <%= render :partial => 'issues/dashboard_list', :locals => {:issues => @issues, :order => @order} %>
 <%#= paginate @issues, :window => 2, :num_pages =>  ( @issue_pages.count.to_f / 10)  %>  
 <%= paginate @issues, :window => 2, :num_pages =>  (@nearissues.length.to_f / 10)  %>  
-
+<%= content_for(:foot) do %>
+  <%= javascript_include_tag "markerclusterer_packed" %>
+<% end %>
 
