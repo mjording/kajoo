@@ -29,7 +29,7 @@
 <% content_for(:feature) do %>  
   <div id="single_issue_feature" class="grid_16"><!--feature left starts-->
   	<h5><%= @report.street_address %></h5>
-  	<p><%= @report.description %></p>
+  	<p><%= Profanalyzer.filter @report.description %></p>
   </div><!--Closes feature left content-->
 <div class="clear"></div>			
 <div class="sidebar_section">

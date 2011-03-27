@@ -19,18 +19,8 @@ class Issue < ActiveRecord::Base
   accepts_nested_attributes_for :suggestions, :allow_destroy => true
    
   #open and resolved named scopes
-  scope :open, lambda { 
-    { 
-      :conditions => ["resolved = ?", false],
-      :order => 'vote_count desc'
-    }
-  }  
-  
-  scope :closed, lambda { 
-    { :conditions => ["resolved = ?", true],
-      :order => 'resolved_at desc'
-    }
-  }  
+  scope :open, where(:resolved => nil).order('vote_count desc') 
+  scope :closed, where(:resolved => true).order('resolved_at desc') 
    
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   #_with_city_and_state, :latitude  => :lat, :longitude => :lon
@@ -80,7 +70,7 @@ class Issue < ActiveRecord::Base
     self.vote_count += 1
     
     user.add_points_for_action(:support_issue)
-    supporters = votes.map{|v|v.users} 
+    supporters = votes.map{|v|v.user} 
     supporters.each do|supporter|
       case supporter
       when user

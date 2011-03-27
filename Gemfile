@@ -20,6 +20,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'summarize'
 gem 'acts-as-taggable-on'
+gem 'profanalyzer'
 group :production do
   gem 'pg'
 end

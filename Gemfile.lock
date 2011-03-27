@@ -170,6 +170,7 @@ GEM
     orm_adapter (0.0.4)
     pg (0.10.1)
     polyglot (0.3.1)
+    profanalyzer (1.0.0)
     rack (1.2.1)
     rack-cache (1.0)
       rack (>= 0.4)
@@ -296,6 +297,7 @@ DEPENDENCIES
   oa-oauth
   open311
   pg
+  profanalyzer
   rack-cache
   rails (= 3.0.4)
   rails3-generators

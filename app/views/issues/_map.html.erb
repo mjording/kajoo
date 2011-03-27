@@ -18,8 +18,9 @@
   });
 function initialize()
 {
-  var lat = getUserLat();
-  var lon = getUserLon();
+  
+  var lat = <%= @issue.lat %>;
+  var lon = <%= @issue.lon %>;
   var address = getUserAddress();	
   var pos=new google.maps.LatLng(lat,lon);
   var geocoder = new google.maps.Geocoder();
@@ -42,7 +43,7 @@ function initialize()
 
 
 </script>
- <div id="current">Map not available</div>
+ <div id="current"></div>
 <div id="issue_map" class="grid_10"></div>
 
 </div>

@@ -4,7 +4,7 @@
 <% content_for(:feature) do %>  
   <div id="single_issue_feature" class="grid_16"><!--feature left starts-->
   	<h5><%= @issue.street_address %></h5>
-  	<p><%= @issue.description %></p>
+  	<p><%= Profanalyzer.filter @issue.description %></p>
   </div><!--Closes feature left content-->
   
   <div id="single_issue_sidebar" class="grid_6"><!--feature left starts-->
@@ -32,17 +32,7 @@
 
 <div class="clear"></div>			
 <div class="sidebar_section">
-		<h5>Most Common Reports</h5>
-		<ul class="most_stat">
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>
-		<li><div class="label">Pot Holes</div>
-		<p class="stat_number">240</p></li>							
-		</ul>
+<% render :partial => 'common' %>
 </div><!--Closes sidebar-->
 <% end %>
 
@@ -52,7 +42,7 @@
   <div class="report_sum" class="">
     <div class="text_description">		
   	<p class="date"><%= @issue.street_address %> <%= summary_date(@issue.created_at) %></p>	
-  	<p><%= report.description %></p>
+  	<p><%= Profanalyzer.filter report.description %></p>
 	</div>
 	<div class="clear"></div>
 </div>

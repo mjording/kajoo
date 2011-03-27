@@ -1,7 +1,7 @@
 <div id="similar_reports" class="grid_10">
   <div id="current_issue">
   	<h5><%= @issue.street_address %></h5>
-  	<p><%= @issue.description %></p>
+  	<p><%= Profanalyzer.filter @issue.description %></p>
   </div>
 
 </div>

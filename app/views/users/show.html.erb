@@ -25,7 +25,7 @@
   <%= paginate @reports, :window => 2 %>
   <ul>
     <% @reports.each do |report|%>
-      <li style="display: block; float: none"><%= link_to truncate(report.description, :length => 30), report_path(report) %></li>
+      <li style="display: block; float: none"><%= link_to truncate(Profanalyzer.filter(report.description), :length => 30), report_path(report) %></li>
     <% end %>
   </ul>
   <%= paginate @reports, :window => 2 %>

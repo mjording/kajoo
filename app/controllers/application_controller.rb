@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       when 'votes' then Issue.open.page(page).per(items)
       when 'resolved' then Issue.closed.page(page).per(items)
       when 'near' then Issue.near(user_location, site_radius)
-      else Issue.page(page).per(items)
+      else Issue.order('created_at desc').page(page).per(items)
     end
     if params[:order] == 'near'
        @nearpaged = @issues.page(page).per(items)
