@@ -1,7 +1,7 @@
   <% if(!version.initial?) %>
     <li>
       <% issue = Issue.find(version.versioned_id) %>
-      <b><%= link_to  truncate(report.description, :length => 30),  issue %> version <%= version.number %> </b>
+      <b><%= link_to  truncate(Profanalyzer.filter(report.description), :length => 30),  issue %> version <%= version.number %> </b>
       <p>Date: <%= version.created_at %></p>
       <% if(!version.user_id.nil?) %>
         <% user = User.find(version.user_id) %>

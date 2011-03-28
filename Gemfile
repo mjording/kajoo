@@ -21,6 +21,7 @@ gem 'mini_magick'
 gem 'summarize'
 gem 'acts-as-taggable-on'
 gem 'profanalyzer'
+gem 'twitter'
 group :production do
   gem 'pg'
 end

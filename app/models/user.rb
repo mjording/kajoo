@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     elsif user = User.find_by_email("#{data['id']}@kajoo.org")
       user
     else # Create an user with a stub password. 
-      User.create!(:email => "#{data['id']}@kajoo.org", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
+      User.create!(:email => "#{data['screen_name']}@kajoo.org", :password => Devise.friendly_token[0,20], :avatar_url => data['profile_image_url'], :name => data['name'], :twitter_id => data['id'], :twitter_username => data['screen_name']) 
     end
 
     #if user = User.find_by_email("#{data['screen_name']}@twitter.com")
