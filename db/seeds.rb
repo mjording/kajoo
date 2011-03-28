@@ -6,6 +6,9 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 #
+  #reports
+   
+
 user = User.create({
   :email => "admin@kajoo.org", 
   :password => Devise.friendly_token[0,20],

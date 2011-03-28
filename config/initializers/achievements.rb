@@ -1,6 +1,5 @@
 ACHIEVEMENTS = [
-  #reports
-  Achievement.new({:id => 'submit_first_report', 
+Achievement.new({:id => 'submit_first_report', 
                    :name => 'Newbie', 
                    :description => '1st report',
                    :event => 'report_saved',
@@ -37,4 +36,7 @@ ACHIEVEMENTS = [
                    :event => 'vote_on_issue',
                    :condition => lambda {|user| user.votes.size == 50}
                   })
+
+
+
 ]
