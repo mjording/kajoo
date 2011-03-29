@@ -50,7 +50,7 @@ function initialize()
         map.setCenter(results[0].geometry.location);
         marker.setPosition(results[0].geometry.location);
         $('#report_lat').val(results[0].geometry.location.lat());
-        $('#report_lon').val(results[0].geometry.location.lon());
+        $('#report_lon').val(results[0].geometry.location.lng());
       }
     });
   }); 
