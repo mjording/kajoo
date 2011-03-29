@@ -18,9 +18,9 @@
   });
 function initialize()
 {
-  var lat = getUserLat();
-  var lon = getUserLon();
-  var address = getUserAddress();	
+  var lat = Kajoo.Location.getUserLat();
+  var lon = Kajoo.Location.getUserLon();
+  var address = Kajoo.Location.getUserAddress();	
   var pos=new google.maps.LatLng(lat,lon);
   var geocoder = new google.maps.Geocoder();
  
@@ -40,11 +40,11 @@ function initialize()
   google.maps.event.addListener(marker, 'dragend', function() {
      geocoder.geocode({'latLng': marker.position}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        setUserAddress(results[0].formatted_address);
+        Kajoo.Location.setUserAddress(results[0].formatted_address);
       }
     });
   });
-  $('#report_address').val(getUserAddress()).focusout(function(e){  
+  $('#report_address').val(Kajoo.Location.getUserAddress()).focusout(function(e){  
       geocoder.geocode( { 'address': $(this).val()}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);

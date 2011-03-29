@@ -21,7 +21,7 @@ function initialize()
   
   var lat = <%= @issue.lat %>;
   var lon = <%= @issue.lon %>;
-  var address = getUserAddress();	
+  var address = Kajoo.Location.getUserAddress();	
   var pos=new google.maps.LatLng(lat,lon);
   var geocoder = new google.maps.Geocoder();
  

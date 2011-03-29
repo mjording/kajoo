@@ -24,9 +24,9 @@
   function initialize()
   {
 
-      var lat = getUserLat();
-      var lon = getUserLon();
-      var address = getUserAddress();	
+      var lat = Kajoo.Location.getUserLat();
+      var lon = Kajoo.Location.getUserLon();
+      var address = Kajoo.Location.getUserAddress();	
       var pos=new google.maps.LatLng(lat,lon);
       var geocoder = new google.maps.Geocoder();
      

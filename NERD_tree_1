@@ -1,0 +1,77 @@
+/Users/dantes/Sites/ruby/kajoo/
+▾ app/
+  ▸ controllers/
+  ▸ helpers/
+  ▸ mailers/
+  ▸ models/
+  ▸ uploaders/
+  ▾ views/
+    ▸ devise/
+    ▾ issues/
+        _brief.html.erb
+        _common.html.erb
+        _dashboard_list.html.erb
+        _map.html.erb
+        index.html.erb
+        mark_resolved.js.erb
+        show.html.erb
+        vote.js.erb
+    ▸ kaminari/
+    ▸ layouts/
+    ▸ pages/
+    ▾ reports/
+        _form.html.erb
+        _map.html.erb
+        _matches.html.erb
+        index.html.erb
+        new.html.erb
+        new.js.erb
+        show.html.erb
+    ▸ shared/
+    ▸ solutions/
+    ▸ suggestions/
+    ▸ users/
+▸ config/
+▸ db/
+▸ doc/
+▸ features/
+▸ lib/
+▸ log/
+▾ public/
+  ▸ images/
+  ▾ javascripts/
+    ▸ workers/
+      application.js
+      application_iphone.js
+      application_mobile.js
+      fixed.js
+      geo.js
+      geo_position_js_simulator.js
+      jquery.clearinginput.js
+      jquery.js
+      markerclusterer_packed.js
+      modernizr.js
+      rails.js
+  ▸ stylesheets/
+    404.html
+    422.html
+    500.html
+    crossdomain.xml
+    example-html5b.html
+    favicon.ico
+    humans.txt
+    README.md
+    robots.txt
+▸ script/
+▸ spec/
+▸ tmp/
+▸ uiproto/
+▸ vendor/
+  config.ru
+  Gemfile
+  Gemfile.lock
+  LICENSE
+  Rakefile
+  README.md
+  slurper_config.yml
+  slurper_config.yml.sample
