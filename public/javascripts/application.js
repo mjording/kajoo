@@ -1,4 +1,13 @@
-Kajoo = (function (jQuery) {
+//  All the application code is namespaced into a single object 'Kajoo
+//  Within Kajoo there are modules (ie Location) that act as closures
+//  These closures can be used to maintain state and keep methods private
+//  Any mehtods/vars that need to be accessed ouside of the module can be returened in the last line of the module
+
+//  Within each module the 'var' keyword is used once (at the top) with the follow variables being declared by seperating them by commas
+//  This way you can be sure that each variable is defined within the module and doesn't float out into the global namespaced
+
+
+var Kajoo = (function (jQuery) {
 
   var Location = (function () {
 
@@ -128,9 +137,9 @@ Kajoo = (function (jQuery) {
 
     },
 
-
     init = function () {
-      $location = $('#location');
+      $location = $('#location'); // caches jQuery object to avoid multiple dom queries
+
       user_lat = $.cookie('lat') / 1;
       user_lon = $.cookie('lon') / 1;
       user_address = $.cookie('address');
@@ -141,6 +150,7 @@ Kajoo = (function (jQuery) {
     };
 
     return { init:init,
+      // the following mehtods are returned bc they need to be public, the values themselves could be returned here, skipping the getter/setters
              getUserLat:getUserLat,
              getUserLon:getUserLon,
              getUserAddress:getUserAddress,
