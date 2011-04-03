@@ -4,7 +4,11 @@
 <head>
 <title>Kajoo <%= city_name %> : <%= site_name %> : Improve Your City</title>
 
-<%= javascript_include_tag 'jquery', 'rails', 'jquery.clearinginput.js', 'geo', 'modernizr','application' %>
+<%= javascript_include_tag 'jquery', 'rails', 'jquery.clearinginput.js','modernizr', 'geo', 'application' %>
+<script>
+  default_lon = <%= SITE['lon'] %>;
+  default_lat = <%= SITE['lat'] %>;
+</script>
   <% if is_mobile_device? %>
     <%= javascript_include_tag 'application_mobile' %>
     <% if is_device?('iphone') %>

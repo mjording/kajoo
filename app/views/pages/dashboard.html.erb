@@ -113,6 +113,6 @@
 <%#= paginate @issues, :window => 2, :num_pages =>  ( @issue_pages.count.to_f / 10)  %>  
 <%= paginate @issues, :window => 2, :num_pages =>  (@nearissues.length.to_f / 10)  %>  
 <%= content_for(:foot) do %>
-  <%= javascript_include_tag "markerclusterer_packed" %>
+  <%#= javascript_include_tag "markerclusterer_packed" %>
 <% end %>
 

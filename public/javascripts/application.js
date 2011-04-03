@@ -19,6 +19,9 @@ $(document).ready(function(){
   $('#notices').delay(2000).slideUp(1000);
   
   $('#location').live('click', function(){updateUserLocation(true)});
+  $('.disabledlink').click(function(e) {
+    e.preventDefault();
+  });
   
   user_lat = $.cookie('lat') / 1;
   user_lon = $.cookie('lon') / 1;
@@ -124,13 +127,18 @@ function maybeShowNavBar(evt) {
 //callback from geo.js
 function setUserLocation(p)
 {
+  setLocation(p.coords.latitude, p.coords.longitude);
+  setUserLocationUpdated(new Date().getTime());
+}
 
-  var lat = p.coords.latitude;
-  var lon = p.coords.longitude;
+function setLocation(latitude, longitude)
+{
+  user_lat = latitude;
+  user_lon = longitude;
   
-  var pos=new google.maps.LatLng(lat,lon);
+  var pos=new google.maps.LatLng(user_lat,user_lon);
 
-  showUserLocation(lat, lon);
+  showUserLocation(user_lat, user_lon);
 
   //Geocode to address. Oh yes.
   geocoder = new google.maps.Geocoder();
@@ -154,14 +162,12 @@ function setUserLocation(p)
       });
     }
   });	
-  
 /*
   setCookie('long', user_lon);
   setCookie('lat', user_lat);
   setCookie('location_updated', new Date().getTime());
 */
-  
-  var loc = {lat: lat / 1, lon: lon / 1}; // lat, lon
+  var loc = {lat: user_lat / 1, lon: user_lon / 1}; // lat, lon
   //ping server
   $.ajax({
     url: '/user/location',
@@ -172,7 +178,7 @@ function setUserLocation(p)
       //alert("set location");
     }
   });
-  setUserLocationUpdated(new Date().getTime());
+
 }
 
 function showUserAddress(address) {
@@ -187,8 +193,9 @@ function locationLabel(msg) {
   return '<img src="/images/globe.png" alt="'+msg+'" width="20" height="20"/>';
 }
 
-function userLocationError() {
-  $('#location').html("Err");
+function userLocationError(e) {
+  $('#location').html("Err"+e.code);
+  setLocation(default_lat, default_lon);
 }
 
 function getUserLat() {

@@ -2,6 +2,6 @@
 
 $('#issue-resolve-link-<%= @issue.id %>')
   .html('Resolved!')
-  .parent().addClass('resolved');
+  .parent().addClass('resolved supported');
   
 $('#reputation-points').html('<%= current_user.points %>');
